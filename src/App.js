@@ -7,8 +7,18 @@ import HomeView from './views/HomeView';
 const customThemeSettings = {
   palette: {
     background: {
-      default: '#f2efc4'
+      default: '#f2efc4',
+      paper: '#f2efc4'
+    },
+    primary: {
+      main: '#667645'
+    },
+    secondary: {
+      main: '#193441'
     }
+  },
+  typography: {
+    fontFamily: '"Futura-Book", "Helvetica", "Arial", sans-serif'
   }
 }
 

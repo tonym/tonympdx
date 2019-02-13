@@ -1,38 +1,93 @@
 import React from 'react'
+import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 
-const styles = {
+const styles = theme => ({
   root: {
+    color: theme.palette.secondary.main
+  },
+  avatar: {
+    alignItems: 'center',
+    display: 'flex',
+    height: '100px',
+    justifyContent: 'space-between',
+    left: '50%',
+    marginLeft: '-120px',
+    marginTop: '-50px',
+    position: 'absolute',
+    top: '50%',
+    width: '240px',
+    '& img': {
+      borderRadius: '50px'
+    },
+    [theme.breakpoints.down('sm')]: {
+      marginLeft: '-50px',
+      width: '100px'
+    },
   },
   blue: {
-    background: '#193441'
+    background: theme.palette.secondary.main,
+    color: theme.palette.background.paper
   },
-  content: {
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-    right: 0,
-    top: 0
+  borderHero: {
+    borderRightColor: theme.palette.secondary.main,
+    borderRightStyle: 'solid',
+    borderRightWidth: '3px',
+    textAlign: 'right',
+    [theme.breakpoints.down('sm')]: {
+      border: 'none',
+      textAlign: 'center'
+    }
+  },
+  contentHero: {
+    paddingLeft: theme.spacing.unit * 3,
+    paddingRight: theme.spacing.unit * 3,
+    width: '100%',
   },
   flex: {
     display: 'flex',
   },
+  flexFull: {
+    display: 'flex',
+    height: '100vh',
+    width: '100%',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column'
+    }
+  },
   flexChild: {
-    flexGrow: 1,
-    maxHeight: '100vh',
-    position: 'relative',
-    textAlign: 'center',
+    alignItems: 'center',
+    display: 'flex',
+    height: '100%',
+    padding: '120px',
     width: '50%',
-    '&:before': {
-      content: '""',
-      display: 'block',
-      paddingTop: '120%'
+    [theme.breakpoints.down('sm')]: {
+      padding: 0,
+      textAlign: 'center',
+      width: '100%'
     }
   },
   green: {
-    background: '#667645'
+    background: theme.palette.primary.main,
+    color: theme.palette.background.paper
+  },
+  lineHeroLeft: {
+    background: theme.palette.secondary.main,
+    height: '3px',
+    width: '50px',
+    [theme.breakpoints.down('sm')]: {
+      display: 'none'
+    }
+  },
+  lineHeroRight: {
+    background: theme.palette.background.paper,
+    height: '3px',
+    width: '50px',
+    [theme.breakpoints.down('sm')]: {
+      display: 'none'
+    }
   }
-}
+});
 
 class HomeView extends React.Component {
 
@@ -42,12 +97,24 @@ class HomeView extends React.Component {
 
     return (
       <div className={classes.root}>
-        <div className={classes.flex}>
+        <div className={classes.flexFull}>
+          <div className={classes.avatar}>
+            <div className={classes.lineHeroLeft}></div>
+            <img src="assets/images/avatar.jpg" alt="avatar" />
+            <div className={classes.lineHeroRight}></div>
+          </div>
           <div className={classes.flexChild}>
-            <div className={classes.content}>Block 1</div>
+            <div className={[classes.contentHero, classes.borderHero].join(' ')}>
+              <Typography color="inherit" paragraph variant="h5">Create</Typography>
+              <Typography color="inherit" paragraph variant="h5">Design</Typography>
+              <Typography color="inherit" paragraph variant="h5">Develop</Typography>
+            </div>
           </div>
           <div className={[classes.flexChild, classes.green].join(' ')}>
-            <div className={classes.content}>Block 2</div>
+            <div className={classes.contentHero}>
+              <Typography color="inherit" paragraph variant="h3">Tony M</Typography>
+              <Typography color="inherit" paragraph variant="h5">Portland, Oregon</Typography>
+            </div>
           </div>
         </div>
         <div className={classes.flex}>

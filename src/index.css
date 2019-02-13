@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Futura-Book';
+    src: url('/assets/fonts/Futura-Book.eot?#iefix') format('embedded-opentype'),
+         url('/assets/fonts/Futura-Book.woff') format('woff'),
+         url('/assets/fonts/Futura-Book.ttf')  format('truetype'),
+         url('/assets/fonts/Futura-Book.svg#webfont') format('svg');
+}
 body {
   margin: 0;
   padding: 0;
