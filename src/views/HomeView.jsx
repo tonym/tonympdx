@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import Icon from '@material-ui/core/Icon';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 
@@ -46,13 +47,17 @@ const styles = theme => ({
   },
   flex: {
     display: 'flex',
+    height: '800px',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column-reverse'
+    }
   },
   flexFull: {
     display: 'flex',
     height: '100vh',
     width: '100%',
     [theme.breakpoints.down('sm')]: {
-      flexDirection: 'column'
+      flexDirection: 'column-reverse'
     }
   },
   flexChild: {
@@ -86,6 +91,31 @@ const styles = theme => ({
     [theme.breakpoints.down('sm')]: {
       display: 'none'
     }
+  },
+  one: {
+    [theme.breakpoints.down('sm')]: {
+      order: 1
+    }
+  },
+  portrait: {
+    backgroundImage: 'url(assets/images/tonym.jpg)',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+  },
+  scroll: {
+    bottom: '50px',
+    color: 'rgba(200,200,200,0.8)',
+    fontSize: 100,
+    height: '100px',
+    left: '50%',
+    marginLeft: '-100px',
+    position: 'absolute',
+    textAlign: 'center',
+    width: '200px',
+    [theme.breakpoints.down('sm')]: {
+      display: 'none'
+    }
   }
 });
 
@@ -98,6 +128,9 @@ class HomeView extends React.Component {
     return (
       <div className={classes.root}>
         <div className={classes.flexFull}>
+          <div className={classes.scroll}>
+            <Icon fontSize="inherit">keyboard_arrow_down</Icon>
+          </div>
           <div className={classes.avatar}>
             <div className={classes.lineHeroLeft}></div>
             <img src="assets/images/avatar.jpg" alt="avatar" />
@@ -118,11 +151,10 @@ class HomeView extends React.Component {
           </div>
         </div>
         <div className={classes.flex}>
-          <div className={[classes.flexChild, classes.blue].join(' ')}>
+          <div className={[classes.flexChild, classes.blue, classes.one].join(' ')}>
             <div className={classes.content}>Block 3</div>
           </div>
-          <div className={classes.flexChild}>
-            <div className={classes.content}>Block 4</div>
+          <div className={[classes.flexChild, classes.portrait].join(' ')}>
           </div>
         </div>
       </div>
