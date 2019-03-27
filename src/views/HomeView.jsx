@@ -7,7 +7,9 @@ import withStyles from '@material-ui/core/styles/withStyles';
 
 const styles = theme => ({
   root: {
-    color: theme.palette.secondary.main
+    color: theme.palette.secondary.main,
+    display: 'flex',
+    flexDirection: 'column'
   },
   avatar: {
     alignItems: 'center',
@@ -47,6 +49,9 @@ const styles = theme => ({
     paddingRight: theme.spacing.unit * 3,
     width: '100%',
   },
+  cherrySwash: {
+    fontFamily: '"Cherry Swash"'
+  },
   flex: {
     display: 'flex',
     height: '800px',
@@ -69,19 +74,51 @@ const styles = theme => ({
     padding: '120px',
     width: '50%',
     [theme.breakpoints.down('sm')]: {
-      padding: 0,
+      padding: '40px 12px',
       textAlign: 'center',
       width: '100%'
     }
   },
+  flexChildFull: {
+    alignItems: 'center',
+    display: 'flex',
+    flexGrow: 1,
+    height: '100%',
+    justifyContent: 'center',
+    padding: '120px',
+    width: '100%',
+    [theme.breakpoints.down('sm')]: {
+      padding: '40px 12px',
+      textAlign: 'center'
+    }
+  },
+  flexColumn: {
+    flexDirection: 'column'
+  },
   form: {
-    maxWidth: '400px',
+    maxWidth: '360px',
     margin: '12px auto',
     width: '100%'
   },
   green: {
     background: theme.palette.primary.main,
     color: theme.palette.background.paper
+  },
+  hr: {
+    padding: '40px 10px',
+    width: '100%',
+    [theme.breakpoints.down('md')]: {
+      display: 'none'
+    }
+  },
+  imgres: {
+    maxWidth: '100%',
+    [theme.breakpoints.down('sm')]: {
+      width: '50%'
+    }
+  },
+  justifyCenter: {
+    justifyContent: 'center'
   },
   lineHeroLeft: {
     background: theme.palette.secondary.main,
@@ -110,6 +147,9 @@ const styles = theme => ({
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
   },
+  role: {
+    paddingBottom: '25%'
+  },
   scroll: {
     bottom: '50px',
     color: 'rgba(200,200,200,0.8)',
@@ -127,7 +167,16 @@ const styles = theme => ({
   textField: {
     margin: theme.spacing.unit,
     width: '100%'
-  }});
+  },
+  tppScreen: {
+    backgroundImage: 'url(assets/images/tpp.screen.png)',
+    backgroundPosition: 'top center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    height: '100%',
+    width: '100%',
+  }
+});
 
 class HomeView extends React.Component {
 
@@ -162,9 +211,43 @@ class HomeView extends React.Component {
         </div>
         <div className={classes.flexFull}>
           <div className={[classes.flexChild, classes.blue, classes.one].join(' ')}>
-            <Typography className={classes.content} color="inherit" variant="h4">Building effective teams, creating beautiful things, developing remarkable products for innovative people.</Typography>
+            <Typography className={classes.content} color="inherit" variant="h4">
+              Building effective teams, creating beautiful things, developing remarkable products for innovative people.
+            </Typography>
           </div>
           <div className={[classes.flexChild, classes.portrait].join(' ')}>
+            <div className={classes.contentHero}></div>
+          </div>
+        </div>
+        <div className={classes.flexFull}>
+          <div className={classes.flexChild}>
+            <div className={classes.contentHero}>
+              <div className={classes.role}>
+                <Typography align="center" color="inherit" variant="h5" paragraph>
+                  Creative director
+                </Typography>
+                <Typography className={classes.cherrySwash} align="center" color="inherit" variant="h5" paragraph>
+                  Mouse and Moon Creations
+                </Typography>
+              </div>
+              <Typography align="center" color="inherit" variant="h4" paragraph>Current project</Typography>
+              <Typography align="center" color="inherit">
+                <a href="https://www.theportlandpour.com" rel="noopener noreferrer" target="_blank" paragraph>
+                  <img className={classes.imgres} src="/assets/images/tpp.logo.png" alt="The Porland Pour logo"/>
+                </a>
+              </Typography>
+            </div>
+          </div>
+          <div className={[classes.flexChild, classes.green].join(' ')}>
+            <div className={classes.contentHero}>
+              <Typography color="inherit" variant="h4" paragraph>Storyteller, artist, curator of things</Typography>
+              <Typography color="inherit" paragraph>
+                As a working artist, accomplished developer, successful team lead, and sometimes teacher, I have a rare ability to move between disciplines with knowledge accumulated from genuine working experience in each.
+              </Typography>
+              <Typography color="inherit" paragraph>
+                My goal, as creative director is bringing together cross-discipline teams to create positive beauty and useful things.
+              </Typography>
+            </div>
           </div>
         </div>
         <div className={classes.flex}>
