@@ -1,5 +1,7 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
+import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 
@@ -72,6 +74,11 @@ const styles = theme => ({
       width: '100%'
     }
   },
+  form: {
+    maxWidth: '400px',
+    margin: '12px auto',
+    width: '100%'
+  },
   green: {
     background: theme.palette.primary.main,
     color: theme.palette.background.paper
@@ -116,8 +123,11 @@ const styles = theme => ({
     [theme.breakpoints.down('sm')]: {
       display: 'none'
     }
-  }
-});
+  },
+  textField: {
+    margin: theme.spacing.unit,
+    width: '100%'
+  }});
 
 class HomeView extends React.Component {
 
@@ -150,12 +160,53 @@ class HomeView extends React.Component {
             </div>
           </div>
         </div>
-        <div className={classes.flex}>
+        <div className={classes.flexFull}>
           <div className={[classes.flexChild, classes.blue, classes.one].join(' ')}>
-            <div className={classes.content}>Block 3</div>
+            <Typography className={classes.content} color="inherit" variant="h4">Building effective teams, creating beautiful things, developing remarkable products for innovative people.</Typography>
           </div>
           <div className={[classes.flexChild, classes.portrait].join(' ')}>
           </div>
+        </div>
+        <div className={classes.flex}>
+          <form className={classes.form} action="https://formspree.io/info@theportlandpour.com" method="post">
+            <input type="hidden" name="_subject" value="Portfolio contact" />
+            <TextField
+              className={classes.textField}
+              id="name"
+              label="Name"
+              name="name"
+              type="text"
+              variant="outlined"
+            />
+            <TextField
+              className={classes.textField}
+              helperText="I'll never share you remaikl with anyone else."
+              id="email"
+              label="Email address"
+              name="email"
+              type="email"
+              variant="outlined"
+            />
+            <TextField
+              className={classes.textField}
+              id="description"
+              label="Project description"
+              multiline
+              name="description"
+              rows={3}
+              type="text"
+              variant="outlined"
+            />
+          <Button
+            className={classes.textField}
+            color="primary"
+            size="large"
+            type="submit"
+            variant="contained"
+          >
+            Submit
+          </Button>
+          </form>
         </div>
       </div>
     );
