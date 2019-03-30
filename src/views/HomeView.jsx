@@ -4,6 +4,7 @@ import Brands from '../components/Brands';
 import ContactForm from '../components/ContactForm';
 import Headshot from '../components/Headshot';
 import Hero from '../components/Hero';
+import Pictures from '../components/Pictures';
 
 const styles = theme => ({
   root: {
@@ -112,6 +113,7 @@ class HomeView extends React.Component {
         <Hero />
         <Headshot />
         <Brands />
+        <Pictures />
         <div className={classes.flex}>
           <ContactForm />
         </div>
