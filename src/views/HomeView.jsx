@@ -1,10 +1,9 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
+import Brands from '../components/Brands';
 import ContactForm from '../components/ContactForm';
 import Headshot from '../components/Headshot';
 import Hero from '../components/Hero';
-import MediumPosts from '../components/MediumPosts';
 
 const styles = theme => ({
   root: {
@@ -112,30 +111,7 @@ class HomeView extends React.Component {
       <div className={classes.root}>
         <Hero />
         <Headshot />
-        <div className={classes.flex}>
-          <div className={[classes.flexChild, classes.vCenter].join(' ')}>
-            <div className={classes.role}>
-              <Typography color="inherit" variant="h5">
-                Creative director
-              </Typography>
-              <Typography className={classes.cherrySwash} color="inherit" variant="h4">
-                Mouse and Moon Creations
-              </Typography>
-            </div>
-          </div>
-          <div className={[classes.flexChild].join(' ')}>
-            <Typography color="inherit" variant="h4">
-              Building effective teams, creating beautiful things, developing remarkable products for innovative people.
-            </Typography>
-          </div>
-        </div>
-        <div className={classes.flex}>
-          <div className={[classes.flexChild, classes.blue, classes.one].join(' ')}>
-            <MediumPosts />
-          </div>
-          <div className={[classes.flexChild].join(' ')}>
-          </div>
-        </div>
+        <Brands />
         <div className={classes.flex}>
           <ContactForm />
         </div>

@@ -27,12 +27,20 @@ const styles = theme => ({
       width: '100%'
     }
   },
+  link: {
+    color: 'inherit',
+    textDecoration: 'none'
+  },
   portrait: {
     backgroundImage: 'url(assets/images/tonym.jpg)',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     minHeight: '800px'
+  },
+  project: {
+    paddingTop: theme.spacing.unit * 9,
+    width: '100%'
   },
   role: {
     paddingBottom: theme.spacing.unit * 9,
@@ -58,7 +66,9 @@ class Headshot extends Component {
                   Creative director
                 </Typography>
                 <Typography className={classes.cherrySwash} color="inherit" variant="h4">
-                  Mouse and Moon Creations
+                  <a className={classes.link} href="https://www.mouseandmooncreations.com" rel="noopener noreferrer" target="_blank">
+                    Mouse and Moon Creations
+                  </a>
                 </Typography>
               </div>
               <Typography color="inherit" paragraph variant="h6">
@@ -67,6 +77,16 @@ class Headshot extends Component {
               <Typography color="inherit" paragraph variant="h6">
                 My goal, as creative director, is bringing together cross-discipline teams to create useful products for innovative people.
               </Typography>
+              <div className={classes.project}>
+                <Typography color="inherit" variant="h5">
+                  Current project
+                </Typography>
+                <Typography color="inherit">
+                  <a href="https://www.theportlandpour.com" rel="noopener noreferrer" target="_blank">
+                    <img src="/assets/images/tpp.logo.bw.png" alt="The Portland Pour logo"/>
+                  </a>
+                </Typography>
+              </div>
             </div>
           </div>
         </div>
