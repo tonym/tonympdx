@@ -79,11 +79,13 @@ class Brands extends Component {
             <img className={classes.brand} src="/assets/images/brand.sundance.png" alt="brand logo" />
             <img className={classes.brand} src="/assets/images/brand.sorel.png" alt="brand logo" />
             <img className={classes.brand} src="/assets/images/brand.infocus.png" alt="brand logo" />
+            <img className={classes.brand} src="/assets/images/brand.crossfit.png" alt="brand logo" />
             <img className={classes.brand} src="/assets/images/brand.mentor.png" alt="brand logo" />
             <img className={classes.brand} src="/assets/images/brand.cisco.png" alt="brand logo" />
             <img className={classes.brand} src="/assets/images/brand.ibm.png" alt="brand logo" />
             <img className={classes.brand} src="/assets/images/brand.chase.png" alt="brand logo" />
             <img className={classes.brand} src="/assets/images/brand.wachovia.png" alt="brand logo" />
+            <img className={classes.brand} src="/assets/images/brand.hp.png" alt="brand logo" />
           </div>
         </div>
         <div className={[classes.flexChild, classes.green].join(' ')}>

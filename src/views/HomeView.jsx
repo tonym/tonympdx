@@ -1,10 +1,12 @@
 import React from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
-import Brands from '../components/Brands';
-import ContactForm from '../components/ContactForm';
-import Headshot from '../components/Headshot';
-import Hero from '../components/Hero';
-import Pictures from '../components/Pictures';
+import Brands from '../blocks/Brands';
+import ContactForm from '../blocks/ContactForm';
+import Design from '../blocks/Design';
+import Develop from '../blocks/Develop';
+import Headshot from '../blocks/Headshot';
+import Hero from '../blocks/Hero';
+import Pictures from '../blocks/Pictures';
 
 const styles = theme => ({
   root: {
@@ -114,6 +116,8 @@ class HomeView extends React.Component {
         <Headshot />
         <Brands />
         <Pictures />
+        <Design />
+        <Develop />
         <div className={classes.flex}>
           <ContactForm />
         </div>
