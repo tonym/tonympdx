@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
+import Flex from '../../components/Flex';
+import FlexChild from '../../components/FlexChild';
 
 const styles = theme => ({
   root: {
@@ -61,7 +63,7 @@ class Brands extends Component {
     const { classes } = this.props;
 
     return (
-      <div className={classes.root}>
+      <Flex flexDirection="column-reverse">
         <div className={classes.blockChild}>
           <Typography color="inherit" variant="h6">My brands and projects</Typography>
           <div className={classes.brands}>
@@ -88,13 +90,13 @@ class Brands extends Component {
             <img className={classes.brand} src="/assets/images/brand.hp.png" alt="brand logo" />
           </div>
         </div>
-        <div className={[classes.flexChild, classes.green].join(' ')}>
+        <FlexChild background="primary">
           <div>
             <Typography color="inherit" variant="h4" gutterBottom>Work</Typography>
             <Typography color="inherit" variant="h5" gutterBottom>I've had the pleasure of working on various projects for various people and companies. These are just a few of the brands I've helped in one way or another</Typography>
           </div>
-        </div>
-      </div>
+        </FlexChild>
+      </Flex>
     );
 
   }

@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
+import Flex from '../../components/Flex';
+import FlexChild from '../../components/FlexChild';
 
 const styles = theme => ({
-  root: {
-    display: 'flex',
-    [theme.breakpoints.down('md')]: {
-      flexDirection: 'column'
-    }
-  },
   blue: {
     background: theme.palette.secondary.main,
     color: theme.palette.background.paper
@@ -16,9 +12,18 @@ const styles = theme => ({
   cherrySwash: {
     fontFamily: '"Cherry Swash"'
   },
-  flexChild: {
+  link: {
+    color: 'inherit',
+    textDecoration: 'none'
+  },
+  portrait: {
     alignItems: 'center',
+    backgroundImage: 'url(assets/images/tonym.jpg)',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
     display: 'flex',
+    minHeight: '800px',
     padding: '120px',
     width: '50%',
     [theme.breakpoints.down('md')]: {
@@ -26,17 +31,6 @@ const styles = theme => ({
       textAlign: 'center',
       width: '100%'
     }
-  },
-  link: {
-    color: 'inherit',
-    textDecoration: 'none'
-  },
-  portrait: {
-    backgroundImage: 'url(assets/images/tonym.jpg)',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    minHeight: '800px'
   },
   project: {
     paddingTop: theme.spacing.unit * 9,
@@ -57,8 +51,8 @@ class Headshot extends Component {
     const { classes } = this.props;
 
     return (
-      <div className={classes.root}>
-        <div className={[classes.flexChild, classes.blue].join(' ')}>
+      <Flex>
+        <FlexChild background="secondary">
           <div className={classes.contentHero}>
             <div className={classes.contentHero}>
               <div className={classes.role}>
@@ -89,11 +83,11 @@ class Headshot extends Component {
               </div>
             </div>
           </div>
-        </div>
-        <div className={[classes.flexChild, classes.portrait].join(' ')}>
+        </FlexChild>
+        <div className={classes.portrait}>
           <div className={classes.contentHero}></div>
         </div>
-      </div>
+      </Flex>
     );
 
   }
