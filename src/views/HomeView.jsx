@@ -7,10 +7,11 @@ import Develop from '../blocks/Develop';
 import Headshot from '../blocks/Headshot';
 import Hero from '../blocks/Hero';
 import Pictures from '../blocks/Pictures';
+import Projects from '../blocks/Projects';
 
 const styles = theme => ({
   root: {
-    color: theme.palette.secondary.main,
+    color: theme.palette.primary.main,
     display: 'flex',
     flexDirection: 'column'
   },
@@ -30,6 +31,7 @@ class HomeView extends React.Component {
         <Pictures />
         <Design />
         <Develop />
+        <Projects />
         <Contact />
       </div>
     );

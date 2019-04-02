@@ -23,7 +23,7 @@ class Develop extends Component {
     const { classes } = this.props;
 
     return (
-      <Flex flexWrap="wrap">
+      <Flex flexDirection="column-reverse" flexWrap="wrap">
         <FlexChild>
           <img src="https://sponsor.theportlandpour.com/assets/images/screenshots.png" alt="screenshot of website on various devices" className={classes.imgres}/>
         </FlexChild>

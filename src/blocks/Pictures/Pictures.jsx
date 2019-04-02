@@ -55,7 +55,7 @@ class Pictures extends Component {
 
     return (
       <div className={classes.child}>
-        <GridList cellHeight={280} spacing={4}>
+        <GridList cellHeight={320} spacing={4}>
           {
             pictures.map(picture => {
               return (
