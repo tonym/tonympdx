@@ -3,15 +3,10 @@ import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
+import Flex from '../../components/Flex';
+import FlexChild from '../../components/FlexChild';
 
 const styles = theme => ({
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    [theme.breakpoints.down('md')]: {
-      flexDirection: 'column'
-    }
-  },
   child: {
     padding: theme.spacing.unit / 4,
     width: '50%',
@@ -19,33 +14,9 @@ const styles = theme => ({
       width: '100%'
     }
   },
-  flexChild: {
-    alignItems: 'center',
-    display: 'flex',
-    padding: '120px',
-    width: '50%',
-    [theme.breakpoints.down('md')]: {
-      textAlign: 'center',
-      padding: '120px 12px',
-      width: '100%'
-    }
-  },
   imgres: {
     height: 'auto',
     maxWidth: '100%'
-  },
-  reverse: {
-    [theme.breakpoints.down('md')]: {
-      flexDirection: 'column-reverse'
-    }
-  },
-  blue: {
-    background: theme.palette.secondary.main,
-    color: theme.palette.background.paper
-  },
-  green: {
-    background: theme.palette.primary.main,
-    color: theme.palette.background.paper
   }
 });
 
@@ -106,30 +77,30 @@ class Pictures extends Component {
 
     return (
       <React.Fragment>
-        <div className={classes.root}>
-          <div className={[classes.flexChild, classes.blue].join(' ')}>
+        <Flex flexWrap="wrap">
+          <FlexChild background="primary">
             <div>
               <Typography color="inherit" variant="h4" gutterBottom>Create</Typography>
               <Typography color="inherit" variant="h5">
                 Whether I'm creating product and editorial photography for clients, pictures for an art series, or sketches for a design or product, it all starts with a camera or a crayon.
               </Typography>
             </div>
-          </div>
+          </FlexChild>
           {this.renderGrids(grids[0])}
-        </div>
-        <div className={[classes.root, classes.reverse].join(' ')}>
+        </Flex>
+        <Flex flexDirection="column-reverse" flexWrap="wrap">
           {this.renderGrids(grids[1])}
-          <div className={[classes.flexChild, classes.green].join(' ')}>
+          <FlexChild background="secondary">
             <div>
               <Typography color="inherit" variant="h4" gutterBottom>Sell</Typography>
               <Typography color="inherit" variant="h5">
                 You're passionate about what you do and what you make. So am I. You put your heart and soul into your project or product, and now it's time to share it with the world. No worries. I got your back.
               </Typography>
             </div>
-          </div>
-        </div>
-        <div className={classes.root}>
-          <div className={[classes.flexChild, classes.blue].join(' ')}>
+          </FlexChild>
+        </Flex>
+        <Flex flexWrap="wrap">
+          <FlexChild background="primary">
             <div>
               <Typography color="inherit" variant="h4" gutterBottom>Show</Typography>
               <Typography color="inherit" variant="h5">
@@ -137,12 +108,12 @@ class Pictures extends Component {
                 Occasionally I show my work in my downtown studio, or in places around Portland.
               </Typography>
             </div>
-          </div>
+          </FlexChild>
           {this.renderGrids(grids[2])}
-        </div>
-        <div className={[classes.root, classes.reverse].join(' ')}>
+        </Flex>
+        <Flex flexDirection="column-reverse" flexWrap="wrap">
           {this.renderGrids(grids[3])}
-          <div className={[classes.flexChild, classes.green].join(' ')}>
+          <FlexChild background="secondary">
             <div>
               <Typography color="inherit" variant="h4" gutterBottom>Celebrate</Typography>
               <Typography color="inherit" variant="h5">
@@ -151,8 +122,8 @@ class Pictures extends Component {
                 It evolved into The Portland Pour.
               </Typography>
             </div>
-          </div>
-        </div>
+          </FlexChild>
+        </Flex>
       </React.Fragment>
     );
 

@@ -30,6 +30,9 @@ const styles = theme => ({
   secondary: {
     background: theme.palette.secondary.main,
     color: theme.palette.background.paper
+  },
+  white: {
+    background: theme.palette.common.white
   }
 });
 

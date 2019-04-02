@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -10,6 +9,8 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import Code from '@material-ui/icons/Code';
 import FitnessCenter from '@material-ui/icons/FitnessCenter';
 import LocalDrink from '@material-ui/icons/LocalDrink';
+import Flex from '../../components/Flex';
+import FlexChild from '../../components/FlexChild';
 
 const styles = theme => ({
   root: {
@@ -69,8 +70,8 @@ class Design extends Component {
 
     return (
       <React.Fragment>
-        <div className={classes.root}>
-          <div className={[classes.flexChild, classes.blue].join(' ')}>
+        <Flex flexWrap="wrap">
+          <FlexChild background="primary">
             <div>
               <Typography color="inherit" variant="h4" gutterBottom>Design</Typography>
               <Typography color="inherit" variant="h5">
@@ -78,8 +79,8 @@ class Design extends Component {
                 Your project's UX is as important as your project's appearance.
               </Typography>
             </div>
-          </div>
-          <div className={classes.flexChild}>
+          </FlexChild>
+          <FlexChild>
             <List
               className={classes.list}
               component="div"
@@ -114,8 +115,8 @@ class Design extends Component {
                 </ListItemText>
               </ListItem>
             </List>
-          </div>
-        </div>
+          </FlexChild>
+        </Flex>
       </React.Fragment>
     );
 

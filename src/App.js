@@ -11,10 +11,10 @@ const customThemeSettings = {
       paper: '#f2efc4'
     },
     primary: {
-      main: '#667645'
+      main: '#193441'
     },
     secondary: {
-      main: '#193441'
+      main: '#667645'
     }
   },
   typography: {

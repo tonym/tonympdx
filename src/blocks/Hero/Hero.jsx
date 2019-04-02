@@ -97,7 +97,7 @@ class Hero extends Component {
             <Typography color="inherit" paragraph variant="h5">Develop</Typography>
           </div>
         </FlexChild>
-        <FlexChild background="primary">
+        <FlexChild background="secondary">
           <div className={classes.contentHero}>
             <Typography color="inherit" paragraph variant="h3">Tony M</Typography>
             <Typography color="inherit" paragraph variant="h5">Portland, Oregon</Typography>

@@ -5,12 +5,6 @@ import Flex from '../../components/Flex';
 import FlexChild from '../../components/FlexChild';
 
 const styles = theme => ({
-  root: {
-    display: 'flex',
-    [theme.breakpoints.down('md')]: {
-      flexDirection: 'column-reverse'
-    }
-  },
   blockChild: {
     display: 'flex',
     flexDirection: 'column',
@@ -33,24 +27,6 @@ const styles = theme => ({
     padding: theme.spacing.unit,
     paddingBottom: theme.spacing.unit * 2,
     paddingTop: theme.spacing.unit * 2
-  },
-  flexChild: {
-    alignItems: 'center',
-    display: 'flex',
-    padding: '120px',
-    width: '50%',
-    [theme.breakpoints.down('md')]: {
-      textAlign: 'center',
-      padding: theme.spacing.unit * 6,
-      paddingBottom: 0,
-      width: '100%'
-    }
-  },
-  green: {
-    [theme.breakpoints.up('lg')]: {
-      background: theme.palette.primary.main,
-      color: theme.palette.background.paper
-    }
   }
 });
 
@@ -90,7 +66,7 @@ class Brands extends Component {
             <img className={classes.brand} src="/assets/images/brand.hp.png" alt="brand logo" />
           </div>
         </div>
-        <FlexChild background="primary">
+        <FlexChild background="secondary">
           <div>
             <Typography color="inherit" variant="h4" gutterBottom>Work</Typography>
             <Typography color="inherit" variant="h5" gutterBottom>I've had the pleasure of working on various projects for various people and companies. These are just a few of the brands I've helped in one way or another</Typography>

@@ -52,7 +52,7 @@ class Headshot extends Component {
 
     return (
       <Flex>
-        <FlexChild background="secondary">
+        <FlexChild background="primary">
           <div className={classes.contentHero}>
             <div className={classes.contentHero}>
               <div className={classes.role}>
