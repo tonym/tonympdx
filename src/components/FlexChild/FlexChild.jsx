@@ -3,57 +3,47 @@ import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 const propTypes = {
-  width: PropTypes.string
+  background: PropTypes.oneOf(['primary', 'secondary'])
 };
 
 const defaultProps = {
-  width: '50%'
+  background: null
 }
 
 const styles = theme => ({
-  flexChild: {
+  root: {
     alignItems: 'center',
     display: 'flex',
     padding: '120px',
     width: '50%',
     [theme.breakpoints.down('md')]: {
+      height: '100%',
       padding: '120px 12px',
       textAlign: 'center',
       width: '100%'
     }
   },
-  flexChildFull: {
-    alignItems: 'center',
-    display: 'flex',
-    flexGrow: 1,
-    height: '100%',
-    justifyContent: 'center',
-    padding: '120px',
-    width: '100%',
-    [theme.breakpoints.down('md')]: {
-      padding: '40px 12px',
-      textAlign: 'center'
-    }
+  primary: {
+    background: theme.palette.primary.main,
+    color: theme.palette.background.paper
+  },
+  secondary: {
+    background: theme.palette.secondary.main,
+    color: theme.palette.background.paper
   }
 });
 
+const FlexChild = props => {
 
+  const { classes } = props;
 
-class FlexChild extends Component {
+  const className = classes.root + (props.background ? ' ' + classes[props.background] : '');
 
-  render() {
-
-    const { classes, fullHeight } = this.props;
-
-    const flexClass = fullHeight ? 'flexFull' : 'flex'
-
-    return (
-      <div className={classes[flexClass]}>
-        {this.props.children}
-      </div>
-    );
-
-  }
+  return (
+    <div className={className}>
+      {props.children}
+    </div>
+  );
 
 }
 

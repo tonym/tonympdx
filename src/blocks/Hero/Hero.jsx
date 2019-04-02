@@ -3,6 +3,7 @@ import Icon from '@material-ui/core/Icon';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Flex from '../../components/Flex';
+import FlexChild from '../../components/FlexChild';
 
 const styles = theme => ({
   avatar: {
@@ -38,22 +39,6 @@ const styles = theme => ({
     paddingLeft: theme.spacing.unit * 3,
     paddingRight: theme.spacing.unit * 3,
     width: '100%',
-  },
-  flexChild: {
-    alignItems: 'center',
-    display: 'flex',
-    padding: '120px',
-    width: '50%',
-    [theme.breakpoints.down('md')]: {
-      height: '100%',
-      padding: '120px 12px',
-      textAlign: 'center',
-      width: '100%'
-    }
-  },
-  green: {
-    background: theme.palette.primary.main,
-    color: theme.palette.background.paper
   },
   lineHeroLeft: {
     background: theme.palette.secondary.main,
@@ -105,19 +90,19 @@ class Hero extends Component {
           <img className="avatarImg" src="assets/images/avatar.jpg" alt="avatar" />
           <div className={classes.lineHeroRight}></div>
         </div>
-        <div className={classes.flexChild}>
+        <FlexChild>
           <div className={[classes.contentHero, classes.borderHero].join(' ')}>
             <Typography color="inherit" paragraph variant="h5">Create</Typography>
             <Typography color="inherit" paragraph variant="h5">Design</Typography>
             <Typography color="inherit" paragraph variant="h5">Develop</Typography>
           </div>
-        </div>
-        <div className={[classes.flexChild, classes.green].join(' ')}>
+        </FlexChild>
+        <FlexChild background="primary">
           <div className={classes.contentHero}>
             <Typography color="inherit" paragraph variant="h3">Tony M</Typography>
             <Typography color="inherit" paragraph variant="h5">Portland, Oregon</Typography>
           </div>
-        </div>
+        </FlexChild>
       </Flex>
     );
 
