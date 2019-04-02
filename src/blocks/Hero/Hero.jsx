@@ -2,16 +2,9 @@ import React, { Component } from 'react';
 import Icon from '@material-ui/core/Icon';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
+import Flex from '../../components/Flex';
 
 const styles = theme => ({
-  root: {
-    display: 'flex',
-    height: '100vh',
-    width: '100%',
-    [theme.breakpoints.down('md')]: {
-      flexDirection: 'column-reverse'
-    }
-  },
   avatar: {
     alignItems: 'center',
     display: 'flex',
@@ -23,7 +16,7 @@ const styles = theme => ({
     position: 'absolute',
     top: '50%',
     width: '240px',
-    '& img': {
+    '& .avatarImg': {
       borderRadius: '50px'
     },
     [theme.breakpoints.down('md')]: {
@@ -103,13 +96,13 @@ class Hero extends Component {
     const { classes } = this.props;
 
     return (
-      <div className={classes.root}>
+      <Flex flexDirection="column-reverse" elemHeight="100vh" elemWidth="100%">
         <div className={classes.scroll}>
           <Icon fontSize="inherit">keyboard_arrow_down</Icon>
         </div>
         <div className={classes.avatar}>
           <div className={classes.lineHeroLeft}></div>
-          <img src="assets/images/avatar.jpg" alt="avatar" />
+          <img className="avatarImg" src="assets/images/avatar.jpg" alt="avatar" />
           <div className={classes.lineHeroRight}></div>
         </div>
         <div className={classes.flexChild}>
@@ -125,7 +118,7 @@ class Hero extends Component {
             <Typography color="inherit" paragraph variant="h5">Portland, Oregon</Typography>
           </div>
         </div>
-      </div>
+      </Flex>
     );
 
   }

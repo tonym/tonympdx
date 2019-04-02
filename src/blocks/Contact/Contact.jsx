@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Typography from '@material-ui/core/Typography';
+import Flex from '../../components/Flex';
+import ContactForm from '../ContactForm';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 const styles = theme => ({
@@ -10,20 +11,20 @@ const styles = theme => ({
 
 
 
-class MediumPosts extends Component {
+class Contact extends Component {
 
   render() {
 
     const { classes } = this.props;
 
     return (
-      <div className={classes.root}>
-        <Typography color="inherit" variant="h4">Latest case studies and essays</Typography>
-      </div>
+      <Flex>
+        <ContactForm />
+      </Flex>
     );
 
   }
 
 }
 
-export default withStyles(styles)(MediumPosts);
+export default withStyles(styles)(Contact);
