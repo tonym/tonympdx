@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import Typography from '@material-ui/core/Typography';
@@ -7,6 +8,9 @@ import Flex from '../../components/Flex';
 import FlexChild from '../../components/FlexChild';
 
 const styles = theme => ({
+  button: {
+    marginTop: theme.spacing.unit * 3
+  },
   child: {
     padding: theme.spacing.unit / 4,
     width: '50%',
@@ -81,9 +85,10 @@ class Pictures extends Component {
           <FlexChild background="primary">
             <div>
               <Typography color="inherit" variant="h4" gutterBottom>Create</Typography>
-              <Typography color="inherit" variant="h5">
+              <Typography color="inherit" variant="h5" paragraph>
                 Whether I'm creating product and editorial photography for clients, pictures for an art series, or sketches for a design or product, it all starts with a camera or a crayon.
               </Typography>
+              <Button className={classes.button} variant="outlined" color="inherit" href="#contact">What can I create for you?</Button>
             </div>
           </FlexChild>
           {this.renderGrids(grids[0])}

@@ -197,7 +197,7 @@ class Projects extends Component {
         </Flex>
         <Flex flexDirection="column-reverse">
           <FlexChild>
-            <img src="/assets/images/workspace.png" alt="Credit union generic" className={classes.imgres}/>
+            <img src="/assets/images/workspace.png" alt="App detail screen" className={classes.imgres}/>
           </FlexChild>
           <FlexChild background="secondary">
             <div>
@@ -229,6 +229,80 @@ class Projects extends Component {
           </FlexChild>
           <FlexChild>
             <img src="/assets/images/backbone.png" alt="Backbone logo" className={classes.imgres}/>
+          </FlexChild>
+        </Flex>
+        <Flex flexDirection="column-reverse">
+          <FlexChild>
+            <img src="/assets/images/trekpod.png" alt="App detail screen" className={classes.imgres}/>
+          </FlexChild>
+          <FlexChild background="secondary">
+            <div>
+              <Typography color="inherit" variant="subtitle" paragraph>Project summary</Typography>
+              <Typography color="inherit" variant="h4" gutterBottom>Improvement</Typography>
+              <Typography color="inherit" variant="h5" paragraph>
+                Improve existing website and refactor for increased sales and conversion.
+                Update creative and visual aspects, refine e-commerce and streamline SEO.
+              </Typography>
+              <Typography color="inherit" variant="subtitle" gutterBottom>Disciplines</Typography>
+              <Typography color="inherit" variant="caption" paragraph>UI, UX, design, development, analytics</Typography>
+              <Typography color="inherit" variant="subtitle" gutterBottom>Deliverables</Typography>
+              <Typography color="inherit" variant="caption" paragraph>Web</Typography>
+            </div>
+          </FlexChild>
+        </Flex>
+        <Flex>
+          <FlexChild background="primary">
+            <div>
+              <Typography color="inherit" variant="subtitle" paragraph>Project summary</Typography>
+              <Typography color="inherit" variant="h4" gutterBottom>Microsite</Typography>
+              <Typography color="inherit" variant="h5" paragraph>
+                Developer community site for a San Francisco video startup.
+                Create a marketing micro site as a gateway to community site.
+              </Typography>
+              <Typography color="inherit" variant="subtitle" gutterBottom>Disciplines</Typography>
+              <Typography color="inherit" variant="caption" paragraph>UI, UX, development, project management</Typography>
+              <Typography color="inherit" variant="subtitle" gutterBottom>Deliverables</Typography>
+              <Typography color="inherit" variant="caption" paragraph>Web</Typography>
+            </div>
+          </FlexChild>
+          <FlexChild>
+            <img src="/assets/images/eqnetwork.png" alt="App detail screen" className={classes.imgres}/>
+          </FlexChild>
+        </Flex>
+        <Flex flexDirection="column-reverse">
+          <FlexChild>
+            <img src="/assets/images/xmlchallenge.jpg" alt="App detail screen" className={classes.imgres}/>
+          </FlexChild>
+          <FlexChild background="secondary">
+            <div>
+              <Typography color="inherit" variant="subtitle" paragraph>Project summary</Typography>
+              <Typography color="inherit" variant="h4" gutterBottom>Challenge</Typography>
+              <Typography color="inherit" variant="h5" paragraph>
+                Create an interactive test for a student XML contest.
+              </Typography>
+              <Typography color="inherit" variant="subtitle" gutterBottom>Disciplines</Typography>
+              <Typography color="inherit" variant="caption" paragraph>UI, UX, development</Typography>
+              <Typography color="inherit" variant="subtitle" gutterBottom>Deliverables</Typography>
+              <Typography color="inherit" variant="caption" paragraph>Web</Typography>
+            </div>
+          </FlexChild>
+        </Flex>
+        <Flex>
+          <FlexChild background="primary">
+            <div>
+              <Typography color="inherit" variant="subtitle" paragraph>Project summary</Typography>
+              <Typography color="inherit" variant="h4" gutterBottom>Marketing</Typography>
+              <Typography color="inherit" variant="h5" paragraph>
+                Create and support the corporate marketing site, and provide technical marketing services to the marketing director for Attensa RSS Server.
+              </Typography>
+              <Typography color="inherit" variant="subtitle" gutterBottom>Disciplines</Typography>
+              <Typography color="inherit" variant="caption" paragraph>Development, technical marketing</Typography>
+              <Typography color="inherit" variant="subtitle" gutterBottom>Deliverables</Typography>
+              <Typography color="inherit" variant="caption" paragraph>Web</Typography>
+            </div>
+          </FlexChild>
+          <FlexChild>
+            <img src="/assets/images/attensa.png" alt="App detail screen" className={classes.imgres}/>
           </FlexChild>
         </Flex>
         <Flex flexDirection="column-reverse">

@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
-import Code from '@material-ui/icons/Code';
-import FitnessCenter from '@material-ui/icons/FitnessCenter';
-import LocalDrink from '@material-ui/icons/LocalDrink';
 import Flex from '../../components/Flex';
 import FlexChild from '../../components/FlexChild';
 
@@ -41,6 +36,11 @@ const styles = theme => ({
   imgres: {
     height: 'auto',
     maxWidth: '100%'
+  },
+  link: {
+    color: 'inherit',
+    textDecoration: 'none',
+    width: '100%'
   },
   list: {
     width: '100%'
@@ -81,40 +81,33 @@ class Design extends Component {
             </div>
           </FlexChild>
           <FlexChild>
-            <List
-              className={classes.list}
-              component="div"
-              subheader={<ListSubheader className={classes.listSubHeader} component="h5" disableSticky>
-                <Typography variant="h5" gutterBottom>
-                  Recent case studies and essays
-                </Typography>
-              </ListSubheader>}
-            >
-              <ListItem button className={classes.listItem} divider>
-                <ListItemIcon>
-                  <LocalDrink />
-                </ListItemIcon>
-                <ListItemText>
-                  The UX of beverage recipes
-                </ListItemText>
-              </ListItem>
-              <ListItem button className={classes.listItem} divider>
-                <ListItemIcon>
-                  <Code />
-                </ListItemIcon>
-                <ListItemText>
-                  Building a blog with React, Node, and Ghost
-                </ListItemText>
-              </ListItem>
-              <ListItem button className={classes.listItem}>
-                <ListItemIcon>
-                  <FitnessCenter />
-                </ListItemIcon>
-                <ListItemText>
-                  The calories in cocktails
-                </ListItemText>
-              </ListItem>
-            </List>
+            <div>
+              <Typography color="inherit" variant="h5">Recent case studies and essays</Typography>
+              <Typography color="inherit" variant="subtitle">Notes on topics, projects, and patterns</Typography>
+              <List className={classes.list} component="div">
+                <ListItem button className={classes.listItem} divider>
+                  <a href="https://medium.com/@tony.m.pdx/the-ux-of-beverage-recipes-1a0d5898d208" rel="noopener noreferrer" target="_blank" className={classes.link}>
+                    <ListItemText>
+                      The UX of beverage recipes
+                    </ListItemText>
+                  </a>
+                </ListItem>
+                <ListItem button className={classes.listItem} divider>
+                  <a href="https://medium.com/@tony.m.pdx/building-a-blog-with-react-node-and-ghost-1991325b3cd5" rel="noopener noreferrer" target="_blank" className={classes.link}>
+                    <ListItemText>
+                      Building a blog with React, Node, and Ghost
+                    </ListItemText>
+                  </a>
+                </ListItem>
+                <ListItem button className={classes.listItem}>
+                  <a href="https://www.theportlandpour.com/post/the-calories-in-cocktails" rel="noopener noreferrer" target="_blank" className={classes.link}>
+                    <ListItemText>
+                      The calories in cocktails
+                    </ListItemText>
+                  </a>
+                </ListItem>
+              </List>
+            </div>
           </FlexChild>
         </Flex>
       </React.Fragment>
