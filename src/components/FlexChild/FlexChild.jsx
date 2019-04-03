@@ -14,6 +14,7 @@ const styles = theme => ({
   root: {
     alignItems: 'center',
     display: 'flex',
+    justifyContent: 'center',
     padding: '120px',
     width: '50%',
     [theme.breakpoints.down('md')]: {

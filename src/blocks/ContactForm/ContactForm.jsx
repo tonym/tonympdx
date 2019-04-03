@@ -45,6 +45,14 @@ class ContactForm extends Component {
         />
         <TextField
           className={classes.textField}
+          id="organization"
+          label="Organization"
+          name="organization"
+          type="text"
+          variant="outlined"
+        />
+        <TextField
+          className={classes.textField}
           id="description"
           label="Project description"
           multiline
