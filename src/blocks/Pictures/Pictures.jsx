@@ -89,40 +89,8 @@ class Pictures extends Component {
           {this.renderGrids(grids[0])}
         </Flex>
         <Flex flexDirection="column-reverse" flexWrap="wrap">
-          {this.renderGrids(grids[1])}
-          <FlexChild background="secondary">
-            <div>
-              <Typography color="inherit" variant="h4" gutterBottom>Sell</Typography>
-              <Typography color="inherit" variant="h5">
-                You're passionate about what you do and what you make. So am I. You put your heart and soul into your project or product, and now it's time to share it with the world. No worries. I got your back.
-              </Typography>
-            </div>
-          </FlexChild>
-        </Flex>
-        <Flex flexWrap="wrap">
-          <FlexChild background="primary">
-            <div>
-              <Typography color="inherit" variant="h4" gutterBottom>Show</Typography>
-              <Typography color="inherit" variant="h5">
-                When I'm not working on client projects, I still make art and show it online.
-                Occasionally I show my work in my downtown studio, or in places around Portland.
-              </Typography>
-            </div>
-          </FlexChild>
           {this.renderGrids(grids[2])}
-        </Flex>
-        <Flex flexDirection="column-reverse" flexWrap="wrap">
-          {this.renderGrids(grids[3])}
-          <FlexChild background="secondary">
-            <div>
-              <Typography color="inherit" variant="h4" gutterBottom>Celebrate</Typography>
-              <Typography color="inherit" variant="h5">
-                Sometimes you can make art from products.
-                My current project started out as a series of pictures of craft cocktails.
-                It evolved into The Portland Pour.
-              </Typography>
-            </div>
-          </FlexChild>
+          {this.renderGrids(grids[1])}
         </Flex>
       </React.Fragment>
     );

@@ -26,7 +26,7 @@ const styles = theme => ({
     },
   },
   borderHero: {
-    borderRightColor: theme.palette.secondary.main,
+    borderRightColor: theme.palette.primary.main,
     borderRightStyle: 'solid',
     borderRightWidth: '3px',
     textAlign: 'right',
@@ -41,7 +41,7 @@ const styles = theme => ({
     width: '100%',
   },
   lineHeroLeft: {
-    background: theme.palette.secondary.main,
+    background: theme.palette.primary.main,
     height: '3px',
     width: '50px',
     [theme.breakpoints.down('md')]: {

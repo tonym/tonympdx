@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Flex from '../../components/Flex';
@@ -19,6 +20,9 @@ const styles = theme => ({
     marginTop: 0,
     maxWidth: '100%',
     opacity: 0.7
+  },
+  button: {
+    marginTop: theme.spacing.unit * 3
   },
   brands: {
     alignItems: 'center',
@@ -69,7 +73,8 @@ class Brands extends Component {
         <FlexChild background="secondary">
           <div>
             <Typography color="inherit" variant="h4" gutterBottom>Work</Typography>
-            <Typography color="inherit" variant="h5" gutterBottom>I've had the pleasure of working on various projects for various people and companies. These are just a few of the brands I've helped in one way or another</Typography>
+            <Typography color="inherit" variant="h5" paragraph>I've had the pleasure of working on various projects for various people and companies. These are just a few of the brands I've helped in one way or another</Typography>
+            <Button className={classes.button} variant="outlined" color="inherit" href="#contact">How can I help your brand?</Button>
           </div>
         </FlexChild>
       </Flex>

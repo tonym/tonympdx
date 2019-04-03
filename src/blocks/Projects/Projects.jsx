@@ -101,9 +101,19 @@ class Projects extends Component {
         <Flex>
           <FlexChild background="primary">
             <div>
+              <Typography color="inherit" variant="subtitle" paragraph>Project summary</Typography>
+              <Typography color="inherit" variant="h4" gutterBottom>Quiz</Typography>
+              <Typography color="inherit" variant="h5" paragraph>
+                A quiz to go with a mural in a waiting room for children to pass the time while waiting to see the doctor.
+              </Typography>
+              <Typography color="inherit" variant="subtitle" gutterBottom>Disciplines</Typography>
+              <Typography color="inherit" variant="caption" paragraph>UI, UX, design, development, front end architecture</Typography>
+              <Typography color="inherit" variant="subtitle" gutterBottom>Deliverables</Typography>
+              <Typography color="inherit" variant="caption" paragraph>App</Typography>
             </div>
           </FlexChild>
           <FlexChild>
+            <img src="/assets/images/picturethis.jpg" alt="mobile app" className={classes.imgres}/>
           </FlexChild>
         </Flex>
         <Flex flexDirection="column-reverse">
@@ -111,9 +121,9 @@ class Projects extends Component {
           <FlexChild background="secondary">
             <div>
               <Typography color="inherit" variant="subtitle" paragraph>Project summary</Typography>
-              <Typography color="inherit" variant="h4" gutterBottom>Mouse and Moon</Typography>
+              <Typography color="inherit" variant="h4" gutterBottom>Stories</Typography>
               <Typography color="inherit" variant="h5" paragraph>
-                An artistic collaboration with portland artist, Gwynievere Marlow.
+                Victorian fairy tales come to life.
                 We made our own costumes, props and sets for each piece.
                 The work has been shown in galleries and at events in Portland
               </Typography>
