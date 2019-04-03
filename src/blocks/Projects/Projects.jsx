@@ -166,7 +166,7 @@ class Projects extends Component {
           <FlexChild background="secondary">
             <div>
               <Typography color="inherit" variant="subtitle" paragraph>Project summary</Typography>
-              <Typography color="inherit" variant="h4" gutterBottom>Kit</Typography>
+              <Typography color="inherit" variant="h4" gutterBottom>UI component kits</Typography>
               <Typography color="inherit" variant="h5" paragraph>
                 Collection of React UI component kits by site type, such as blog, portal, store, etc.
               </Typography>
@@ -202,7 +202,7 @@ class Projects extends Component {
           <FlexChild background="secondary">
             <div>
               <Typography color="inherit" variant="subtitle" paragraph>Project summary</Typography>
-              <Typography color="inherit" variant="h4" gutterBottom>Interface</Typography>
+              <Typography color="inherit" variant="h4" gutterBottom>Workspace</Typography>
               <Typography color="inherit" variant="h5" paragraph>
                 Create a modern, responsive user interface for the next version of a standards compliance tracking application.
               </Typography>
@@ -238,7 +238,7 @@ class Projects extends Component {
           <FlexChild background="secondary">
             <div>
               <Typography color="inherit" variant="subtitle" paragraph>Project summary</Typography>
-              <Typography color="inherit" variant="h4" gutterBottom>Improvement</Typography>
+              <Typography color="inherit" variant="h4" gutterBottom>Trek-Tech</Typography>
               <Typography color="inherit" variant="h5" paragraph>
                 Improve existing website and refactor for increased sales and conversion.
                 Update creative and visual aspects, refine e-commerce and streamline SEO.
@@ -254,7 +254,7 @@ class Projects extends Component {
           <FlexChild background="primary">
             <div>
               <Typography color="inherit" variant="subtitle" paragraph>Project summary</Typography>
-              <Typography color="inherit" variant="h4" gutterBottom>Microsite</Typography>
+              <Typography color="inherit" variant="h4" gutterBottom>EQ Network</Typography>
               <Typography color="inherit" variant="h5" paragraph>
                 Developer community site for a San Francisco video startup.
                 Create a marketing micro site as a gateway to community site.
@@ -276,7 +276,7 @@ class Projects extends Component {
           <FlexChild background="secondary">
             <div>
               <Typography color="inherit" variant="subtitle" paragraph>Project summary</Typography>
-              <Typography color="inherit" variant="h4" gutterBottom>Challenge</Typography>
+              <Typography color="inherit" variant="h4" gutterBottom>XML Challenge</Typography>
               <Typography color="inherit" variant="h5" paragraph>
                 Create an interactive test for a student XML contest.
               </Typography>
@@ -291,7 +291,7 @@ class Projects extends Component {
           <FlexChild background="primary">
             <div>
               <Typography color="inherit" variant="subtitle" paragraph>Project summary</Typography>
-              <Typography color="inherit" variant="h4" gutterBottom>Marketing</Typography>
+              <Typography color="inherit" variant="h4" gutterBottom>Attensa</Typography>
               <Typography color="inherit" variant="h5" paragraph>
                 Create and support the corporate marketing site, and provide technical marketing services to the marketing director for Attensa RSS Server.
               </Typography>
@@ -310,7 +310,7 @@ class Projects extends Component {
           <FlexChild background="secondary">
             <div>
               <Typography color="inherit" variant="subtitle" paragraph>Project summary</Typography>
-              <Typography color="inherit" variant="h4" gutterBottom>Words</Typography>
+              <Typography color="inherit" variant="h4" gutterBottom>Nervy Girl</Typography>
               <Typography color="inherit" variant="h5" paragraph>
                 Feature writing for a local magazine.
               </Typography>
