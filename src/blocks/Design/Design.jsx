@@ -86,6 +86,13 @@ class Design extends Component {
               <Typography color="inherit" variant="subtitle">Notes on topics, projects, and patterns</Typography>
               <List className={classes.list} component="div">
                 <ListItem button className={classes.listItem} divider>
+                  <a href="https://medium.com/@tony.m.pdx/adding-google-custom-search-to-a-headless-ghost-blog-with-a-react-redux-front-end-b8b79b6dfff7?source=friends_link&sk=4f27e8afb3c4f1eb4024a85f4e2af9a9" rel="noopener noreferrer" target="_blank" className={classes.link}>
+                    <ListItemText>
+                      Adding Google Custom Search to a headless Ghost blog with a React/Redux front end
+                    </ListItemText>
+                  </a>
+                </ListItem>
+                <ListItem button className={classes.listItem} divider>
                   <a href="https://medium.com/@tony.m.pdx/the-ux-of-beverage-recipes-1a0d5898d208" rel="noopener noreferrer" target="_blank" className={classes.link}>
                     <ListItemText>
                       The UX of beverage recipes

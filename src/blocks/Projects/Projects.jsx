@@ -120,7 +120,7 @@ class Projects extends Component {
             </div>
           </FlexChild>
           <FlexChild>
-            <img src="/assets/images/drink-local.png" alt="mobile app" className={classes.imgres}/>
+            <img src="/assets/images/get-a-shirt.jpg" alt="poster" className={classes.imgres}/>
           </FlexChild>
         </Flex>
         <Flex flexDirection="column-reverse">
@@ -336,7 +336,7 @@ class Projects extends Component {
               <Typography color="inherit" variant="caption" paragraph>Web</Typography>
             </div>
           </FlexChild>
-          <FlexChild background="white">
+          <FlexChild>
             <img src="/assets/images/cori.png" alt="Corillian logo" className={classes.imgres}/>
           </FlexChild>
         </Flex>
