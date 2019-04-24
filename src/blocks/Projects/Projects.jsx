@@ -20,27 +20,6 @@ const styles = theme => ({
   }
 });
 
-const awareness = [
-  'webshare-lo001-30.jpg',
-  'webshare-lo001-28.jpg',
-  'webshare-lo001-27.jpg',
-  'webshare-lo001-29.jpg'
-];
-
-const mouseAndMoon = [
-  'webshare-lo001-31.jpg',
-  'webshare-lo001-32.jpg',
-  'webshare-lo001-33.jpg',
-  'webshare-lo001-34.jpg'
-];
-
-const ng = [
-  'ng1.jpg',
-  'ng2.jpg',
-  'ng3.jpg',
-  'ng4.jpg'
-]
-
 class Projects extends Component {
 
   renderGrids = pictures => {
@@ -71,22 +50,6 @@ class Projects extends Component {
 
     return (
       <React.Fragment>
-        <Flex>
-          <FlexChild background="primary">
-            <div>
-              <Typography color="inherit" variant="subtitle" paragraph>Project summary</Typography>
-              <Typography color="inherit" variant="h4" gutterBottom>Awareness</Typography>
-              <Typography color="inherit" variant="h5" paragraph>
-                My final (probably) art series deals with the topics of acknowledgement, awareness, and respect, and was first shown in 2017 in Portland.
-              </Typography>
-              <Typography color="inherit" variant="subtitle" gutterBottom>Disciplines</Typography>
-              <Typography color="inherit" variant="caption" paragraph>Art, photography, design, development, creative direction, marketing, event management</Typography>
-              <Typography color="inherit" variant="subtitle" gutterBottom>Deliverables</Typography>
-              <Typography color="inherit" variant="caption" paragraph>Web, print</Typography>
-            </div>
-          </FlexChild>
-          {this.renderGrids(awareness)}
-        </Flex>
         <Flex flexDirection="column-reverse">
           <FlexChild>
             <img src="/assets/images/sirb.comp.2.png" alt="clinical research comps" className={classes.imgres}/>
@@ -102,42 +65,6 @@ class Projects extends Component {
               <Typography color="inherit" variant="caption" paragraph>UI, UX, design, development, creative direction, front end architecture</Typography>
               <Typography color="inherit" variant="subtitle" gutterBottom>Deliverables</Typography>
               <Typography color="inherit" variant="caption" paragraph>App, web</Typography>
-            </div>
-          </FlexChild>
-        </Flex>
-        <Flex>
-          <FlexChild background="primary">
-            <div>
-              <Typography color="inherit" variant="subtitle" paragraph>Project summary</Typography>
-              <Typography color="inherit" variant="h4" gutterBottom>Promotion</Typography>
-              <Typography color="inherit" variant="h5" paragraph>
-                Drink local is a community initiative raising awareness of sustainable, local food and beverage products and supporting local business
-              </Typography>
-              <Typography color="inherit" variant="subtitle" gutterBottom>Disciplines</Typography>
-              <Typography color="inherit" variant="caption" paragraph>Design, promotion, collaboration</Typography>
-              <Typography color="inherit" variant="subtitle" gutterBottom>Deliverables</Typography>
-              <Typography color="inherit" variant="caption" paragraph>Web, apparel</Typography>
-            </div>
-          </FlexChild>
-          <FlexChild>
-            <img src="/assets/images/get-a-shirt.jpg" alt="poster" className={classes.imgres}/>
-          </FlexChild>
-        </Flex>
-        <Flex flexDirection="column-reverse">
-          {this.renderGrids(mouseAndMoon)}
-          <FlexChild background="secondary">
-            <div>
-              <Typography color="inherit" variant="subtitle" paragraph>Project summary</Typography>
-              <Typography color="inherit" variant="h4" gutterBottom>Stories</Typography>
-              <Typography color="inherit" variant="h5" paragraph>
-                Victorian fairy tales come to life.
-                We made our own costumes, props and sets for each piece.
-                The work has been shown in galleries and at events in Portland
-              </Typography>
-              <Typography color="inherit" variant="subtitle" gutterBottom>Disciplines</Typography>
-              <Typography color="inherit" variant="caption" paragraph>Art, photography, fabrication, creative direction, marketing, event management</Typography>
-              <Typography color="inherit" variant="subtitle" gutterBottom>Deliverables</Typography>
-              <Typography color="inherit" variant="caption" paragraph>Web, print, objects</Typography>
             </div>
           </FlexChild>
         </Flex>
@@ -181,27 +108,6 @@ class Projects extends Component {
           <FlexChild background="primary">
             <div>
               <Typography color="inherit" variant="subtitle" paragraph>Project summary</Typography>
-              <Typography color="inherit" variant="h4" gutterBottom>Calendar</Typography>
-              <Typography color="inherit" variant="h5" paragraph>
-                A classic pinup calendar published from 2012-2014 in collaboration with a Portland clothing design and retail company.
-              </Typography>
-              <Typography color="inherit" variant="subtitle" gutterBottom>Disciplines</Typography>
-              <Typography color="inherit" variant="caption" paragraph>Art, photography, fashion, design, creative direction, marketing, event management</Typography>
-              <Typography color="inherit" variant="subtitle" gutterBottom>Deliverables</Typography>
-              <Typography color="inherit" variant="caption" paragraph>Print, web</Typography>
-            </div>
-          </FlexChild>
-          <FlexChild>
-            <img src="/assets/images/pinup.jpg" alt="Backbone logo" className={classes.imgres}/>
-          </FlexChild>
-        </Flex>
-        <Flex flexDirection="column-reverse">
-          <FlexChild>
-            <img src="/assets/images/workspace.png" alt="App detail screen" className={classes.imgres}/>
-          </FlexChild>
-          <FlexChild background="secondary">
-            <div>
-              <Typography color="inherit" variant="subtitle" paragraph>Project summary</Typography>
               <Typography color="inherit" variant="h4" gutterBottom>Workspace</Typography>
               <Typography color="inherit" variant="h5" paragraph>
                 Create a modern, responsive user interface for the next version of a standards compliance tracking application.
@@ -212,9 +118,15 @@ class Projects extends Component {
               <Typography color="inherit" variant="caption" paragraph>Web</Typography>
             </div>
           </FlexChild>
+          <FlexChild>
+            <img src="/assets/images/workspace.png" alt="App detail screen" className={classes.imgres}/>
+          </FlexChild>
         </Flex>
-        <Flex>
-          <FlexChild background="primary">
+        <Flex flexDirection="column-reverse">
+          <FlexChild>
+            <img src="/assets/images/backbone.png" alt="Backbone logo" className={classes.imgres}/>
+          </FlexChild>
+          <FlexChild background="secondary">
             <div>
               <Typography color="inherit" variant="subtitle" paragraph>Project summary</Typography>
               <Typography color="inherit" variant="h4" gutterBottom>Framework</Typography>
@@ -227,15 +139,9 @@ class Projects extends Component {
               <Typography color="inherit" variant="caption" paragraph>Web</Typography>
             </div>
           </FlexChild>
-          <FlexChild>
-            <img src="/assets/images/backbone.png" alt="Backbone logo" className={classes.imgres}/>
-          </FlexChild>
         </Flex>
-        <Flex flexDirection="column-reverse">
-          <FlexChild>
-            <img src="/assets/images/trekpod.png" alt="App detail screen" className={classes.imgres}/>
-          </FlexChild>
-          <FlexChild background="secondary">
+        <Flex>
+          <FlexChild background="primary">
             <div>
               <Typography color="inherit" variant="subtitle" paragraph>Project summary</Typography>
               <Typography color="inherit" variant="h4" gutterBottom>Trek-Tech</Typography>
@@ -249,9 +155,15 @@ class Projects extends Component {
               <Typography color="inherit" variant="caption" paragraph>Web</Typography>
             </div>
           </FlexChild>
+          <FlexChild>
+            <img src="/assets/images/trekpod.png" alt="App detail screen" className={classes.imgres}/>
+          </FlexChild>
         </Flex>
-        <Flex>
-          <FlexChild background="primary">
+        <Flex flexDirection="column-reverse">
+          <FlexChild>
+            <img src="/assets/images/eqnetwork.png" alt="App detail screen" className={classes.imgres}/>
+          </FlexChild>
+          <FlexChild background="secondary">
             <div>
               <Typography color="inherit" variant="subtitle" paragraph>Project summary</Typography>
               <Typography color="inherit" variant="h4" gutterBottom>EQ Network</Typography>
@@ -265,15 +177,9 @@ class Projects extends Component {
               <Typography color="inherit" variant="caption" paragraph>Web</Typography>
             </div>
           </FlexChild>
-          <FlexChild>
-            <img src="/assets/images/eqnetwork.png" alt="App detail screen" className={classes.imgres}/>
-          </FlexChild>
         </Flex>
-        <Flex flexDirection="column-reverse">
-          <FlexChild>
-            <img src="/assets/images/xmlchallenge.jpg" alt="App detail screen" className={classes.imgres}/>
-          </FlexChild>
-          <FlexChild background="secondary">
+        <Flex>
+          <FlexChild background="primary">
             <div>
               <Typography color="inherit" variant="subtitle" paragraph>Project summary</Typography>
               <Typography color="inherit" variant="h4" gutterBottom>XML Challenge</Typography>
@@ -286,9 +192,15 @@ class Projects extends Component {
               <Typography color="inherit" variant="caption" paragraph>Web</Typography>
             </div>
           </FlexChild>
+          <FlexChild>
+            <img src="/assets/images/xmlchallenge.jpg" alt="App detail screen" className={classes.imgres}/>
+          </FlexChild>
         </Flex>
-        <Flex>
-          <FlexChild background="primary">
+        <Flex flexDirection="column-reverse">
+          <FlexChild>
+            <img src="/assets/images/attensa.png" alt="App detail screen" className={classes.imgres}/>
+          </FlexChild>
+          <FlexChild background="secondary">
             <div>
               <Typography color="inherit" variant="subtitle" paragraph>Project summary</Typography>
               <Typography color="inherit" variant="h4" gutterBottom>Attensa</Typography>
@@ -299,25 +211,6 @@ class Projects extends Component {
               <Typography color="inherit" variant="caption" paragraph>Development, technical marketing</Typography>
               <Typography color="inherit" variant="subtitle" gutterBottom>Deliverables</Typography>
               <Typography color="inherit" variant="caption" paragraph>Web</Typography>
-            </div>
-          </FlexChild>
-          <FlexChild>
-            <img src="/assets/images/attensa.png" alt="App detail screen" className={classes.imgres}/>
-          </FlexChild>
-        </Flex>
-        <Flex flexDirection="column-reverse">
-          {this.renderGrids(ng)}
-          <FlexChild background="secondary">
-            <div>
-              <Typography color="inherit" variant="subtitle" paragraph>Project summary</Typography>
-              <Typography color="inherit" variant="h4" gutterBottom>Nervy Girl</Typography>
-              <Typography color="inherit" variant="h5" paragraph>
-                Feature writing for a local magazine.
-              </Typography>
-              <Typography color="inherit" variant="subtitle" gutterBottom>Disciplines</Typography>
-              <Typography color="inherit" variant="caption" paragraph>Feature writing</Typography>
-              <Typography color="inherit" variant="subtitle" gutterBottom>Deliverables</Typography>
-              <Typography color="inherit" variant="caption" paragraph>Print</Typography>
             </div>
           </FlexChild>
         </Flex>
@@ -357,6 +250,24 @@ class Projects extends Component {
               <Typography color="inherit" variant="subtitle" gutterBottom>Deliverables</Typography>
               <Typography color="inherit" variant="caption" paragraph>Web, print</Typography>
             </div>
+          </FlexChild>
+        </Flex>
+        <Flex>
+          <FlexChild background="primary">
+            <div>
+              <Typography color="inherit" variant="subtitle" paragraph>Project summary</Typography>
+              <Typography color="inherit" variant="h4" gutterBottom>Promotion</Typography>
+              <Typography color="inherit" variant="h5" paragraph>
+                Drink local is a community initiative raising awareness of sustainable, local food and beverage products and supporting local business
+              </Typography>
+              <Typography color="inherit" variant="subtitle" gutterBottom>Disciplines</Typography>
+              <Typography color="inherit" variant="caption" paragraph>Design, promotion, collaboration</Typography>
+              <Typography color="inherit" variant="subtitle" gutterBottom>Deliverables</Typography>
+              <Typography color="inherit" variant="caption" paragraph>Web, apparel</Typography>
+            </div>
+          </FlexChild>
+          <FlexChild>
+            <img src="/assets/images/get-a-shirt.jpg" alt="poster" className={classes.imgres}/>
           </FlexChild>
         </Flex>
       </React.Fragment>

@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 const propTypes = {
-  background: PropTypes.oneOf(['primary', 'secondary'])
+  background: PropTypes.oneOf(['primary', 'secondary']),
+  full: PropTypes.bool
 };
 
 const defaultProps = {
-  background: null
+  background: null,
+  full: false
 }
 
 const styles = theme => ({
@@ -24,6 +26,9 @@ const styles = theme => ({
       width: '100%'
     }
   },
+  full: {
+    width: '100%'
+  },
   primary: {
     background: theme.palette.primary.main,
     color: theme.palette.background.paper
@@ -33,7 +38,7 @@ const styles = theme => ({
     color: theme.palette.background.paper
   },
   white: {
-    background: theme.palette.common.white
+    background: '#fbf9e2'
   }
 });
 
@@ -41,7 +46,7 @@ const FlexChild = props => {
 
   const { classes } = props;
 
-  const className = classes.root + (props.background ? ' ' + classes[props.background] : '');
+  const className = classes.root + (props.background ? ' ' + classes[props.background] : '') + (props.full ? ' ' + classes.full : '');
 
   return (
     <div className={className}>

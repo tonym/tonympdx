@@ -29,11 +29,11 @@ class HomeView extends React.Component {
       <div className={classes.root}>
         <Hero />
         <Headshot />
-        <Brands />
         <Pictures />
-        <Design />
         <Develop />
+        <Design />
         <Projects />
+        <Brands />
         <Workshops />
         <Social />
         <Contact />
