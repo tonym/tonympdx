@@ -2,23 +2,18 @@ import React, { Component } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+import blueGrey from '@material-ui/core/colors/blueGrey';
 import HomeView from './views/HomeView';
 
 const customThemeSettings = {
+  local: {
+    maxWidth: '980px'
+  },
   palette: {
     background: {
-      default: '#f2efc4',
-      paper: '#f2efc4'
+      default: blueGrey[900]
     },
-    primary: {
-      main: '#193441'
-    },
-    secondary: {
-      main: '#667645'
-    }
-  },
-  typography: {
-    fontFamily: '"Futura-Book", "Helvetica", "Arial", sans-serif'
+    type: 'dark'
   }
 }
 
