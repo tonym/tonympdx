@@ -10,7 +10,7 @@ const styles = theme => ({
     width: '100%'
   },
   textField: {
-    margin: theme.spacing.unit,
+    marginBottom: theme.spacing.unit * 3,
     width: '100%'
   }
 });
@@ -24,7 +24,7 @@ class ContactForm extends Component {
     const { classes } = this.props;
 
     return (
-      <form className={classes.form} action="https://formspree.io/info@theportlandpour.com" method="post">
+      <form className={classes.form} action="https://formspree.io/tony@mouseandmooncreations.com" method="post">
         <input type="hidden" name="_subject" value="Portfolio contact" />
         <TextField
           className={classes.textField}

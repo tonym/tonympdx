@@ -2,21 +2,17 @@ import React from 'react';
 import Fab from '@material-ui/core/Fab';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 import EmailIcon from '@material-ui/icons/Email';
-import Brands from '../blocks/Brands';
 import Contact from '../components/Contact';
-import Design from '../blocks/Design';
-import Develop from '../blocks/Develop';
+import Footer from '../components/Footer';
 import Headshot from '../components/Headshot';
 import Hero from '../components/Hero';
-import Pictures from '../blocks/Pictures';
 import Projects from '../components/Projects';
-import Social from '../blocks/Social';
-import Workshops from '../blocks/Workshops';
+import projects from '../projects';
 
 const links = [
   'More info',
@@ -24,9 +20,14 @@ const links = [
 ];
 
 const styles = theme => ({
+  closeButton: {
+    position: 'absolute',
+    right: theme.spacing.unit / 2,
+    top: theme.spacing.unit / 2
+  },
   fab: {
     bottom: '10%',
-    position: 'absolute',
+    position: 'fixed',
     right: '10%',
     zIndex: 1200,
     [theme.breakpoints.down('sm')]: {
@@ -73,10 +74,17 @@ const HomeView = props => {
   return (
     <div className={classes.root}>
       <Hero handleLinkCallback={handleLinkClick} links={links} />
+      <Projects projects={projects} />
+      <Footer />
       <Fab aria-label="Contact" className={classes.fab} color="primary" onClick={() => handleLinkClick(1) }>
         <EmailIcon />
       </Fab>
-      <Dialog maxWidth="lg" open={open} onClose={handleClickClose} aria-labelledby="form-dialog-title">
+      <Dialog maxWidth="md" open={open} onClose={handleClickClose} aria-labelledby="form-dialog-title">
+        <DialogTitle>
+          <IconButton aria-label="Close" className={classes.closeButton} onClick={handleClickClose} size="small">
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
         <DialogContent>
           {dialogComponents[dialogComponent]}
         </DialogContent>

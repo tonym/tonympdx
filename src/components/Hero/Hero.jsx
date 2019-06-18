@@ -124,9 +124,9 @@ const Hero = props => {
     <div className={classes.root}>
       <AppBar className={classes.appBar} color="secondary" elevation={0}>
         <Toolbar className={classes.toolbar}>
-          <Flex alignItems="center">
+          <Flex alignItems="center" flexDirection="row">
             <Typography className={classes.title} variant="h6">Tony M</Typography>
-            <Hidden mdDown>
+            <Hidden smDown>
               <Typography align="right" className={classes.subtitle}>Portland, Oregon</Typography>
             </Hidden>
           </Flex>
@@ -173,7 +173,7 @@ const Hero = props => {
         </List>
       </Drawer>
       <Typography className={classes.blurb} variant="h4">
-        Tony M is an artist, developer, and UX designer currently working as creative director and frontend lead at Mouse and Moon Creations in Portland, Oregon
+        Tony M is an artist, developer, and UX designer currently working as creative director, principle artist, and lead developer at Mouse and Moon Creations in Portland, Oregon
       </Typography>
     </div>
   );
