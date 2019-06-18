@@ -36,7 +36,6 @@ class ContactForm extends Component {
         />
         <TextField
           className={classes.textField}
-          helperText="I'll never share your email with anyone else."
           id="email"
           label="Email address"
           name="email"

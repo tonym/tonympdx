@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import AppBar from '@material-ui/core/AppBar';
 import Drawer from '@material-ui/core/Drawer';
-import Fab from '@material-ui/core/Fab';
 import Hidden from '@material-ui/core/Hidden';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -14,22 +14,23 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import EmailIcon from '@material-ui/icons/Email';
 import MenuIcon from '@material-ui/icons/Menu';
 import Flex from '../../components/Flex';
 
-const links = [
-  'Portfolio',
-  'Info',
-  'Contact'
-];
+const propTypes = {
+  handleLinkCallback: PropTypes.func,
+  links: PropTypes.array
+};
+
+const defaultProps = {
+  handleLinkCallback: () => {},
+  links: []
+};
 
 const styles = theme => ({
   root: {
-    height: '100vh',
     margin: 'auto',
     maxWidth: theme.local.maxWidth,
-    position: 'relative'
   },
   appBar: {
     [theme.breakpoints.down('sm')]: {
@@ -42,6 +43,16 @@ const styles = theme => ({
     justifyContent: 'space-between',
     paddingBottom: theme.spacing.unit * 3,
     paddingTop: theme.spacing.unit * 3
+  },
+  blurb: {
+    letterSpacing: '.02em',
+    lineHeight: 1.25,
+    marginTop: theme.spacing.unit * 14,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 'small',
+      marginTop: 0,
+      padding: theme.spacing.unit * 3
+    }
   },
   drawer: {
     width: '33%',
@@ -56,18 +67,6 @@ const styles = theme => ({
   },
   drawerPaper: {
     width: '33%',
-  },
-  fab: {
-    bottom: theme.spacing.unit * 5,
-    position: 'absolute',
-    right: theme.spacing.unit * 5,
-    zIndex: 1200,
-    [theme.breakpoints.down('sm')]: {
-      bottom: theme.spacing.unit * 4,
-      left: 0,
-      margin: '0 auto',
-      right: 0
-    }
   },
   hide: {
     display: 'none',
@@ -96,9 +95,9 @@ const styles = theme => ({
   }
 });
 
-function Hero(props) {
+const Hero = props => {
 
-  const { classes } = props;
+  const { classes, links } = props;
 
   const [open, setOpen] = React.useState(false);
 
@@ -114,6 +113,13 @@ function Hero(props) {
 
   }
 
+  function handleLink(link) {
+
+    props.handleLinkCallback(link);
+    handleDrawerClose();
+
+  }
+
   return (
     <div className={classes.root}>
       <AppBar className={classes.appBar} color="secondary" elevation={0}>
@@ -125,9 +131,9 @@ function Hero(props) {
             </Hidden>
           </Flex>
           <Hidden smDown>
-            <Tabs>
+            <Tabs value={false}>
               {links.map((text, index) => (
-                <Tab label={text} />
+                <Tab key={index} label={text} onClick={() => { handleLink(index); }} />
               ))}
             </Tabs>
           </Hidden>
@@ -144,9 +150,6 @@ function Hero(props) {
           </Hidden>
         </Toolbar>
       </AppBar>
-      <Fab aria-label="Contact" className={classes.fab} color="primary">
-        <EmailIcon />
-      </Fab>
       <Drawer
         className={classes.drawer}
         variant="persistent"
@@ -163,15 +166,21 @@ function Hero(props) {
         </div>
         <List>
           {links.map((text, index) => (
-            <ListItem button key={text}>
+            <ListItem button key={index} onClick={() => { handleLink(index); }}>
               <ListItemText primary={text} />
             </ListItem>
           ))}
         </List>
       </Drawer>
+      <Typography className={classes.blurb} variant="h4">
+        Tony M is an artist, developer, and UX designer currently working as creative director and frontend lead at Mouse and Moon Creations in Portland, Oregon
+      </Typography>
     </div>
   );
 
 }
+
+Hero.propTypes = propTypes;
+Hero.defaultProps = defaultProps;
 
 export default withStyles(styles)(Hero);
