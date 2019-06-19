@@ -11,7 +11,8 @@ const customThemeSettings = {
   },
   palette: {
     background: {
-      default: blueGrey[900]
+      default: blueGrey[900],
+      paper: blueGrey[800]
     },
     type: 'dark'
   }
