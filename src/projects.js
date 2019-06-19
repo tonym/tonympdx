@@ -1,20 +1,35 @@
+import React from 'react';
+import Link from '@material-ui/core/Link';
+import Typography from '@material-ui/core/Typography';
+
 const projects = [
   {
     brief: 'A website of craft cocktail recipes featuring local ingredients',
     client: 'Mouse and Moon Creations',
     company: 'Mouse and Moon Creations',
-    description: `
-      The Portland Pour began as an art project, then it became a website with recipes, features and stories promoting local craft distilling and modern cocktail culture.
-      It still features the art of Mouse and Moon, along with the products and brands of Portland's vibrant beverage community.
-
-      My job, in addition to creating the pictures and writing most of the articles, wsa to design the website.
-      The application is a React/Redux front end using Material Design with a headless Ghost blog on the back end.
-      The Portland Pour is completely headless, and relies on the Ghost Content API for our articles and posts.
-
-      For SEO and performance, the front end is a hybrid app, meaning the virst view is rendered on the server using Node.js and Express.
-      The rest is client side React.
-      Redux is used to maintain state, and Frontload allows a server rendered view to pass a state object to the client.
-    `,
+    description: (
+      <div>
+        <Typography paragraph>
+          The Portland Pour began as an art project, then it became a website with recipes, features and stories promoting local craft distilling and modern cocktail culture.
+          It still features the art of Mouse and Moon, along with the products and brands of Portland's vibrant beverage community.
+        </Typography>
+        <Typography paragraph>
+          My job, in addition to creating the pictures and writing most of the articles, is to design the website.
+          The application is a React/Redux front end using Material Design with a Ghost blog on the back end.
+          The Portland Pour is completely headless, and relies on the Ghost Content API for our articles and posts.
+        </Typography>
+        <Typography paragraph>
+          For SEO and performance, the front end is a hybrid app, meaning the first view is rendered on the server using Node.js and Express.
+          The rest is client side React.
+          Redux is used to maintain state, and Frontload allows a server rendered view to pass a state object to the client.
+        </Typography>
+        <Typography paragraph>
+          <Link href="https://medium.com/@tony.m.pdx/building-a-blog-with-react-node-and-ghost-1991325b3cd5" target="_blank" rel="noopener noreferrer">Read more about how The Portland Pour was built.</Link>
+        </Typography>
+        <Typography paragraph>
+          <Link href="https://www.theportlandpour.com/" target="_blank" rel="noopener noreferrer">Visit The Portland Portland Pour</Link>
+        </Typography>
+      </div>),
     featuredImage: '/assets/images/webshare-lo001-20.jpg',
     media: [],
     name: 'The Portland Pour',
@@ -36,7 +51,18 @@ const projects = [
     brief: 'Product display for a local distillery tasting room',
     client: 'Bull Run Distillery',
     company: 'Mouse and Moon Creations',
-    description: '',
+    description: (
+      <div>
+        <Typography paragraph>
+          Bull Run Distillery approached us about selling tee shirts in their tasting room.
+          Of course, we were happy to oblige, but they also wanted a display card to go with them.
+          My first instinct was to follow the style common among food to table or grain to glass marketing.
+          Sincere, small, rural, but that's not what resulted.
+          Instead we chose to go retro, use a vintage look that reflects a vintage bar from the days when bartenders wore handlebar mustaches and sleeve garters and string ties.
+          Only with a contemporary model and garment.
+        </Typography>
+      </div>
+    ),
     featuredImage: '/assets/images/get-a-shirt.jpg',
     media: [],
     name: 'Product display',

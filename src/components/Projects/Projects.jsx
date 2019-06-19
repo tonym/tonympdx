@@ -78,7 +78,7 @@ const Projects = props => {
 
   return (
     <div className={classes.root}>
-      <Grid justify="center" container spacing={0}>
+      <Grid justify="center" alignItems="center" alignContent="center" container spacing={0}>
         {
           projects.map((project, index) => {
             return(
@@ -114,11 +114,11 @@ const Projects = props => {
           <Typography align="center">
             <img className={classes.productImage} src={project.featuredImage} alt={project.name} />
           </Typography>
+          <Typography paragraph variant="h6">{project.brief}</Typography>
           <Typography paragraph><strong>Discipline:</strong> {project.type}</Typography>
           {
             project.subTypes && project.subTypes.length ? <Typography paragraph><strong>Additional skills:</strong> {project.subTypes.join(', ')}</Typography> : null
           }
-          <Typography paragraph variant="h6">{project.brief}</Typography>
           <Typography paragraph>{project.description}</Typography>
         </DialogContent>
       </Dialog>
