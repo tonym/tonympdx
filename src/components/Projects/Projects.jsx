@@ -111,9 +111,16 @@ const Projects = props => {
         </DialogTitle>
         <DialogContent>
           <Typography align="center" gutterBottom variant="h5">{project.name}</Typography>
-          <Typography align="center">
+          <Typography align="center" gutterBottom>
             <img className={classes.productImage} src={project.featuredImage} alt={project.name} />
           </Typography>
+          {project.media ? project.media.map(media => {
+            return (
+              <Typography align="center" gutterBottom>
+                <img className={classes.productImage} src={media} alt="work sample" />
+              </Typography>
+            )
+          }) : null}
           <Typography paragraph variant="h6">{project.brief}</Typography>
           <Typography paragraph><strong>Discipline:</strong> {project.type}</Typography>
           {

@@ -42,7 +42,12 @@ const projects = [
     company: 'Mouse and Moon Creations',
     description: '',
     featuredImage: '/assets/images/webshare-lo001-2.jpg',
-    media: [],
+    media: [
+      'https://images.squarespace-cdn.com/content/v1/59e64dee12abd9856008f5d2/1558733614582-SPCX61Z249NLK3RYW69V/ke17ZwdGBToddI8pDm48kMW2m2RZZhZkflAJDculq4J7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UdqC1IaL936TVnGuysIX8XV6FX5VyVeTKz0kAdy2sSvyguvgCERZpXNZ8mcSs3tIUA/archive__webshare_001-38.jpg',
+      'https://images.squarespace-cdn.com/content/v1/59e64dee12abd9856008f5d2/1558733620584-8TH9YTB8B4CR6J24IBCR/ke17ZwdGBToddI8pDm48kMW2m2RZZhZkflAJDculq4J7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UdqC1IaL936TVnGuysIX8XV6FX5VyVeTKz0kAdy2sSvyguvgCERZpXNZ8mcSs3tIUA/archive__webshare_001-40.jpg',
+      'https://images.squarespace-cdn.com/content/v1/59e64dee12abd9856008f5d2/1558733631924-VKNIH60OT1LMY135W7JY/ke17ZwdGBToddI8pDm48kMW2m2RZZhZkflAJDculq4J7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UdqC1IaL936TVnGuysIX8XV6FX5VyVeTKz0kAdy2sSvyguvgCERZpXNZ8mcSs3tIUA/archive__webshare_001-41.jpg',
+      'https://images.squarespace-cdn.com/content/v1/59e64dee12abd9856008f5d2/1558738644794-RDEHGRIKXAMV4PFJUU84/ke17ZwdGBToddI8pDm48kGdXwE-vebEpgb33VwdtsTxZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpyFXBTrd8RtdLuD2xTt52BcbibHP9HAWTuiNyjdIhZkDRmM2LuhCrpPu_cqK6msTYI/moscow-mule-cocktail.jpg'
+    ],
     name: 'Food photography',
     subTypes: [],
     type: 'creative'
@@ -84,7 +89,13 @@ const projects = [
     brief: 'Product photography for a local Portland client',
     client: 'The Bitter Housewife',
     company: 'Mouse and Moon Creations',
-    description: '',
+    description: (
+      <div>
+        <Typography>
+          Cocktail kits created by The Bitter Housewife, and photographed by Mouse and Moon Creations for the 2018 holiday season.
+        </Typography>
+      </div>
+    ),
     featuredImage: '/assets/images/webshare-lo001-38.jpg',
     media: [],
     name: 'Cocktail kits',
@@ -117,7 +128,16 @@ const projects = [
     brief: 'A collection of local products perfect for holiday giving',
     client: 'Mouse and Moon Creations',
     company: 'Mouae and Moon Creations',
-    description: '',
+    description: (
+      <div>
+        <Typography paragraph>
+          The Portland Pour 2018 Holiday Gift Guide was a project all on it's own.
+          With the goal of showcasing all the wonderful beverage products of Portland, it meant alot of coordination between companies and brands as we photographed all the items, and wrote about each one, all with the assistance of the marketing directors of the companies involved.
+          The result was a listing of some of the most respected products in Portland, and a marketing item for each brand to use free of charge.
+          In the spirit of the holidays, it was a gift to the community that I was proud to work on.
+        </Typography>
+      </div>
+    ),
     featuredImage: '/assets/images/webshare-lo001-37.jpg',
     media: [],
     name: 'Holiday gift guide',
@@ -128,7 +148,13 @@ const projects = [
     brief: 'A gallery art series',
     client: '',
     company: 'Mouse and Moon Creations',
-    description: '',
+    description: (
+      <div>
+        <Typography paragraph>
+          My last (probably) gallery series from 2017/2018, a series of surreal conceptual images dealing with the concepts of acknowledgement, empowerment, acceptance and respect.
+        </Typography>
+      </div>
+    ),
     featuredImage: '/assets/images/webshare-lo001-28.jpg',
     media: [],
     name: 'Acknowledgement',
@@ -139,7 +165,15 @@ const projects = [
     brief: 'Component kits for React',
     client: 'VF Design',
     company: 'Mouse and Moon Creations',
-    description: '',
+    description: (
+      <div>
+        <Typography paragraph>
+          In 2017 I embarked on a project to create a design system, and a component kit for React.
+          The components are targeted at specific website types, such as an admin interface, a blog, an online store, etc.
+          Our goal at the time was to descrease development time for software clients, and we were able to create something that we still use in house on our projects, and occassionally on client properties.
+        </Typography>
+      </div>
+    ),
     featuredImage: '/assets/images/puzzle.jpg',
     media: [],
     name: 'UI component kit for React',

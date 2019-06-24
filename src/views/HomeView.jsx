@@ -12,10 +12,12 @@ import Footer from '../components/Footer';
 import Headshot from '../components/Headshot';
 import Hero from '../components/Hero';
 import Projects from '../components/Projects';
+import WorkWithMe from '../components/WorkWithMe';
 import projects from '../projects';
 
 const links = [
-  'More info',
+  'About',
+  'Work with me',
   'Contact'
 ];
 
@@ -47,6 +49,7 @@ const HomeView = props => {
 
   const dialogComponents = [
     <Headshot />,
+    <WorkWithMe />,
     <Contact />
   ];
 
