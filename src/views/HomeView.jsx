@@ -18,7 +18,6 @@ import projects from '../projects';
 const links = [
   'About',
   'Work with me',
-  'Contact'
 ];
 
 const styles = theme => ({
@@ -49,8 +48,7 @@ const HomeView = props => {
 
   const dialogComponents = [
     <Headshot />,
-    <WorkWithMe />,
-    <Contact />
+    <WorkWithMe />
   ];
 
   const { classes } = props;
