@@ -2,8 +2,17 @@
 <html>
   <head>
     <title>Tony M | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link rel="stylesheet" href="/styles/baseline.css"/>
+    <link rel="stylesheet" href="/styles/main.css"/>
   </head>
-  <body>
-    {{ content | safe }}
+  <body class="{{ className or 'main' }}">
+    <svg id="fader"></svg>
+    {% include "navigation.njk" %}
+    <div class="content">
+      {{ content | safe }}
+    </div>
   </body>
 </html>
