@@ -28,6 +28,9 @@ $RECYCLE.BIN/
 /.pnp
 .pnp.js
 
+# develop
+/.vscode
+
 # testing
 /coverage
 
