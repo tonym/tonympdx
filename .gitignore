@@ -30,6 +30,7 @@ $RECYCLE.BIN/
 
 # develop
 /.vscode
+src/_includes/webpack.njk
 
 # testing
 /coverage
