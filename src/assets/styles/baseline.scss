@@ -48,9 +48,9 @@ a:hover {
   font-size: 1.5rem;
   padding: 24px 32px;
   position: fixed;
-}
-.navigation .material-icons {
-  font-size: 2.25rem;
+  .material-icons {
+    font-size: 2.25rem;
+  }
 }
 #fader {
   animation-duration: 300ms;
@@ -63,16 +63,16 @@ a:hover {
   top: 0;
   width: 100%;
   z-index: 999999;
-}
-#fader.fade-out {
-  opacity: 0;
-  animation-name: fade-out;
+  &.fade-out {
+    opacity: 0;
+    animation-name: fade-out;
+  }
+  &.fade-in {
+    opacity: 1;
+    animation-name: fade-in;
+  }
 }
 
-#fader.fade-in {
-  opacity: 1;
-  animation-name: fade-in;
-}
 @keyframes fade-out {
   from {
     opacity: 1;

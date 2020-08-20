@@ -1,10 +1,10 @@
 .main {
   background-color: rgb(235, 221, 212);
-}
-.main .content {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  min-height: 100vh;
-  text-align: center;
+  .content {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+  }
 }
