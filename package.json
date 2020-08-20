@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "npx @11ty/eleventy",
-    "deploy": "gh-pages -d _site",
+    "deploy": "npm run build && npm run deploy:only",
+    "deploy:only": "gh-pages -d _site",
+    "start": "npx @11ty/eleventy --serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
