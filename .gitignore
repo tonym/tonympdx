@@ -34,6 +34,7 @@ $RECYCLE.BIN/
 # production
 /build
 /dist
+/_site
 
 # misc
 .DS_Store
