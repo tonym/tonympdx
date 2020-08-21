@@ -1,5 +1,4 @@
 .nav-container {
-  background-color: #f2e1c5;
   height: 70px;
   overflow: hidden;
   position: fixed;
@@ -8,7 +7,6 @@
 }
 .navigation {
   align-items: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
   font-size: 0.875rem;
   height: 100%;
@@ -19,21 +17,23 @@
     display: none;
     .main-nav {
       padding: 8px 16px;
-      &::before {
+      &::after {
         content: '';
-        background: #ddd;
+        background: #fefefe;
         border-radius: 4px;
         height: 0;
         left: 0px;
-        opacity: 0.25;
+        opacity: 0.3;
         position: absolute;
         top: 0px;
         transition: all 0.3s;
         width: 0;
+        z-index: -300;
       }
-      &:hover::before {
+      &:hover::after {
         height: 100%;
         width: 100%;
+        z-index: -300;
       }
     }
     @media (min-width: 1024px) {
@@ -52,9 +52,8 @@
   }
   .main-nav {
     display: block;
-    opacity: 0.8;
+    opacity: 0.75;
     position: relative;
-    transition: all 0.3s;
     &:hover {
       opacity: 1;
     }
