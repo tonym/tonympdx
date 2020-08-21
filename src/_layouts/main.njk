@@ -9,8 +9,9 @@
     {% include "webpack.njk" %}
   </head>
   <body class="{{ className or 'main' }}">
-    {% include "navigation.njk" %}
     <svg id="fader"></svg>
+    <div class="vignette"></div>
+    {% include "navigation.njk" %}
     <div class="content">
       {{ content | safe }}
     </div>
