@@ -45,6 +45,26 @@
     }
   }
   .links-menu {
+    flex: 1;
+    font-size: 2rem;
+    text-align: right;
+    .links-panel {
+      background: #f7f2e7;
+      display: flex;
+      flex-direction: column;
+      left: 0;
+      margin-top: 16px;
+      padding: 24px 40px;
+      position: fixed;
+      text-align: center;
+      width: 100%;
+      z-index: 5000;
+      .main-nav {
+        font-size: 1rem;
+        opacity: 1;
+        padding: 16px;
+      }
+    }
     .menu-control {
       cursor: pointer;
     }
@@ -54,11 +74,14 @@
   }
   .main-nav {
     display: block;
-    font-size: 1.25rem;
+    font-size: 2rem;
     opacity: 0.5;
     position: relative;
     &:hover {
       opacity: 1;
+    }
+    @media (min-width: 1024px) {
+      font-size: 1.25rem;
     }
   }
 }
