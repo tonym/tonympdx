@@ -45,11 +45,15 @@ a:hover {
   text-decoration: none;
 }
 .navigation {
-  font-size: 1.5rem;
+  align-items: center;
+  display: flex;
+  font-size: 1.25rem;
   padding: 24px 32px;
   position: fixed;
+  justify-content: space-between;
+  width: 100%;
   .material-icons {
-    font-size: 2.25rem;
+    font-size: 1.75rem;
   }
 }
 .hidden {
@@ -59,7 +63,7 @@ a:hover {
 #fader {
   animation-duration: 300ms;
   animation-timing-function: ease-in-out;
-  background: white;
+  background: rgb(27, 59, 70);
   height: 100%;
   left: 0;
   pointer-events: none;
