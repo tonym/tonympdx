@@ -12,4 +12,16 @@
   .nav-container {
     background-color: #f2e1c5;
   }
+  .contact-links {
+    padding-top: 12px;
+    & a {
+      display: inline-block;
+      opacity: 0.5;
+      padding: 0 12px;
+      transition: opacity 0.3s;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
 }

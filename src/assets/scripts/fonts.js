@@ -1,5 +1,5 @@
 import fontawesome from '@fortawesome/fontawesome';
-import { faBars, faHome } from '@fortawesome/free-solid-svg-icons';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faBars, faEnvelope, faHome } from '@fortawesome/free-solid-svg-icons';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
-fontawesome.library.add(faBars, faGithub, faHome);
+fontawesome.library.add(faBars, faEnvelope, faGithub, faHome, faLinkedin);

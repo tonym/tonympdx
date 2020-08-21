@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!window.AnimationEvent) {
     return;
   }
-  const anchors = document.getElementsByTagName('a');
+  const anchors = document.getElementsByClassName('main-nav');
   for (let i = 0; i < anchors.length; i++) {
     anchors[i].addEventListener('click', (e) => {
       const fader = document.getElementById('fader');
