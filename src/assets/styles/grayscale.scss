@@ -1,0 +1,15 @@
+.grayscale {
+  background-color: #ddd;
+  .content {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    min-height: 100vh;
+    width: 100%;
+  }
+  .nav-container {
+    background-color: #ddd;
+  }
+}
