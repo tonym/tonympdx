@@ -1,0 +1,23 @@
+.navigation {
+  align-items: center;
+  display: flex;
+  font-size: 1.25rem;
+  padding: 24px 32px;
+  position: fixed;
+  justify-content: space-between;
+  width: 100%;
+  .links {
+    display: none;
+    @media (min-width: 1024px) {
+      display: block;
+    }
+  }
+  .links-menu {
+    .menu-control {
+      cursor: pointer;
+    }
+    @media (min-width: 1024px) {
+      display: none;
+    }
+  }
+}

@@ -6,8 +6,8 @@ function fadeInPage() {
   fader.classList.remove('hidden');
   fader.classList.add('fade-out');
 }
-
 fadeInPage();
+
 document.addEventListener('DOMContentLoaded', () => {
   if (!window.AnimationEvent) {
     return;
