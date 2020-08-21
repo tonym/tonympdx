@@ -50,23 +50,26 @@
     text-align: right;
     .links-panel {
       background: #f7f2e7;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
       display: flex;
       flex-direction: column;
       left: 0;
       margin-top: 16px;
-      padding: 24px 40px;
       position: fixed;
       text-align: center;
       width: 100%;
       z-index: 5000;
       .main-nav {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         font-size: 1rem;
+        font-weight: 600;
         opacity: 1;
-        padding: 16px;
+        padding: 24px 16px;
       }
     }
     .menu-control {
       cursor: pointer;
+      opacity: 0.7;
     }
     @media (min-width: 1024px) {
       display: none;
@@ -75,13 +78,14 @@
   .main-nav {
     display: block;
     font-size: 2rem;
-    opacity: 0.5;
+    opacity: 0.7;
     position: relative;
     &:hover {
       opacity: 1;
     }
     @media (min-width: 1024px) {
       font-size: 1.25rem;
+      opacity: 0.5;
     }
   }
 }
