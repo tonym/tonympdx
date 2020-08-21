@@ -1,16 +1,19 @@
-<nav class="navigation">
-  <div class="brand">
-    <a href="/" class="main-nav">
-      <i class="fa fa-home"></i>
-    </a>
-  </div>
-  <div class="links">
-    {% include 'links.njk' %}
-  </div>
-  <div class="links-menu">
-    <div class="menu-control">
-      <i class="fas fa-bars"></i>
+<div class="nav-container">
+  <div class="vignette"></div>
+  <nav class="navigation">
+    <div class="brand">
+      <a href="/" class="main-nav">
+        <i class="fa fa-home"></i>
+      </a>
     </div>
-    {% include 'links.njk' %}
-  </div>
-</nav>
+    <div class="links">
+      {% include 'links.njk' %}
+    </div>
+    <div class="links-menu">
+      <div class="menu-control">
+        <i class="fas fa-bars"></i>
+      </div>
+      {% include 'links.njk' %}
+    </div>
+  </nav>
+</div>

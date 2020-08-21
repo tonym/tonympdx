@@ -10,8 +10,8 @@
   </head>
   <body class="{{ className or 'main' }}">
     <svg id="fader"></svg>
-    <div class="vignette"></div>
     {% include "navigation.njk" %}
+    <div class="vignette fixed"></div>
     <div class="content">
       {{ content | safe }}
     </div>

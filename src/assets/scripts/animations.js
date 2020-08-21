@@ -3,7 +3,6 @@ function fadeInPage() {
   if (!window.AnimationEvent) {
     return;
   }
-  fader.classList.remove('hidden');
   fader.classList.add('fade-out');
 }
 fadeInPage();
@@ -29,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
 window.addEventListener('pageshow', (e) => {
   if (!e.persisted) {
     return;

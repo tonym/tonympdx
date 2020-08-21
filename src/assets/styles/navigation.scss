@@ -1,17 +1,25 @@
+.nav-container {
+  background-color: #f2e1c5;
+  height: 70px;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  z-index: 200;
+}
 .navigation {
   align-items: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
   font-size: 0.875rem;
-  padding: 16px 40px;
-  position: fixed;
+  height: 100%;
+  padding: 0 40px;
   justify-content: space-evenly;
   width: 100%;
   .links {
     display: none;
     .main-nav {
       padding: 8px 16px;
-      &:before {
+      &::before {
         content: '';
         background: #ddd;
         border-radius: 4px;
@@ -23,7 +31,7 @@
         transition: all 0.3s;
         width: 0;
       }
-      &:hover:before {
+      &:hover::before {
         height: 100%;
         width: 100%;
       }
