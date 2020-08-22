@@ -27,25 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
       fader.classList.add('fade-in');
     });
   }
-
-  const menuControl = document.getElementById('menu-control');
-  const linksPanel = document.getElementById('links-panel');
-  let visible = true;
-  menuControl.addEventListener(
-    'click',
-    () => {
-      if (visible) {
-        visible = false;
-        linksPanel.classList.add('show-out');
-        linksPanel.classList.remove('show-in');
-      } else {
-        visible = true;
-        linksPanel.classList.add('show-in');
-        linksPanel.classList.remove('show-out');
-      }
-    },
-    { once: false }
-  );
 });
 
 window.addEventListener('pageshow', (e) => {

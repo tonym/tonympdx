@@ -10,10 +10,9 @@
       {% include 'links.njk' %}
     </div>
     <div class="links-menu">
-      <div class="menu-control" id="menu-control">
-        <i class="fas fa-bars"></i>
-      </div>
-      <div class="links-panel show-in" id="links-panel">
+      <input type="checkbox" class="menu-control-checkbox" id="menu-control"/>
+      <label for="menu-control" class="menu-control"></label>
+      <div class="links-panel show-out" id="links-panel">
         {% include 'links.njk' %}
       </div>
     </div>
