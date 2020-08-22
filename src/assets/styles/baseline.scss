@@ -59,7 +59,7 @@ a:hover {
 }
 
 .vignette {
-  box-shadow: 0 0 150px rgba(0, 0, 0, 0.25) inset;
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.1) inset;
   height: 100vh;
   left: 0;
   position: absolute;
@@ -68,6 +68,9 @@ a:hover {
   z-index: -100;
   &.fixed {
     position: fixed;
+  }
+  @media (min-width: 1024px) {
+    box-shadow: 0 0 150px rgba(0, 0, 0, 0.25) inset;
   }
 }
 
