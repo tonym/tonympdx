@@ -20,7 +20,6 @@
     display: none;
     .main-nav {
       font-size: 0.875rem;
-      opacity: 0.7;
       padding: 8px 16px;
       &::after {
         content: '';
@@ -54,7 +53,6 @@
     text-align: right;
     .links-panel {
       background: #f7f2e7;
-      border-top: 1px solid rgba(0, 0, 0, 0.1);
       -webkit-box-shadow: 0px 10px 12px 0px rgba(0, 0, 0, 0.1);
       -moz-box-shadow: 0px 10px 12px 0px rgba(0, 0, 0, 0.1);
       box-shadow: 0px 10px 12px 0px rgba(0, 0, 0, 0.1);
@@ -166,14 +164,13 @@
   .main-nav {
     display: block;
     font-size: 1.7rem;
-    opacity: 0.7;
+    opacity: 0.8;
     position: relative;
     &:hover {
       opacity: 1;
     }
     @media (min-width: 1024px) {
       font-size: 1.25rem;
-      opacity: 0.5;
     }
   }
 }
