@@ -1,23 +1,23 @@
 .grayscale {
   background-color: #ddd;
   .content {
-    align-items: center;
-    display: flex;
-    justify-content: center;
     position: relative;
     text-align: center;
     min-height: 100vh;
-    padding-top: 88px;
+    padding-top: 16vh;
     width: 100%;
     .item {
-      height: 100vh;
+      height: 82vh;
       img {
         border: 16px solid #fff;
-        height: 75vh;
+        height: 66vh;
       }
       p {
         line-height: 100%;
       }
+    }
+    .item-spacer {
+      height: 22vh;
     }
   }
   .nav-container {
