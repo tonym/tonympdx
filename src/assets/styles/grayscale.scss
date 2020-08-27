@@ -7,7 +7,18 @@
     position: relative;
     text-align: center;
     min-height: 100vh;
+    padding-top: 88px;
     width: 100%;
+    .item {
+      height: 100vh;
+      img {
+        border: 16px solid #fff;
+        height: 75vh;
+      }
+      p {
+        line-height: 100%;
+      }
+    }
   }
   .nav-container {
     background-color: #ddd;
