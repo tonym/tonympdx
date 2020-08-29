@@ -27,13 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
       fader.classList.add('fade-in');
     });
   }
-
-  const items = document.getElementsByClassName('item');
-  for (let i = 0; i < items.length; i++) {
-    items[i].addEventListener('scroll', (e) => {
-      console.log(e.currentTarget);
-    });
-  }
 });
 
 window.addEventListener('pageshow', (e) => {

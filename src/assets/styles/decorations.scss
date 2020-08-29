@@ -1,0 +1,24 @@
+.avatar {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  height: 84px;
+  opacity: 0.8;
+  padding: 3px;
+  width: 84px;
+}
+
+.vignette {
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.1) inset;
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -100;
+  &.fixed {
+    position: fixed;
+  }
+  @media (min-width: 1024px) {
+    box-shadow: 0 0 150px rgba(0, 0, 0, 0.1) inset;
+  }
+}

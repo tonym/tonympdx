@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  height: -webkit-fill-available;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -16,6 +17,7 @@ body {
   color: rgba(27, 59, 70, 0.8);
   font-size: 16px;
   min-height: 100vh;
+  min-height: -webkit-fill-available;
   font-family: 'Montserrat', 'Helvetica', Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 130%;
@@ -47,68 +49,4 @@ a:hover {
 }
 .hidden {
   display: none;
-}
-
-.avatar {
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
-  height: 84px;
-  opacity: 0.8;
-  padding: 3px;
-  width: 84px;
-}
-
-.vignette {
-  box-shadow: 0 0 100px rgba(0, 0, 0, 0.1) inset;
-  height: 100vh;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: -100;
-  &.fixed {
-    position: fixed;
-  }
-  @media (min-width: 1024px) {
-    box-shadow: 0 0 150px rgba(0, 0, 0, 0.1) inset;
-  }
-}
-
-#fader {
-  animation-duration: 300ms;
-  animation-timing-function: ease-in-out;
-  background: #f7f2e7;
-  height: 100%;
-  left: 0;
-  pointer-events: none;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 999999;
-  &.fade-out {
-    opacity: 0;
-    animation-name: fade-out;
-  }
-  &.fade-in {
-    opacity: 1;
-    animation-name: fade-in;
-  }
-}
-
-@keyframes fade-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }

@@ -1,0 +1,24 @@
+.content {
+  position: relative;
+  text-align: center;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  padding-top: 16vh;
+  width: 100%;
+  .item {
+    height: 82vh;
+    img {
+      border: 16px solid #fff;
+      height: 56vh;
+      @media (min-width: 1024px) {
+        height: 66vh;
+      }
+    }
+    p {
+      line-height: 100%;
+    }
+  }
+  .item-spacer {
+    height: 22vh;
+  }
+}
