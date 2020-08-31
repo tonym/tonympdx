@@ -1,15 +1,5 @@
 .main {
   background-color: rgba(27, 59, 70, 1);
-  .contact-links {
-    & a {
-      display: inline-block;
-      opacity: 0.5;
-      transition: opacity 0.3s;
-      &:hover {
-        opacity: 1;
-      }
-    }
-  }
   .content {
     align-items: center;
     display: flex;
