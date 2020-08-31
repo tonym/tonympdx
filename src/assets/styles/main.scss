@@ -1,9 +1,20 @@
 .main {
-  background-color: #fff1d9;
+  background-color: rgba(27, 59, 70, 1);
+  .contact-links {
+    & a {
+      display: inline-block;
+      opacity: 0.5;
+      transition: opacity 0.3s;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
   .content {
     align-items: center;
     display: flex;
     justify-content: center;
+    padding-top: 0;
     position: relative;
     text-align: center;
     min-height: 100vh;
@@ -13,19 +24,17 @@
       min-height: 100vh;
     }
   }
-  .nav-container {
-    background-color: #fff1d9;
+  footer {
+    bottom: 0;
+    position: fixed;
   }
-  .contact-links {
-    padding-top: 4px;
-    & a {
-      display: inline-block;
-      opacity: 0.5;
-      padding: 0 12px;
-      transition: opacity 0.3s;
-      &:hover {
-        opacity: 1;
-      }
-    }
+  .hero {
+    font-size: 14vw;
+    line-height: 4vw;
+    text-align: left;
+    width: 100%;
+  }
+  .nav-container {
+    background-color: rgba(27, 59, 70, 1);
   }
 }
