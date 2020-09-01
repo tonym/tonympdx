@@ -1,5 +1,5 @@
 .main {
-  background-color: rgba(27, 59, 70, 1);
+  background-color: rgb(27, 59, 70);
   .content {
     align-items: center;
     display: flex;
@@ -18,13 +18,24 @@
     bottom: 0;
     position: fixed;
   }
-  .hero {
-    font-size: 14vw;
-    line-height: 4vw;
-    text-align: left;
-    width: 100%;
+  .hero-wrapper {
+    position: relative;
+    .hero {
+      font-size: 14vw;
+      line-height: 4vw;
+      text-align: left;
+      width: 100%;
+    }
+    .hero-img {
+      border: 2px solid #c0c7c9;
+      position: absolute;
+      right: 6vw;
+      top: 0;
+      width: 14vw;
+      z-index: -1;
+    }
   }
   .nav-container {
-    background-color: rgba(27, 59, 70, 1);
+    background-color: rgb(27, 59, 70);
   }
 }
