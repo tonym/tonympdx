@@ -31,9 +31,9 @@
     white-space: nowrap;
   }
   .hero-img {
-    bottom: 0vh;
+    bottom: -4vh;
     height: 75vh;
-    left: 16vw;
+    left: 14vw;
     opacity: 0.9;
     position: absolute;
     z-index: 0;
@@ -65,18 +65,18 @@
     padding-right: 40px;
   }
   .scroll-normal-start {
-    animation: scroll-normal-start 20s linear forwards;
+    animation: scroll-normal-start 60s linear forwards;
     display: inline-block;
-    padding-right: 25%;
+    padding-right: 10%;
   }
   .scroll-normal {
-    animation: scroll-normal 40s linear infinite;
+    animation: scroll-normal 120s linear infinite;
     display: inline-block;
-    padding-right: 25%;
+    padding-right: 10%;
     transform: translateX(100%);
   }
   .scroll-normal-next {
-    animation-delay: 20s;
+    animation-delay: 60s;
   }
   @keyframes scroll-normal-start {
     0% {
