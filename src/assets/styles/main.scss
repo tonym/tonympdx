@@ -34,7 +34,7 @@
   }
   .hero-img {
     border: 3px solid #fff;
-    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.3);
     height: 60vh;
   }
   .hero-img2 {
@@ -52,13 +52,19 @@
     line-height: 5vw;
     margin: 0;
     position: absolute;
-    opacity: 0.3;
+    opacity: 0.1;
     padding-right: 0 !important;
     text-align: left;
-    top: 17vh;
+    top: 70vh;
     white-space: nowrap;
     width: 100vw;
     z-index: -1;
+  }
+  .marquee-text-top {
+    font-size: 3vw;
+    line-height: 3vw;
+    opacity: 0.075;
+    top: 20vh;
   }
   .statement {
     top: 75vh;
