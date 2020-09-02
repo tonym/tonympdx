@@ -31,34 +31,20 @@
     white-space: nowrap;
   }
   .hero-img {
-    bottom: -4vh;
+    bottom: 0;
     filter: drop-shadow(-16px 16px 10px rgba(0, 0, 0, 0.5))
-      drop-shadow(8px 24px 16px rgba(0, 0, 0, 0.3));
-    height: 58vh;
-    left: 20vw;
-    /* opacity: 0.85; */
+      drop-shadow(8px 24px 16px rgba(0, 0, 0, 0.3)) blur(1px) sepia(0.5)
+      opacity(0.5);
+    height: 30vh;
+    left: 10vw;
     position: absolute;
     z-index: 0;
   }
   .hero-img2 {
-    bottom: -16vh;
-    filter: drop-shadow(-16px 16px 10px rgba(0, 0, 0, 0.5))
-      drop-shadow(8px 24px 16px rgba(0, 0, 0, 0.3));
-    height: 50vh;
-    left: 35vw;
-    position: absolute;
-    z-index: 0;
-    transform: rotate(29deg);
+    left: 33vw;
   }
   .hero-img3 {
-    bottom: -20vh;
-    filter: drop-shadow(-16px 16px 10px rgba(0, 0, 0, 0.5))
-      drop-shadow(8px 24px 16px rgba(0, 0, 0, 0.3));
-    height: 48vh;
-    left: 13vw;
-    position: absolute;
-    z-index: 0;
-    transform: rotate(-17deg);
+    left: 56vw;
   }
   .nav-container {
     background-color: rgb(27, 59, 70);
