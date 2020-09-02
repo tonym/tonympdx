@@ -34,10 +34,11 @@
   }
   .hero-img {
     border: 3px solid #fff;
-    height: 30vh;
     margin: 24px;
     opacity: 0.8;
-    border-radius: 50%;
+    position: absolute;
+    width: 70vw;
+    top: 50vh;
   }
   .hero-img2 {
     left: 33vw;
