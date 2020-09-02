@@ -3,6 +3,7 @@
   .content {
     align-items: center;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     overflow: hidden;
     padding-top: 0;
@@ -29,16 +30,14 @@
     text-align: left;
     top: 30vh;
     white-space: nowrap;
+    z-index: -1;
   }
   .hero-img {
-    bottom: 0;
-    filter: drop-shadow(-16px 16px 10px rgba(0, 0, 0, 0.5))
-      drop-shadow(8px 24px 16px rgba(0, 0, 0, 0.3)) blur(1px) sepia(0.5)
-      opacity(0.5);
+    border: 3px solid #fff;
     height: 30vh;
-    left: 10vw;
-    position: absolute;
-    z-index: 0;
+    margin: 24px;
+    opacity: 0.8;
+    border-radius: 50%;
   }
   .hero-img2 {
     left: 33vw;
@@ -61,6 +60,7 @@
     top: 17vh;
     white-space: nowrap;
     width: 100vw;
+    z-index: -1;
   }
   .statement {
     top: 75vh;
