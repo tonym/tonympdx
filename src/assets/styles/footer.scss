@@ -30,14 +30,6 @@ footer {
       justify-content: flex-end;
       width: auto;
     }
-    h3 {
-      &:not(.contact-links) {
-        display: none;
-        @media (min-width: 1024px) {
-          display: block;
-        }
-      }
-    }
     .tag {
       &:not(:first-child) {
         padding-left: 0;
