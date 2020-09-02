@@ -12096,10 +12096,10 @@ var _iconsCache = {
 
 /***/ }),
 
-/***/ "./src/assets/scripts/animations.js":
-/*!******************************************!*\
-  !*** ./src/assets/scripts/animations.js ***!
-  \******************************************/
+/***/ "./src/assets/scripts/fader.js":
+/*!*************************************!*\
+  !*** ./src/assets/scripts/fader.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12203,10 +12203,54 @@ fontawesome.library.add(faBars, faEnvelope, faGithub, faHome, faLinkedin);
 
 /***/ }),
 
+/***/ "./src/assets/styles/content.scss":
+/*!****************************************!*\
+  !*** ./src/assets/styles/content.scss ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./src/assets/styles/decorations.scss":
+/*!********************************************!*\
+  !*** ./src/assets/styles/decorations.scss ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./src/assets/styles/fader.scss":
+/*!**************************************!*\
+  !*** ./src/assets/styles/fader.scss ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./src/assets/styles/fonts.scss":
 /*!**************************************!*\
   !*** ./src/assets/styles/fonts.scss ***!
   \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./src/assets/styles/footer.scss":
+/*!***************************************!*\
+  !*** ./src/assets/styles/footer.scss ***!
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12270,17 +12314,21 @@ fontawesome.library.add(faBars, faEnvelope, faGithub, faHome, faLinkedin);
 /***/ }),
 
 /***/ 0:
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** multi ./src/assets/scripts/animations.js ./src/assets/scripts/fonts.js ./src/assets/styles/baseline.scss ./src/assets/styles/blue.scss ./src/assets/styles/fonts.scss ./src/assets/styles/grayscale.scss ./src/assets/styles/green.scss ./src/assets/styles/main.scss ./src/assets/styles/navigation.scss ./src/assets/styles/pink.scss ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi ./src/assets/scripts/fader.js ./src/assets/scripts/fonts.js ./src/assets/styles/baseline.scss ./src/assets/styles/blue.scss ./src/assets/styles/content.scss ./src/assets/styles/decorations.scss ./src/assets/styles/fader.scss ./src/assets/styles/fonts.scss ./src/assets/styles/footer.scss ./src/assets/styles/grayscale.scss ./src/assets/styles/green.scss ./src/assets/styles/main.scss ./src/assets/styles/navigation.scss ./src/assets/styles/pink.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! ./src/assets/scripts/animations.js */"./src/assets/scripts/animations.js");
+__webpack_require__(/*! ./src/assets/scripts/fader.js */"./src/assets/scripts/fader.js");
 __webpack_require__(/*! ./src/assets/scripts/fonts.js */"./src/assets/scripts/fonts.js");
 __webpack_require__(/*! ./src/assets/styles/baseline.scss */"./src/assets/styles/baseline.scss");
 __webpack_require__(/*! ./src/assets/styles/blue.scss */"./src/assets/styles/blue.scss");
+__webpack_require__(/*! ./src/assets/styles/content.scss */"./src/assets/styles/content.scss");
+__webpack_require__(/*! ./src/assets/styles/decorations.scss */"./src/assets/styles/decorations.scss");
+__webpack_require__(/*! ./src/assets/styles/fader.scss */"./src/assets/styles/fader.scss");
 __webpack_require__(/*! ./src/assets/styles/fonts.scss */"./src/assets/styles/fonts.scss");
+__webpack_require__(/*! ./src/assets/styles/footer.scss */"./src/assets/styles/footer.scss");
 __webpack_require__(/*! ./src/assets/styles/grayscale.scss */"./src/assets/styles/grayscale.scss");
 __webpack_require__(/*! ./src/assets/styles/green.scss */"./src/assets/styles/green.scss");
 __webpack_require__(/*! ./src/assets/styles/main.scss */"./src/assets/styles/main.scss");
