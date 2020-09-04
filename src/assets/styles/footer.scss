@@ -31,19 +31,26 @@ footer {
       width: auto;
     }
     .tag {
+      margin-top: 0;
       &:not(:first-child) {
         padding-left: 0;
         @media (min-width: 1024px) {
           padding-left: 24px;
         }
       }
+      @media (min-width: 1024px) {
+        margin: 14px 0;
+      }
     }
   }
   .name-plate {
-    h3 {
+    h3, p {
       @media (max-width: 1024px) {
         margin-bottom: 0;
       }
+    }
+    p {
+      font-size: 1.2rem;
     }
   }
   p {

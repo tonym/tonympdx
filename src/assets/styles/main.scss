@@ -4,38 +4,49 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     overflow: hidden;
-    padding-top: 0;
+    padding-top: 104px;
     position: relative;
     text-align: center;
     min-height: 100vh;
-    min-height: -webkit-fill-available;
     width: 100%;
     @media (min-width: 1024px) {
+      justify-content: center;
       min-height: 100vh;
+      padding-top: 0;
     }
   }
   footer {
     bottom: 0;
     position: fixed;
   }
-  .hero {
+  .hero-text {
     cursor: default;
-    font-size: 50vh;
-    line-height: 50vh;
+    filter: drop-shadow(16px 16px 10px rgba(0,0,0,0.2));
+    font-size: 10vw;
+    line-height: 11vw;
     margin: 0;
-    opacity: 0.05;
-    position: absolute;
     text-align: left;
-    top: 30vh;
     white-space: nowrap;
-    z-index: -1;
+    @media (min-width: 1024px) {
+      font-size: 8vw;
+      line-height: 9vw;
+    }
+  }
+  .hero-text-small {
+    font-size: 5vw;
+    line-height: 6vw;
+    @media (min-width: 1024px) {
+    }
   }
   .hero-img {
     border: 3px solid #fff;
-    box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.3);
-    height: 48vh;
+    filter: drop-shadow(16px 16px 10px rgba(0,0,0,0.2));
+    height: 35vh;
+    margin-top: 24px;
+    @media (min-width: 1024px) {
+      height: 20vh;
+    }
   }
   .nav-container {
     background-color: rgb(27, 59, 70);
@@ -59,6 +70,18 @@
     line-height: 3vw;
     opacity: 0.075;
     top: 20vh;
+  }
+  .scroll-text {
+    cursor: default;
+    font-size: 50vh;
+    line-height: 50vh;
+    margin: 0;
+    opacity: 0.05;
+    position: absolute;
+    text-align: left;
+    top: 30vh;
+    white-space: nowrap;
+    z-index: -1;
   }
   .statement {
     top: 75vh;
