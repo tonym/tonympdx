@@ -12302,6 +12302,17 @@ fontawesome.library.add(faBars, faEnvelope, faGithub, faHome, faLinkedin);
 
 /***/ }),
 
+/***/ "./src/assets/styles/orange.scss":
+/*!***************************************!*\
+  !*** ./src/assets/styles/orange.scss ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./src/assets/styles/pink.scss":
 /*!*************************************!*\
   !*** ./src/assets/styles/pink.scss ***!
@@ -12313,10 +12324,32 @@ fontawesome.library.add(faBars, faEnvelope, faGithub, faHome, faLinkedin);
 
 /***/ }),
 
+/***/ "./src/assets/styles/purple.scss":
+/*!***************************************!*\
+  !*** ./src/assets/styles/purple.scss ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./src/assets/styles/yellow.scss":
+/*!***************************************!*\
+  !*** ./src/assets/styles/yellow.scss ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ 0:
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** multi ./src/assets/scripts/fader.js ./src/assets/scripts/fonts.js ./src/assets/styles/baseline.scss ./src/assets/styles/blue.scss ./src/assets/styles/content.scss ./src/assets/styles/decorations.scss ./src/assets/styles/fader.scss ./src/assets/styles/fonts.scss ./src/assets/styles/footer.scss ./src/assets/styles/grayscale.scss ./src/assets/styles/green.scss ./src/assets/styles/main.scss ./src/assets/styles/navigation.scss ./src/assets/styles/pink.scss ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi ./src/assets/scripts/fader.js ./src/assets/scripts/fonts.js ./src/assets/styles/baseline.scss ./src/assets/styles/blue.scss ./src/assets/styles/content.scss ./src/assets/styles/decorations.scss ./src/assets/styles/fader.scss ./src/assets/styles/fonts.scss ./src/assets/styles/footer.scss ./src/assets/styles/grayscale.scss ./src/assets/styles/green.scss ./src/assets/styles/main.scss ./src/assets/styles/navigation.scss ./src/assets/styles/orange.scss ./src/assets/styles/pink.scss ./src/assets/styles/purple.scss ./src/assets/styles/yellow.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12333,7 +12366,10 @@ __webpack_require__(/*! ./src/assets/styles/grayscale.scss */"./src/assets/style
 __webpack_require__(/*! ./src/assets/styles/green.scss */"./src/assets/styles/green.scss");
 __webpack_require__(/*! ./src/assets/styles/main.scss */"./src/assets/styles/main.scss");
 __webpack_require__(/*! ./src/assets/styles/navigation.scss */"./src/assets/styles/navigation.scss");
-module.exports = __webpack_require__(/*! ./src/assets/styles/pink.scss */"./src/assets/styles/pink.scss");
+__webpack_require__(/*! ./src/assets/styles/orange.scss */"./src/assets/styles/orange.scss");
+__webpack_require__(/*! ./src/assets/styles/pink.scss */"./src/assets/styles/pink.scss");
+__webpack_require__(/*! ./src/assets/styles/purple.scss */"./src/assets/styles/purple.scss");
+module.exports = __webpack_require__(/*! ./src/assets/styles/yellow.scss */"./src/assets/styles/yellow.scss");
 
 
 /***/ })
