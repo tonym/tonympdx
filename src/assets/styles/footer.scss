@@ -30,18 +30,6 @@ footer {
       justify-content: flex-end;
       width: auto;
     }
-    .tag {
-      margin-top: 0;
-      &:not(:first-child) {
-        padding-left: 0;
-        @media (min-width: 1024px) {
-          padding-left: 24px;
-        }
-      }
-      @media (min-width: 1024px) {
-        margin: 14px 0;
-      }
-    }
   }
   .name-plate {
     h3, p {
@@ -55,5 +43,17 @@ footer {
   }
   p {
     font-size: 0.875rem;
+  }
+}
+.tag {
+  margin-top: 0;
+  &:not(:first-child) {
+    padding-left: 0;
+    @media (min-width: 1024px) {
+      padding-left: 24px;
+    }
+  }
+  @media (min-width: 1024px) {
+    margin: 14px 0;
   }
 }
