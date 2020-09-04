@@ -1,17 +1,34 @@
+---json
+{
+  "className": "grayscale",
+  "pictures": [
+    {
+      "id": "1",
+      "title": "A gift with consequences.",
+      "subtitle": "You don't see me"
+    },
+    {
+      "id": "2",
+      "title": "You never did the Kenosha kid.",
+      "subtitle": "A poor choice of orange"
+    },
+    {
+      "id": "3",
+      "title": "What are words for?",
+      "subtitle": "Listen carefully"
+    }
+  ]
+}
 ---
-className: grayscale
----
-
+{% for picture in pictures %}
 <div class="item">
-  <img src="../assets/images/bread-and-roses/a-gift-with-consequences.jpg" alt="a gift with consequences"/>
-  <p>A gift with consequences</p>
-  <p class="body2">(You don't see me)</p>
-</div>
-
-<div class="item-spacer"></div>
-
-<div class="item">
-  <img src="../assets/images/bread-and-roses/what-are-words-for.jpg" alt="a gift with consequences"/>
-  <p>What are words for?</p>
-  <p class="body2">(Listen closely)</p>
-</div>
+  <img src="/assets/images/bread-and-roses/bread-and-roses-{{ picture.id }}.jpg" alt="a gift with consequences"/>
+    <p>{{ picture.title }}</p>
+    {% if picture.subtitle %}
+      <p class="body2">({{ picture.subtitle }})</p>
+    {% endif %}
+  </div>
+  {% if not loop.last %}
+    <div class="item-spacer"></div>
+  {% endif %}
+{% endfor %}
