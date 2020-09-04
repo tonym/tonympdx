@@ -1,6 +1,11 @@
 .grayscale {
-  background-color: #ddd;
+  background-color: #444;
+  color: #ccc;
   .nav-container {
-    background-color: #ddd;
+    background-color: #444;
+  }
+  .links-panel {
+    background-color: #ccc;
+    color: #444;
   }
 }
