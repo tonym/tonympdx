@@ -51,7 +51,7 @@
     {
       "id": "15",
       "title": "Mirror, mirror",
-      "subtitle": "who do you see?"
+      "subtitle": "what do you see?"
     },
     {
       "id": "16",
@@ -87,6 +87,14 @@
   ]
 }
 ---
+<div class="item centered">
+  <div>
+    <h1>Bread and roses</h1>
+    <p>
+      In 2017 I created a series of pictures about acknowledgement and empathy, and how the world looks and feels through the eyes of borderline personality disorder.
+    </p>
+  </div>
+</div>
 {% for picture in pictures %}
 <div class="item">
   <img src="/assets/images/bread-and-roses/bread-and-roses-{{ picture.id }}.jpg" alt="a gift with consequences"/>
@@ -96,6 +104,5 @@
     {% endif %}
   </div>
   {% if not loop.last %}
-    <div class="item-spacer"></div>
   {% endif %}
 {% endfor %}
