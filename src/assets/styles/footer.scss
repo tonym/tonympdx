@@ -9,6 +9,7 @@ footer {
   @media (min-width: 1024px) {
     align-items: flex-end;
     flex-direction: row;
+    padding-bottom: 8px;
   }
   .contact-links {
     & a {

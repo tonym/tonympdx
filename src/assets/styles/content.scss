@@ -21,7 +21,7 @@
     line-height: 140%;
     img {
       border: 4px solid #fff;
-      height: 56vh;
+      height: 50vh;
       max-height: 800px;
       max-width: 640px;
       @media (min-width: 1024px) {
@@ -31,6 +31,8 @@
     }
   }
   .item-spacer {
-    height: 22vh;
+    @media (min-width: 1024px) {
+      height: 22vh;
+    }
   }
 }
