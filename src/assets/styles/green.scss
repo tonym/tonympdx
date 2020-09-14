@@ -1,6 +1,15 @@
 .green {
   background-color: #174537;
   color: #B5C9C3;
+  .content {
+    padding: 80px 40px;
+    @media (min-width: 1024px) {
+      padding: 140px 40px;
+    }
+    .item {
+      height: auto;
+    }
+  }
   .nav-container {
     background-color: #174537;
   }
