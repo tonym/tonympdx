@@ -1,6 +1,6 @@
 .green {
   background-color: #174537;
-  color: #B5C9C3;
+  color: #b5c9c3;
   .content {
     padding: 80px 40px;
     @media (min-width: 1024px) {
@@ -8,13 +8,26 @@
     }
     .item {
       height: auto;
+      .brands {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        align-content: space-between;
+        justify-content: space-between;
+        img {
+          border: none;
+          height: auto;
+          margin: 8px;
+          width: auto;
+        }
+      }
     }
   }
   .nav-container {
     background-color: #174537;
   }
   .links-panel {
-    background-color: #B5C9C3;
+    background-color: #b5c9c3;
     color: #174537;
   }
 }
