@@ -101,12 +101,10 @@
 </div>
 {% for picture in pictures %}
 <div class="item">
-  <img src="/assets/images/bread-and-roses/bread-and-roses-{{ picture.id }}.jpg" alt="a gift with consequences"/>
-    <p>{{ picture.title }}</p>
-    {% if picture.subtitle %}
-      <p class="body2">({{ picture.subtitle }})</p>
-    {% endif %}
-  </div>
-  {% if not loop.last %}
+  <img src="/assets/images/bread-and-roses/bread-and-roses-{{ picture.id }}.jpg" alt="{{ picture.title }}"/>
+  <p>{{ picture.title }}</p>
+  {% if picture.subtitle %}
+    <p class="body2">({{ picture.subtitle }})</p>
   {% endif %}
+</div>
 {% endfor %}

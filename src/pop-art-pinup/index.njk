@@ -1,5 +1,39 @@
----
-className: pink
+---json
+{
+  "className": "pink",
+  "pictures": [
+    {
+      "src": "archive__webshare_001-16.jpg"
+    },
+    {
+      "src": "archive__webshare_001.jpg"
+    },
+    {
+      "src": "archive__webshare_001-2.jpg"
+    },
+    {
+      "src": "archive__webshare_001-4.jpg"
+    },
+    {
+      "src": "archive__webshare_001-6.jpg"
+    },
+    {
+      "src": "archive__webshare_001-7.jpg"
+    },
+    {
+      "src": "archive__webshare_001-8.jpg"
+    },
+    {
+      "src": "archive__webshare_001-9.jpg"
+    },
+    {
+      "src": "archive__webshare_001-10.jpg"
+    },
+    {
+      "src": "archive__webshare_001-12.jpg"
+    }
+  ]
+}
 ---
 
 <div class="item centered">
@@ -14,3 +48,9 @@ className: pink
     </p>
   </div>
 </div>
+
+{% for picture in pictures %}
+<div class="item">
+  <img src="/assets/images/pop-art-pinup/{{ picture.src }}" alt="pop art pinup"/>
+</div>
+{% endfor %}
