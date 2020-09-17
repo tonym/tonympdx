@@ -1,12 +1,20 @@
----
-className: pink
+---json
+{
+  "className": "pink",
+  "pictures": [16, 1, 10, 11, 17, 13, 12, 20, 27, 30, 18, 28]
+}
 ---
 
 <div class="item centered">
   <div>
     <h1>Editorial</h1>
     <p>
-      Commissioned and published commercial work
+      Commissioned, published, and commercial work.
     </p>
   </div>
 </div>
+{% for picture in pictures %}
+<div class="item">
+  <img src="/assets/images/editorial/editorial-{{ picture }}.jpg" alt="editorial photo"/>
+</div>
+{% endfor %}
