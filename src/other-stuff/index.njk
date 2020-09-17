@@ -1,5 +1,8 @@
----
-className: orange
+---json
+{
+  "className": "orange",
+  "pictures": [3, 8, 2, 6, 9, 5, 7, 1, 4, 10, 100, 200, 300]
+}
 ---
 
 <div class="item centered">
@@ -10,3 +13,8 @@ className: orange
     </p>
   </div>
 </div>
+{% for picture in pictures %}
+<div class="item">
+  <img src="/assets/images/odds-and-ends/odds-and-ends-{{ picture }}.jpg" alt="Other stuff"/>
+</div>
+{% endfor %}
