@@ -1,17 +1,87 @@
----
-className: purple
+---json
+{
+  "className": "purple",
+  "pictures": [
+    {
+      "src": "turf-club-cocktail.jpg",
+      "title": "Turf Club"
+    },
+    {
+      "src": "pink-lady-cocktail.jpg",
+      "title": "Pink Lady"
+    },
+    {
+      "src": "poets-dream-cocktail.jpg",
+      "title": "Poets Dream"
+    },
+    {
+      "src": "starbuck-stubb-and-flask-cocktail.jpg",
+      "title": "Starbuck, Stubb, and Flask"
+    },
+    {
+      "src": "vodka-martini-cocktail.jpg",
+      "title": "Vodka Martini"
+    },
+    {
+      "src": "404-cocktail.jpg",
+      "title": "404"
+    },
+    {
+      "src": "diamondback-cocktail.jpg",
+      "title": "Diamondback"
+    },
+    {
+      "src": "gibson-cocktail.jpg",
+      "title": "Gibson"
+    },
+    {
+      "src": "jacqueline-rose-cocktail.jpg",
+      "title": "Jacqueline Rose"
+    },
+    {
+      "src": "pan-american-clipper-cocktail.jpg",
+      "title": "Pan American Clipper"
+    },
+    {
+      "src": "satyricon-cocktail.jpg",
+      "title": "Satyricon"
+    },
+    {
+      "src": "jack-rose-cocktail.jpg",
+      "title": "Jack Rose"
+    },
+    {
+      "src": "pina-colada-cocktail.jpg",
+      "title": "Pina Colada"
+    },
+    {
+      "src": "bunny-mother-cocktail.jpg",
+      "title": "Bunny Mother"
+    },
+    {
+      "src": "fluffy-ruffles-cocktail.jpg",
+      "title": "Fluffy Ruffles"
+    },
+    {
+      "src": "whiskey-sour-cocktail.jpg",
+      "title": "Whiskey Sour"
+    }
+  ]
+}
 ---
 
 <div class="item centered">
   <div>
     <h1>The Portland Pour</h1>
     <p>
-      So I'm sitting around the studio one Saturday afternoon, and an artist, who is also a bartender, says to me, "I'll pour drinks if you want to photograph them."
-      That conversation became a flagship project for beverage photography and content services.
-      As a blog, the photos compliment the stories of cocktail history and cultural context.
-      The history of beverages, not just cocktails, is as closely tied to cultural and social history as food.
-      These are a few selections that stand out.
-      Cheers to my beverage clients and collaborators who were all part of this curious project!
+      The Portland Pour was a three year blog project featuring creative beverage photography and articles about their origin, creation, and cultural context.
     </p>
   </div>
 </div>
+
+{% for picture in pictures %}
+<div class="item">
+  <img src="/assets/images/the-portland-pour/{{ picture.src }}" alt="{{ picture.title }}"/>
+  <p>{{ picture.title }}</p>
+</div>
+{% endfor %}
