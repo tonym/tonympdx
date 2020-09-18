@@ -1,5 +1,140 @@
----
-className: yellow
+---json
+{
+  "className": "yellow",
+  "pictures": [
+    {
+      "id": "1",
+      "title": "House of Baba Yaga."
+    },
+    {
+      "id": "2",
+      "title": "Baba Yaga."
+    },
+    {
+      "id": "3",
+      "title": "Alone in the house."
+    },
+    {
+      "id": "4",
+      "title": "Baba Yaga",
+      "subtitle": "The witch herself"
+    },
+    {
+      "id": "5",
+      "title": "Alone in the home.",
+      "subtitle": "What is this curious place?"
+    },
+    {
+      "id": "6",
+      "title": "Dryad"
+    },
+    {
+      "id": "7",
+      "title": "Dryad",
+      "subtitle": "From the notebook of Dr. Strasser"
+    },
+    {
+      "id": "8",
+      "title": "A sea creature has come ashore"
+    },
+    {
+      "id": "9",
+      "title": "Little Miss Muffet never stood a chance."
+    },
+    {
+      "id": "10",
+      "title": "Gruß vom Krampus"
+    },
+    {
+      "id": "11",
+      "title": "Gruß vom Krampus"
+    },
+    {
+      "id": "12",
+      "title": "Halloween",
+      "subtitle": "Pumpkin carving at the Doll Haus"
+    },
+    {
+      "id": "13",
+      "title": "A Thanksgiving feast",
+      "subtitle": "At which Strasser spills the gravy"
+    },
+    {
+      "id": "14",
+      "title": "Professor Kronos"
+    },
+    {
+      "id": "15",
+      "title": "Spirit"
+    },
+    {
+      "id": "16",
+      "title": "Dr. Strasser"
+    },
+    {
+      "id": "17",
+      "title": "Le Morte d'Arthur"
+    },
+    {
+      "id": "18",
+      "title": "Queen of Northgales"
+    },
+    {
+      "id": "19",
+      "title": "Morganna Le Fay"
+    },
+    {
+      "id": "20",
+      "title": "Lady of the Lake"
+    },
+    {
+      "id": "21",
+      "title": "Queen of Eastland"
+    },
+    {
+      "id": "22",
+      "title": "Arthur"
+    },
+    {
+      "id": "23",
+      "title": "Gretel"
+    },
+    {
+      "id": "24",
+      "title": "Succubus"
+    },
+    {
+      "id": "25",
+      "title": "Mother Gaia"
+    },
+    {
+      "id": "27",
+      "title": "Mermaid"
+    },
+    {
+      "id": "28",
+      "title": "Mermaid"
+    },
+    {
+      "id": "29",
+      "title": "Airship captain",
+      "subtitle": "Planning tomorrow's mission"
+    },
+    {
+      "id": "30",
+      "title": "Airship captain",
+      "subtitle": "Checking the weather"
+    },
+    {
+      "id": "31",
+      "title": "Faery clock"
+    },
+    {
+      "id": "32",
+      "title": "Electric"
+    }
+  ]
+}
 ---
 
 <div class="item centered">
@@ -14,3 +149,12 @@ className: yellow
     </p>
   </div>
 </div>
+{% for picture in pictures %}
+<div class="item">
+  <img src="/assets/images/mouse-and-moon/mouse-and-moon-{{ picture.id }}.jpg" alt="{{ picture.title }}"/>
+  <p>{{ picture.title }}</p>
+  {% if picture.subtitle %}
+    <p class="body2">({{ picture.subtitle }})</p>
+  {% endif %}
+</div>
+{% endfor %}
