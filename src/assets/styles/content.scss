@@ -31,11 +31,28 @@
   }
   .home-heading {
     font-size: 3rem;
-    padding: 0 0 16px 0;
+    padding: 0;
+  }
+  .caption {
+    margin: 0;
   }
   .item-spacer {
     @media (min-width: 1024px) {
       height: 22vh;
     }
   }
-}
+  .pulsate {
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      opacity: 0.75;
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 0.75;
+    }
+  }}
