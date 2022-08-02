@@ -36,9 +36,9 @@ src/_includes/webpack.njk
 /coverage
 
 # production
-/build
+*build
 *dist
-/_site
+*_site
 
 # misc
 .DS_Store
