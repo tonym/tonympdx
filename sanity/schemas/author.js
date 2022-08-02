@@ -18,6 +18,14 @@ export default {
       },
     },
     {
+      name: 'avatar',
+      title: 'Avatar',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
       name: 'image',
       title: 'Image',
       type: 'image',
