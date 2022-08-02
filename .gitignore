@@ -37,7 +37,7 @@ src/_includes/webpack.njk
 
 # production
 /build
-/dist
+*dist
 /_site
 
 # misc
