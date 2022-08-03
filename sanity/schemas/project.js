@@ -64,8 +64,13 @@ export default {
       ]
     },
     {
-      name: 'date',
+      name: 'projectDate',
       title: 'Date',
+      type: 'string'
+    },
+    {
+      name: 'projectType',
+      title: 'Type',
       type: 'string'
     },
     {
