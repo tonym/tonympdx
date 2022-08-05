@@ -1,21 +1,10 @@
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV || 'development'}`
-})
 const sanityClient = require("@sanity/client");
 
-const { sanity } = require('../../client-config')
-
-/**
- * Set manually. Find configuration in
- * studio/sanity.json or on manage.sanity.io
- */
-
-/*
 const sanity = {
-  projectId: 'anokeucs',
-  dataset: 'eleventy',
-  useCdn: true
+  apiVersion: '2021-08-31',
+  dataset: 'production',
+  projectId: '5pnyimif',
+  useCdn: false
 }
-*/
 
-module.exports = sanityClient({...sanity, useCdn: !process.env.SANITY_READ_TOKEN, token: process.env.SANITY_READ_TOKEN});
+module.exports = sanityClient({...sanity});

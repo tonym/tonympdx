@@ -18,12 +18,6 @@ export default {
       }
     },
     {
-      name: 'author',
-      title: 'Author',
-      type: 'reference',
-      to: { type: 'author' }
-    },
-    {
       name: 'mainImage',
       title: 'Main image',
       type: 'image',
@@ -64,13 +58,40 @@ export default {
       ]
     },
     {
+      name: 'projectStartDate',
+      title: 'Start date',
+      type: 'date'
+    },
+    {
       name: 'projectDate',
-      title: 'Date',
+      title: 'Dates',
       type: 'string'
+    },
+    {
+      name: 'projectCategory',
+      title: 'Category',
+      type: 'array',
+      of: [{type: 'string'}],
+      options: {
+        list: [
+          {title: 'Coding', value: 'coding'},
+          {title: 'Creative', value: 'creative'}
+        ]
+      }
     },
     {
       name: 'projectType',
       title: 'Type',
+      type: 'string'
+    },
+    {
+      name: 'projectUrl',
+      title: 'Project URL',
+      type: 'string'
+    },
+    {
+      name: 'projectTech',
+      title: 'Media/technology',
       type: 'string'
     },
     {
