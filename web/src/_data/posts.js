@@ -16,23 +16,20 @@ async function getPosts () {
   // Learn more: https://www.sanity.io/docs/data-store/how-queries-work
   const filter = groq`*[_type == "post" && defined(slug) && publishedAt < now()]`
   const projection = groq`{
-    _id,
-    publishedAt,
-    title,
-    slug,
-    body[]{
-      ...,
-      children[]{
-        ...,
-        // Join inline reference
-        _type == "authorReference" => {
-          // check /studio/documents/authors.js for more fields
-          "name": @.author->name,
-          "slug": @.author->slug
-        }
-      }
-    },
-    "authors": authors[].author->
+  _id,
+  publishedAt,
+  body[]{
+    ...,
+    _type == "image" => {
+      asset->{url}
+    }
+  },
+  categories,
+  slug,
+  summary,
+  title,
+  "authorName": author->name,
+  "authorAvatar": author->avatar.asset->url
   }`
   const order = `| order(publishedAt asc)`
   const query = [filter, projection, order].join(' ')
