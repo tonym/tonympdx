@@ -14,30 +14,11 @@ b {
   font-weight: bolder;
 }
 body {
+  background-color: #1b3b46;
   color: #c0c7c9;
+  font-family: "Libre Baskerville", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
   font-size: 16px;
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
-  font-family: 'Montserrat', 'Helvetica', Helvetica, Arial, sans-serif;
-  font-weight: 500;
-  line-height: 130%;
   margin: 0;
-  padding: 0;
-  text-rendering: optimizeSpeed;
-  scroll-behavior: smooth;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Libre Baskerville', serif;
-}
-@media print {
-  body {
-    background-color: #fff;
-  }
 }
 body::backdrop {
   background-color: #fafafa;

@@ -47,6 +47,12 @@ export default {
               options: { isHighlighted: true }
             },
             {
+              name: 'imageSubTitle',
+              title: 'Subtitle',
+              type: 'string',
+              options: { isHighlighted: true }
+            },
+            {
               name: 'caption',
               title: 'Caption',
               type: 'blockContent',
