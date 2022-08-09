@@ -1,0 +1,16 @@
+.chip {
+  margin: 0 4px;
+	padding: 2px 8px;
+	border-radius: 25px;
+	font-size: .8rem;
+	height: auto;
+	display: inline-flex;
+	align-items: center;
+	font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  &.blue {
+    background-color: #233678;
+  }
+  &.red {
+    background-color: #782F41;
+  }
+}
