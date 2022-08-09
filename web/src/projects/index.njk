@@ -1,11 +1,11 @@
 
 <h1 class="text-center">Projects</h1>
+<p>
+  Some examples of projects I've led or worked on. Some are creative projects, some are coding projects, some are a little of both.
+</p>
 <div class="projects">
 {% for project in projects %}
   <a class="project" href="/project/{{project.slug.current}}">
-    <div class="image-container">
-      <img src="{{project.mainImage.asset.url}}?h=140&w=140&fit=crop" alt="{{project.title}} image">
-    </div>
     <div class="summary">
       <div class="title">
         <h3>
