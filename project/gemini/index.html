@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <title>Tony M | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="/assets/main.css?e5875f7cad89e6e405a5" rel="stylesheet"><script src="/assets/e5875f7cad89e6e405a5.js?e5875f7cad89e6e405a5" defer="defer"></script>
+  </head>
+  <body>
+    <svg id="fader"></svg>
+    <div class="nav-container">
+  <nav class="navigation">
+    <div class="brand">
+      <a href="/" class="main-nav">
+        <span class="fa fa-home"></span>
+      </a>
+    </div>
+    <div class="links">
+      <a href="/about" class="main-nav">About me</a>
+<a href="/projects" class="main-nav">My work</a>
+
+    </div>
+    <div class="links-menu">
+      <label for="menu-control" class="menu-control"></label>
+    </div>
+  </nav>
+</div>
+<input type="checkbox" class="menu-control-checkbox" id="menu-control"/>
+<div class="links-panel show-out" id="links-panel">
+  <a href="/about" class="main-nav">About me</a>
+<a href="/projects" class="main-nav">My work</a>
+
+</div>
+
+    <div class="content">
+      <h1 class="text-center">Gemini</h1>
+<div class="project-detail">
+  <p>
+    <img src="https://cdn.sanity.io/images/5pnyimif/production/576b9e653c6211c3d3c885159074df0cc62a8db0-884x784.png" alt="Gemini image">
+  </p>
+  <p>Gemini is OpenSesame's design system. In 2019 I was asked to build a component library for an Angular application and, along with our designer, began constructing a design system. We already had a component library of sorts, but what we wanted, with new products on the horizon, was a templated styling solution.</p>
+<p>Initially, we built a JSS-based theming engine, a way to apply templates to Angular components in an NPM package. We wanted to support the company brand identity, establish a baseline of atomic components and styles, and change them through JSON themes.<br>
+The theming engine, written in Typescript, and the Angular components remained separate, although distributed in the same package. This would work to our advantage later, but it was all precompiled for the Angular AOT compiler at the moment, so a single package was necessary.</p>
+<p>A year later, we had a component library, a theming engine, and an Angular application needing updating. As things will do, we encountered additional requirements and platforms. We began work on the next version of our design system with the goal of a platform agnostic, themable, token-driven system that would work with any framework or no framework.</p>
+<p>So how do you support React, Angular, Vue, WordPress, any static page generators, or nothing at all? It was a good question, and I spent a lot of time investigating web components before finding it more difficult than it should be. On the one hand, Angular components are very close to the DOM and are essentially web components. Additionally, Angular provides tools to create web components from Angular components. So we could take our Angular components and export them as web components. Except, we couldn't use them in other situations without coercing them somehow. React, at the time, didn't work well with web components, and while I found a way to make it work using Lerna and some web components to React component tools, it was unwieldy.</p>
+<p>Supporting every target platform would require a wrapper around web components. Not always, and it wasn't strictly necessary, but maintaining data binding was essential to me. Web components are like any other HTML element, their attribute values are serialized, and I was building for applications that were easier to deal with when passing complex data structures to component properties via markup. Right or wrong, this was the pattern in use, and abandoning it would mean unnecessarily rebuilding or refactoring large portions of the existing application.</p>
+<p>The complexity of distributing targeted components became a problem as well. How many NPM packages does anyone want to maintain? Everything about web components was insufficient or disappointing. A different approach was needed.</p>
+<p>The power of Gemini is the theming engine. It can create styles from a theme and transpile them into CSS, and CSS works everywhere. So why not ditch the components altogether? Every framework has a community of developers providing components. There are libraries of headless components, components without styling that I could leverage, thus saving the effort of maintaining component libraries for every framework. We kept the Angular components for legacy use, exported the component styles for headless components or plain HTML, and extended the theming engine to provide themes for specific libraries instead of platforms. For example, Gemini can export articles for MUI, a popular component library for React.</p>
+<p>The result was a lean, lightweight styling solution for anything. However, the Angular components could not go away. They had to remain for the existing application where they were used across the codebase, and it all had to be precompiled to work with the Angular compiler. This was bad news for our NPM package because it had to be tree shakeable to work with anything other than Angular. I could have made 2 packages, but I used Rollup and put everything in one package. For Angular, there is the precompiled bundle that the platform wants. For other frameworks, like React, there are path imports, so everything not imported is shaken out. Angular became an optional dependency, and CommonJS exports were added to the bundle for applications without frameworks.</p>
+<p>With a simpler solution in place, a way to ignore Angular, and the ability to work with third-party component libraries, there was still more to do. The theming engine was extended to generate static CSS from the theme-driven styles. Now we have a CSS framework that, when used with something like Bootstrap, is a viable solution for WordPress and anything that needs basic CSS or HTML pages with no imports or templates.</p>
+<p>While doing all that, the design team added tokens to Figma and connected them to Github. I set up a Github action so that when Design pushed new token sets to the repo, the action would convert them to StyleDictionary tokens. This is what the theming engine uses to create themes.</p>
+<p>So there it was. A token-driven design system connected to Figma is available to any platform for use anywhere. When the design team changes or updates the style tokens, anything using the design system updates itself. A developer can add Gemini to a project, select a component library or build their own, and the styling happens. Everything comes tested and ready to use. It's a good solution, and I stand by it.</p>
+<p><a href="https://gemini.opensesame.com">https://gemini.opensesame.com</a></p>
+
+</div>
+
+
+    </div>
+    <footer>
+  <div class="name-plate">
+    <h3 class="hidden-mobile tag">Tony M</h3>
+    <p class="hidden-desktop">Tony M</p>
+  </div>
+  <div class="name-description">
+    <p class="tag hidden-mobile">Portland, Oregon</p>
+    <h3 class="contact-links tag">
+      <a href="https://github.com/tonym" rel="noopener noreferrer" target="_blank">
+        <span class="fab fa-github"></span>
+      </a>
+    </h3>
+    <h3 class="contact-links tag">
+      <a href="https://www.linkedin.com/in/tonympdx/" rel="noopener noreferrer" target="_blank">
+        <span class="fab fa-linkedin"></span>
+      </a>
+    </h3>
+    <h3 class="contact-links tag">
+      <a href="mailto:tony@fbpllc.com" rel="noopener noreferrer" target="_blank">
+        <span class="fas fa-envelope"></span>
+      </a>
+    </h3>
+    <h3 class="tag hidden-mobile">Portfolio</h3>
+  </div>
+</footer>
+
+  </body>
+</html>

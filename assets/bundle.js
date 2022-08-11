@@ -12213,6 +12213,7 @@ var _freeSolidSvgIcons = __webpack_require__(/*! @fortawesome/free-solid-svg-ico
 
 var faBars = _freeSolidSvgIcons.faBars;
 var faEnvelope = _freeSolidSvgIcons.faEnvelope;
+var faExchangeAlt = _freeSolidSvgIcons.faExchangeAlt;
 var faHome = _freeSolidSvgIcons.faHome;
 
 var _freeBrandsSvgIcons = __webpack_require__(/*! @fortawesome/free-brands-svg-icons */ "./node_modules/@fortawesome/free-brands-svg-icons/index.es.js");
@@ -12222,7 +12223,7 @@ var faLinkedin = _freeBrandsSvgIcons.faLinkedin;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-fontawesome.library.add(faBars, faEnvelope, faGithub, faHome, faLinkedin);
+fontawesome.library.add(faBars, faEnvelope, faExchangeAlt, faGithub, faHome, faLinkedin);
 })();
 
 // This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
@@ -12239,8 +12240,19 @@ __webpack_require__.r(__webpack_exports__);
 // This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
 (() => {
 var __webpack_exports__ = {};
+/*!***************************************!*\
+  !*** ./src/assets/styles/button.scss ***!
+  \***************************************/
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+})();
+
+// This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
+(() => {
+var __webpack_exports__ = {};
 /*!*************************************!*\
-  !*** ./src/assets/styles/blue.scss ***!
+  !*** ./src/assets/styles/chip.scss ***!
   \*************************************/
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
@@ -12305,9 +12317,9 @@ __webpack_require__.r(__webpack_exports__);
 // This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
 (() => {
 var __webpack_exports__ = {};
-/*!******************************************!*\
-  !*** ./src/assets/styles/grayscale.scss ***!
-  \******************************************/
+/*!*************************************!*\
+  !*** ./src/assets/styles/hero.scss ***!
+  \*************************************/
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
@@ -12317,19 +12329,8 @@ __webpack_require__.r(__webpack_exports__);
 (() => {
 var __webpack_exports__ = {};
 /*!**************************************!*\
-  !*** ./src/assets/styles/green.scss ***!
+  !*** ./src/assets/styles/image.scss ***!
   \**************************************/
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-})();
-
-// This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
-(() => {
-var __webpack_exports__ = {};
-/*!*************************************!*\
-  !*** ./src/assets/styles/main.scss ***!
-  \*************************************/
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
@@ -12349,9 +12350,9 @@ __webpack_require__.r(__webpack_exports__);
 // This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
 (() => {
 var __webpack_exports__ = {};
-/*!***************************************!*\
-  !*** ./src/assets/styles/orange.scss ***!
-  \***************************************/
+/*!***********************************************!*\
+  !*** ./src/assets/styles/project-detail.scss ***!
+  \***********************************************/
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
@@ -12359,31 +12360,9 @@ __webpack_require__.r(__webpack_exports__);
 
 // This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
 (() => {
-var __webpack_exports__ = {};
-/*!*************************************!*\
-  !*** ./src/assets/styles/pink.scss ***!
-  \*************************************/
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-})();
-
-// This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
-(() => {
-var __webpack_exports__ = {};
-/*!***************************************!*\
-  !*** ./src/assets/styles/purple.scss ***!
-  \***************************************/
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-})();
-
-// This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
-(() => {
-/*!***************************************!*\
-  !*** ./src/assets/styles/yellow.scss ***!
-  \***************************************/
+/*!*****************************************!*\
+  !*** ./src/assets/styles/projects.scss ***!
+  \*****************************************/
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 

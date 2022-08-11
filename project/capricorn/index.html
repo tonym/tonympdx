@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <title>Tony M | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="/assets/main.css?e5875f7cad89e6e405a5" rel="stylesheet"><script src="/assets/e5875f7cad89e6e405a5.js?e5875f7cad89e6e405a5" defer="defer"></script>
+  </head>
+  <body>
+    <svg id="fader"></svg>
+    <div class="nav-container">
+  <nav class="navigation">
+    <div class="brand">
+      <a href="/" class="main-nav">
+        <span class="fa fa-home"></span>
+      </a>
+    </div>
+    <div class="links">
+      <a href="/about" class="main-nav">About me</a>
+<a href="/projects" class="main-nav">My work</a>
+
+    </div>
+    <div class="links-menu">
+      <label for="menu-control" class="menu-control"></label>
+    </div>
+  </nav>
+</div>
+<input type="checkbox" class="menu-control-checkbox" id="menu-control"/>
+<div class="links-panel show-out" id="links-panel">
+  <a href="/about" class="main-nav">About me</a>
+<a href="/projects" class="main-nav">My work</a>
+
+</div>
+
+    <div class="content">
+      <h1 class="text-center">Capricorn</h1>
+<div class="project-detail">
+  <p>
+    <img src="https://cdn.sanity.io/images/5pnyimif/production/57f8863a220121cc01a5bda020912d62d8b6e25e-1254x700.png" alt="Capricorn image">
+  </p>
+  <p>I've built UI frameworks, I've constructed design systems, I've created content, and I've gathered data. So how do you put everything together?</p>
+<p>Development trends come and go, some stay, and some are forgotten, but how do you know what works? You practice. Capricorn is a project to explore frontend architecture with the current trends of monorepos and micro UIs. I can configure different architecture or combinations of tools to test or prove a concept or idea or try a new system or workflow.</p>
+<p>There's a variety of tooling for monorepos, and they all work, but what about workflow? Which is best? The answer is whatever works best for your situation. Is your team large or small? Is your department made of several teams, and is it divided by domain or by functional area? I built Capricorn to model different scenarios based on various requirements.</p>
+<h2>A single monorepo to rule them all</h2>
+<p>You have to start somewhere and might as well do it with what many already understand. We're often used to working in a monolith, a single application in a single repository, so why not evolve it into a single monorepo by breaking the application into microservices and frontends? Maybe the team is small enough, and that's all they need, but for larger or distributed teams, perhaps not.</p>
+<p>I can model this using tools like NX or Lerna and a variety of frameworks and utilities using Capricorn.</p>
+<h2>A monorepo for each domain</h2>
+<p>Each domain team has its monorepo. This is a more refined scenario and prevents a single monorepo from becoming a more complicated monolith, but it is not without its drawbacks. Assuming the need for a unified user experience, the architecture is complicated by having to somehow bring the diverse parts together into a single user interface.</p>
+<h2>A monorepo for each functional area</h2>
+<p>Frontend, backend, testing, and all the disciplines that make an application could each have their monorepo. In this case, I can configure Capricorn for a monorepo for micro frontends, a monorepo for microservices, and another for testing.</p>
+<h2>How does it work?</h2>
+<p>It's not complicated. A repo with several branches will do. However, Capricorn isn't a product with a deliverable. The deliverable is whatever report I have to create for a given situation or client. To that end, I keep it simple and rely on NPM modules and configuration templates.</p>
+<p>I also keep patterns on hand for different micro frontend architectures and can test them with actual data. Usually, I use The Movie Database for data from a REST API, and for static content, I'm an artist. I have plenty. So with content in hand, either local or remote, I can explore some different architectures.</p>
+<p>Here are a few options I've tried.</p>
+<h2>A single SPA</h2>
+<p>The single SPA combines multiple applications (frameworks) on a single page without refreshing. This is how most modern frameworks work and is a good strategy when managing state, routing, and other things. This pattern works fine if you use a single framework like React but is difficult if you mix frameworks.</p>
+<h2>Multiple SPAs</h2>
+<p>The multiple SPA combines independent applications at different URLs and uses a package manager like NPM for shared functionality. This is a wonderful solution for applications that use various frameworks but presents solvable problems of state management and routing across independent SPAs.</p>
+<h2>Iframes</h2>
+<p>Isolating multiple applications into iframes, each of which shares an API exposed by the parent frame. Just say no. Using iframes is a way of adding new problems with complex solutions if dealing with shared state across iframes.</p>
+<h2>Events</h2>
+<p>Modular applications communicate with each other over a single event bus. Fairly old school but manageable with some careful planning. An event broker is necessary.</p>
+<h2>Components</h2>
+<p>Component libraries are dependencies of a host application and are imported by the host application when/as needed. Atomic components can roll up into micro-frontends that are components of a host application.</p>
+<p>Which is best? There is no universal solution, but I can help you if you want to know what is best for you.</p>
+
+</div>
+
+
+    </div>
+    <footer>
+  <div class="name-plate">
+    <h3 class="hidden-mobile tag">Tony M</h3>
+    <p class="hidden-desktop">Tony M</p>
+  </div>
+  <div class="name-description">
+    <p class="tag hidden-mobile">Portland, Oregon</p>
+    <h3 class="contact-links tag">
+      <a href="https://github.com/tonym" rel="noopener noreferrer" target="_blank">
+        <span class="fab fa-github"></span>
+      </a>
+    </h3>
+    <h3 class="contact-links tag">
+      <a href="https://www.linkedin.com/in/tonympdx/" rel="noopener noreferrer" target="_blank">
+        <span class="fab fa-linkedin"></span>
+      </a>
+    </h3>
+    <h3 class="contact-links tag">
+      <a href="mailto:tony@fbpllc.com" rel="noopener noreferrer" target="_blank">
+        <span class="fas fa-envelope"></span>
+      </a>
+    </h3>
+    <h3 class="tag hidden-mobile">Portfolio</h3>
+  </div>
+</footer>
+
+  </body>
+</html>
