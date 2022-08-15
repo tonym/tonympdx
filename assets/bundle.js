@@ -12212,6 +12212,8 @@ var fontawesome = _interopRequireDefault(_fontawesome).default;
 var _freeSolidSvgIcons = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 
 var faBars = _freeSolidSvgIcons.faBars;
+var faCheckCircle = _freeSolidSvgIcons.faCheckCircle;
+var faPlus = _freeSolidSvgIcons.faPlus;
 var faEnvelope = _freeSolidSvgIcons.faEnvelope;
 var faExchangeAlt = _freeSolidSvgIcons.faExchangeAlt;
 var faHome = _freeSolidSvgIcons.faHome;
@@ -12223,7 +12225,18 @@ var faLinkedin = _freeBrandsSvgIcons.faLinkedin;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-fontawesome.library.add(faBars, faEnvelope, faExchangeAlt, faGithub, faHome, faLinkedin);
+fontawesome.library.add(faBars, faCheckCircle, faPlus, faEnvelope, faExchangeAlt, faGithub, faHome, faLinkedin);
+})();
+
+// This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
+(() => {
+var __webpack_exports__ = {};
+/*!**************************************!*\
+  !*** ./src/assets/styles/about.scss ***!
+  \**************************************/
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
 })();
 
 // This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
