@@ -3,8 +3,9 @@ const { DateTime } = require("luxon");
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('CNAME');
   eleventyConfig.addPassthroughCopy('src/assets/images');
+  eleventyConfig.addPassthroughCopy('src/assets/static');
 
-   eleventyConfig.addFilter("readableDate", dateObj => {
+  eleventyConfig.addFilter("readableDate", dateObj => {
     return new Date(dateObj).toDateString()
   });
 
