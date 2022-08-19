@@ -5,9 +5,9 @@ templateClass: tmpl-post
 <h1 class="text-center">{{ post.title }}</h1>
 <div class="project-detail">
   <p>
-    <img src="{{post.mainImage.asset.url}}" alt="{{post.title}} image">
+    <img class="banner" src="{{post.mainImage.asset.url}}" alt="{{post.title}} image">
   </p>
-  <p>
+  <p class="body2">
     By {{post.authorName}} on
     <time class="postlist-date" datetime="{{ post.publishedAt }}">
       {{ post.publishedAt | readableDate }}
