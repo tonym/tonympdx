@@ -8,7 +8,8 @@ const hasToken = !!client.config().token
 function generatePost (post) {
   return {
     ...post,
-    body: BlocksToMarkdown(post.body, { serializers, ...client.config() })
+    body: BlocksToMarkdown(post.body, { serializers, ...client.config() }),
+    summary: BlocksToMarkdown(post.summary, { serializers, ...client.config() })
   }
 }
 

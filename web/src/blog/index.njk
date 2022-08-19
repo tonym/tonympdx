@@ -1,0 +1,18 @@
+
+<h1 class="text-center">Blog</h1>
+<div class="projects">
+{% for post in posts %}
+  <a class="project" href="/post/{{post.slug.current}}">
+    <div class="summary">
+      <div class="title">
+        <h3>
+          {{post.title}}
+        </h3>
+      </div>
+      <div class="summary-container">
+        {{post.summary | markdownify | safe }}
+      </div>
+    </div>
+  </a>
+{% endfor %}
+</div>
