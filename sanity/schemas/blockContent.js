@@ -62,15 +62,7 @@ export default {
       options: { hotspot: true }
     },
     {
-      theme: 'solarized_dark',
-      type: 'code',
-      language: 'js',
-      languageAlternatives: [
-        { title: 'Javascript', value: 'js' },
-        { title: 'HTML', value: 'html' },
-        { title: 'CSS', value: 'css' },
-        { title: 'SASS', value: 'sass' }
-      ]
+      type: 'code'
     }
   ]
 };
