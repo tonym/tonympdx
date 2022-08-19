@@ -15,6 +15,8 @@
         <time class="postlist-date" datetime="{{ post.publishedAt }}">
           {{ post.publishedAt | readableDate }}
         </time>
+        -
+        {{ post.body | readingTime }} read
       </div>
       <div class="summary-container">
         {{post.summary | markdownify | safe }}

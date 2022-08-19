@@ -7,6 +7,25 @@
     margin-left: 0;
     width: 100%;
   }
+  .dateline {
+    align-items: center;
+    display: flex;
+    gap: 12px;
+    padding-bottom: 24px;
+    .author {
+      margin: 0;
+      line-height: inherit;
+      padding-bottom: 4px;
+    }
+    .date {
+      margin: 0;
+    }
+    img {
+      border-radius: 50%;
+      margin: 0;
+      width: 36px;
+    }
+  }
 }
 .project-gallery {
   margin-top: 76px;

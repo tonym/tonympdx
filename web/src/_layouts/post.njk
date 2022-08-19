@@ -7,12 +7,19 @@ templateClass: tmpl-post
   <p>
     <img class="banner" src="{{post.mainImage.asset.url}}" alt="{{post.title}} image">
   </p>
-  <p class="body2">
-    By {{post.authorName}} on
-    <time class="postlist-date" datetime="{{ post.publishedAt }}">
-      {{ post.publishedAt | readableDate }}
-    </time>
-  </p>
+  <div class="dateline">
+    <img src="{{post.authorAvatar}}" alt="author {{post.authorName}} avatar">
+    <div>
+      <p class="author">{{post.authorName}}</p>
+      <p class="date body2">
+        <time class="postlist-date" datetime="{{ post.publishedAt }}">
+          {{ post.publishedAt | readableDate }}
+        </time>
+        -
+        {{ post.body | readingTime }} read
+      </p>
+    </div>
+  </div>
   {{ post.body | markdownify | safe }}
 </div>
 {% if post.gallery %}

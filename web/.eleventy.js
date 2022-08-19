@@ -1,16 +1,17 @@
-const { DateTime } = require("luxon");
+const { DateTime } = require('luxon');
+const readingTime = require('eleventy-plugin-reading-time');
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('CNAME');
   eleventyConfig.addPassthroughCopy('src/assets/images');
   eleventyConfig.addPassthroughCopy('src/assets/static');
 
-  eleventyConfig.addFilter("readableDate", dateObj => {
+  eleventyConfig.addFilter('readableDate', (dateObj) => {
     return DateTime.fromISO(dateObj).toFormat('dd LLL yyyy');
   });
 
-  let markdownIt = require("markdown-it");
-  let markdownItAnchor = require("markdown-it-anchor");
+  let markdownIt = require('markdown-it');
+  let markdownItAnchor = require('markdown-it-anchor');
   let options = {
     html: true,
     breaks: true,
@@ -18,18 +19,21 @@ module.exports = function (eleventyConfig) {
   };
   let opts = {
     permalink: true,
-    permalinkClass: "direct-link",
-    permalinkSymbol: "#"
+    permalinkClass: 'direct-link',
+    permalinkSymbol: '#'
   };
 
-  eleventyConfig.setLibrary("md", markdownIt(options)
-    .use(markdownItAnchor, opts)
+  eleventyConfig.setLibrary(
+    'md',
+    markdownIt(options).use(markdownItAnchor, opts)
   );
 
-  eleventyConfig.addFilter("markdownify", function(value) {
-    const md = new markdownIt(options)
-    return md.render(value)
-  })
+  eleventyConfig.addFilter('markdownify', function (value) {
+    const md = new markdownIt(options);
+    return md.render(value);
+  });
+
+  eleventyConfig.addPlugin(readingTime);
 
   return {
     dir: {
