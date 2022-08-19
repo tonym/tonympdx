@@ -1,0 +1,10 @@
+---
+layout: main.njk
+templateClass: tmpl-post
+---
+<article>
+  <h1>{{ post.title }}</h1>
+  <p>Written by {{post.authorName}}  </p>
+  {{ post.body | markdownify | safe }}
+  <p><a href="{{ '/' | url }}">← Home</a></p>
+</article>

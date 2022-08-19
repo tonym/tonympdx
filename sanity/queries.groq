@@ -1,0 +1,17 @@
+// select all posts
+*[_type == "post"]{
+  _id,
+  publishedAt,
+  body[]{
+    ...,
+    _type == "image" => {
+      asset->{url}
+    }
+  },
+  categories,
+  slug,
+  summary,
+  title,
+  "authorName": author->name,
+  "authorAvatar": author->avatar.asset->url
+}

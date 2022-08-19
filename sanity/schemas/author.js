@@ -18,6 +18,14 @@ export default {
       },
     },
     {
+      name: 'avatar',
+      title: 'Avatar',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
       name: 'image',
       title: 'Image',
       type: 'image',
@@ -42,7 +50,7 @@ export default {
   preview: {
     select: {
       title: 'name',
-      media: 'image',
+      media: 'avatar',
     },
   },
 }
