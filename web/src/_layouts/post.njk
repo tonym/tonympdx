@@ -2,9 +2,32 @@
 layout: main.njk
 templateClass: tmpl-post
 ---
-<article>
-  <h1>{{ post.title }}</h1>
-  <p>Written by {{post.authorName}}  </p>
+<h1 class="text-center">{{ post.title }}</h1>
+<div class="project-detail">
+  <p>
+    <img src="{{post.mainImage.asset.url}}" alt="{{post.title}} image">
+  </p>
+  <p>
+    By {{post.authorName}} on
+    <time class="postlist-date" datetime="{{ post.publishedAt }}">
+      {{ post.publishedAt | readableDate }}
+    </time>
+  </p>
   {{ post.body | markdownify | safe }}
-  <p><a href="{{ '/' | url }}">← Home</a></p>
-</article>
+</div>
+{% if post.gallery %}
+<div class="project-gallery">
+  <h1 class="text-center">Gallery</h1>
+  {% for image in post.gallery %}
+    <div class="item">
+      <img src="{{image.asset.url}}" alt="gallery image">
+      {% if image.imageTitle %}
+        <p>{{image.imageTitle}}</p>
+      {% endif %}
+      {% if image.imageSubTitle %}
+        <p class="body2">{{image.imageSubTitle}}</p>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+{% endif %}
