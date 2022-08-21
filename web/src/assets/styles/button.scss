@@ -11,8 +11,16 @@
     color: #1b3b46;
     text-decoration: none;
   }
+  &.disabled {
+    opacity: 0.5;
+  }
   &.lg {
     font-size: 1.5rem;
     padding: 12px 20px;
+  }
+  &.outlined {
+    background-color: transparent;
+    border: 1px solid #c0c7c9;
+    color: #c0c7c9;
   }
 }

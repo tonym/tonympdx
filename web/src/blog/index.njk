@@ -1,3 +1,11 @@
+---
+pagination:
+  alias: posts
+  data: posts
+  size: 8
+  addAllPagesToCollections: true
+permalink: blog/posts/{{ pagination.pageNumber + 1 }}/index.html
+---
 
 <h1 class="text-center">Blog</h1>
 <div class="posts">
@@ -25,3 +33,4 @@
   </a>
 {% endfor %}
 </div>
+{% include 'pagination.njk' %}
