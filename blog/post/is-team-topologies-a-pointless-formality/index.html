@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <title>Tony M | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link rel="icon" href="/assets/images/favicon.png">
+    <link href="/assets/main.css?d36705aea15d0a822871" rel="stylesheet"><script src="/assets/d36705aea15d0a822871.js?d36705aea15d0a822871" defer="defer"></script>
+    <script src="/assets/scripts/prism.js"></script>
+  </head>
+  <body class="line-numbers">
+    <svg id="fader"></svg>
+    <div class="nav-container">
+  <nav class="navigation">
+    <div class="brand">
+      <a href="/" class="main-nav">
+        <span class="fa fa-home"></span>
+      </a>
+    </div>
+    <div class="links">
+      <a href="/about" class="main-nav">About me</a>
+<a href="/projects" class="main-nav">My work</a>
+<a href="/work-with-me" class="main-nav">Services</a>
+<a href="/assets/static/tm.resume.2022.pdf" class="main-nav">My resume</a>
+<a href="/blog/posts/1" class="main-nav">Blog</a>
+
+    </div>
+    <div class="links-menu">
+      <label for="menu-control" class="menu-control"></label>
+    </div>
+  </nav>
+</div>
+<input type="checkbox" class="menu-control-checkbox" id="menu-control"/>
+<div class="links-panel show-out" id="links-panel">
+  <a href="/about" class="main-nav">About me</a>
+<a href="/projects" class="main-nav">My work</a>
+<a href="/work-with-me" class="main-nav">Services</a>
+<a href="/assets/static/tm.resume.2022.pdf" class="main-nav">My resume</a>
+<a href="/blog/posts/1" class="main-nav">Blog</a>
+
+</div>
+
+    <div class="content">
+      <h1 class="text-center">Is Team Topologies a pointless formality?</h1>
+<div class="project-detail">
+  <p>
+    <img class="banner main-image" src="https://cdn.sanity.io/images/5pnyimif/production/18148c0f7c0103fb9f359c1b362c31541714177a-1708x2560.jpg" alt="Is Team Topologies a pointless formality? image">
+  </p>
+  <div class="dateline">
+    <img src="https://cdn.sanity.io/images/5pnyimif/production/f9e5c3fc87fa0a3d927f162da02bc95ea8a26cf6-640x640.jpg" alt="author Tony M avatar">
+    <div>
+      <p class="author">Tony M</p>
+      <p class="date body2">
+        <time class="postlist-date" datetime="2021-09-12T20:58:00.000Z">
+          12 Sep 2021
+        </time>
+        -
+        4 min read
+      </p>
+    </div>
+  </div>
+  <p>There's a danger when considering the value of a process or pattern that projects the failure of the practitioner as the failure of the process. For example, the team that first tries Agile and fails in their goals may blame the process instead of their skill at using it. Clearly, with Agile as a standard and accepted development process, faults of failure likely exist in the implementation. The same is true of Team Topologies, and in the right hands, it's an effective organization pattern for large or growing businesses and departments.</p>
+<p>As more and more businesses work toward improved agility and efficiency, they also seek improved organization strategies as part of the initiative. Team Topologies, detailed in the 2019 book of the same name by authors Matthew Skelton and Manuel Pais, is one such strategy for organizing engineering teams. At the core, it is an adaptive model of organization that treats people, not products, as the basis of effective delivery and provides the opportunity to grow the organization to maturity. Sound familiar? If Agile is the day-to-day process of the products, Team Topologies is the day-to-day process of the people.</p>
+<p>Skelton and Pais lean heavily on Conway's Law which states, &quot;Organizations, who design systems, are constrained to produce designs which are copies of the communication structures of these organizations.&quot; Conway's Law has been around for a while, first theorized by Melvin Conway in 1967 and later enshrined in classic and respected tomes like Fred Brooks' &quot;The Mythical Man Month.&quot; Skelton and Pais suggest a correlation does indeed exist between the company's organization and the systems they create. For example, an organization with one large team will have one large monolithic database or application, while teams organized by craft will have systems reflecting the needs of each craft.</p>
+<p>Leveraging the power, or inevitability, of Conway's Law, Team Topologies advocates for creating cross-discipline teams reflecting the domains of the system or systems. In other words, think of the architecture you want, then establish teams and communication vectors reflecting the architectural domains. Such patterns of organizing teams with an eye to the desired system structure emerged in the mid-2010s as the Reverse Conway Maneuver. Development operations, DevOps, is a clear example of this thinking where each domain team executes its operations rather than serving a monolithic cost center. The Reverse Conway Maneuver flipped the organizational pattern by making development operations part of each domain and DevOps a supporting, or enabling, team.</p>
+<p>Skelton and Pais define four different team types, stream-aligned, enabling, complicated subsystem, and platform. Each team plays a part in the overall production process. Stream-aligned teams own the software within their domain, enabling teams own no artifacts but provide knowledge and expertise to other teams, and so forth. The key to Team Topologies is understanding how the types of teams work and their communication vectors within and across domains, then ensuring the team structure reflects the architecture of the system they produce.</p>
+<p>What could possibly go wrong?</p>
+<p><strong>Hiring engineers first and thinking about the product later</strong></p>
+<p>Traditionally companies hire engineers and put them on the org chart under &quot;Engineering&quot; then say, &quot;go build this, that, or the other thing.&quot; The result is a monolith. Avoiding the monolith means thinking ahead, and companies that hire an architect, design the system, then hire engineers and organize them into teams reflecting the domains of the system are the beneficiaries of Team Topologies. They succeed or fail by the quality of the architecture, or they adapt to changes in the architecture much the same way Agile teams adapt to changes in priorities.</p>
+<p><strong>Embracing the status-quo</strong></p>
+<p>Modernizing companies may search for new patterns and processes as a means of continued relevance in the marketplace and may execute a practical implementation of Team Topologies, yet still struggle. Indeed they thought about the product, the architecture, and the teams. They organized domain teams that reflected the architecture they desired yet never realized the next version of the product. They remain dedicated to the legacy product, spend all their development time maintaining the monolith they want to deprecate, and never serve the next product generation. For whatever reason, the status-quo and the attention it demands prevents them from moving on.</p>
+<p><strong>Discouraging initiative</strong></p>
+<p>Some companies may try Team Topologies and find an increase in top-down control or perceived limitations in domain flexibility. Engineers who once demonstrated initiative and curiosity now find it less advantageous. It's a balancing act for leadership. On the one hand, the formality of the organizational choices may require more management or direction while simultaneously impressing upon engineers their need to focus on what tasks they are assigned. The developer who once offered solutions to problems will not do so if the environment of formality now breeds increased management control or micro-management.</p>
+<p><strong>Too much focus on the developer experience</strong></p>
+<p>Team Topologies requires a concerted effort at all levels. Focusing on &quot;getting it right&quot; or ensuring the domains are functioning as designed and maintaining alignment with system architecture can become reflexive and absorb effort that once went into the product or user experience. It's easy to lose interest in the customer when learning or implementing a new way of organizing teams.</p>
+<p><strong>Giving up</strong></p>
+<p>Team Topologies is about evolution and creating teams that will grow as the product and associated domains grow. It's also about learning, and everyone has to learn together. It is not a short-term or immediate solution, and some companies may see it as an investment of time and money they are unwilling to pay. However, the return on that investment is more than reassuring for those who stick with it.</p>
+<p>So, is Team Topologies a pointless formality? No. Like Agile or any other tool, it is only as effective as the practitioners who wield it. Careful planning, determination, and long-term goals are required to make any process work, and Team Topologies is no different. As it becomes industry standard, like Agile before, it's worth the effort, and the dedicated, visionary companies who embark on the journey of organizational agility reap ever-increasing rewards.</p>
+
+</div>
+
+
+    </div>
+    <footer>
+  <div class="name-plate hidden-mobile">
+    <h3 class="tag">Tony M</h3>
+  </div>
+  <div class="name-description">
+    <p class="tag hidden-mobile">Portland, Oregon</p>
+    <h3 class="contact-links tag">
+      <a href="https://github.com/tonym" rel="noopener noreferrer" target="_blank">
+        <span class="fab fa-github"></span>
+      </a>
+    </h3>
+    <h3 class="contact-links tag">
+      <a href="https://www.linkedin.com/in/tonympdx/" rel="noopener noreferrer" target="_blank">
+        <span class="fab fa-linkedin"></span>
+      </a>
+    </h3>
+    <h3 class="contact-links tag">
+      <a href="mailto:tony@fbpllc.com" rel="noopener noreferrer" target="_blank">
+        <span class="fas fa-envelope"></span>
+      </a>
+    </h3>
+    <h3 class="tag hidden-mobile">Portfolio</h3>
+  </div>
+</footer>
+
+  </body>
+</html>
