@@ -1,5 +1,6 @@
 const { DateTime } = require('luxon');
 const readingTime = require('eleventy-plugin-reading-time');
+const pluginRss = require("@11ty/eleventy-plugin-rss");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('CNAME');
@@ -34,6 +35,12 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addPlugin(readingTime);
+
+  eleventyConfig.addPlugin(pluginRss, {
+    posthtmlRenderOptions: {
+      closingSingleTag: "default" // opt-out of <img/>-style XHTML single tags
+    }
+  });
 
   return {
     dir: {

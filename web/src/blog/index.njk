@@ -3,14 +3,14 @@ pagination:
   alias: posts
   data: posts
   size: 8
-  addAllPagesToCollections: true
+  addAllPagesToCollections: false
 permalink: blog/posts/{{ pagination.pageNumber + 1 }}/index.html
 ---
 
 <h1 class="text-center">Blog</h1>
 <div class="posts">
 {% for post in posts %}
-  <a class="post" href="/blog/post/{{post.slug.current}}">
+  <a class="post" href="{{post.url}}">
     <img class="main-image" src="{{post.mainImage.asset.url}}" alt="{{post.title}} image">
     <div class="summary">
       <div class="title">

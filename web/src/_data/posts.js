@@ -9,7 +9,8 @@ function generatePost(post) {
   return {
     ...post,
     body: BlocksToMarkdown(post.body, { serializers, ...client.config() }),
-    summary: BlocksToMarkdown(post.summary, { serializers, ...client.config() })
+    summary: BlocksToMarkdown(post.summary, { serializers, ...client.config() }),
+    url: `/blog/post/${post.slug.current}`
   };
 }
 
@@ -18,6 +19,11 @@ async function getPosts() {
   const filter = groq`*[_type == "post" && defined(slug) && publishedAt < now()]`;
   const projection = groq`{
     ...,
+    categories[]{
+      ...,
+      "slug": @->slug.current,
+      "title": @->title
+    },
     mainImage{
       ...,
       asset->{url}
