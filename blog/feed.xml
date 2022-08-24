@@ -12,6 +12,7 @@
   </author>
   <entry>
     <title>Vesper</title>
+    <summary>The Vesper, that often debated, completely misunderstood, and totally irrelevant cocktail from a movie everyone knows and the book that came before it.</summary>
     <link href="https://www.tonympdx.com/blog/post/vesper"/>
     <updated>2021-12-22T17:34:00.000Z</updated>
     <id>https://www.tonympdx.com/blog/post/vesper</id>
@@ -35,6 +36,7 @@
   </entry>
   <entry>
     <title>Is Team Topologies a pointless formality?</title>
+    <summary>Effective development teams are essential and Team Topologies details how  teams can flourish and evolve. But does it work? Yes. These are some impressions from my experience with Team Topologies.</summary>
     <link href="https://www.tonympdx.com/blog/post/is-team-topologies-a-pointless-formality"/>
     <updated>2021-09-12T20:58:00.000Z</updated>
     <id>https://www.tonympdx.com/blog/post/is-team-topologies-a-pointless-formality</id>
@@ -59,6 +61,7 @@
   </entry>
   <entry>
     <title>Starbuck, Stubb, and Flask</title>
+    <summary>A love letter to the literature in your glass, or how I find a way to write about Moby Dick every chance I get, then compare it to whiskey.</summary>
     <link href="https://www.tonympdx.com/blog/post/starbuck-stubb-and-flask"/>
     <updated>2021-06-12T18:32:00.000Z</updated>
     <id>https://www.tonympdx.com/blog/post/starbuck-stubb-and-flask</id>
@@ -76,6 +79,7 @@
   </entry>
   <entry>
     <title>Gibson</title>
+    <summary>A cocktail with onions named for an artist. Is the Gibson named after Charles Dana Gibson? Stories abound, but if it is, who is this famed illustrator who liked onions in his Martini?</summary>
     <link href="https://www.tonympdx.com/blog/post/gibson"/>
     <updated>2021-06-06T00:02:00.000Z</updated>
     <id>https://www.tonympdx.com/blog/post/gibson</id>
@@ -99,6 +103,7 @@
   </entry>
   <entry>
     <title>The calories in cocktails</title>
+    <summary>A detailed look at the calories in your booze, what calories are, how to calculate them, and how to consider your cocktails as part of your overall nutrition.</summary>
     <link href="https://www.tonympdx.com/blog/post/the-calories-in-cocktails"/>
     <updated>2021-05-31T01:11:00.000Z</updated>
     <id>https://www.tonympdx.com/blog/post/the-calories-in-cocktails</id>
@@ -149,6 +154,7 @@
   </entry>
   <entry>
     <title>Blue Monday</title>
+    <summary>A classic vodka cocktail that&#39;s as old as it is blue. But what makes it blue? Let&#39;s explore blue curacao, where it comes from, what it tastes like, and why it&#39;s blue.</summary>
     <link href="https://www.tonympdx.com/blog/post/blue-monday"/>
     <updated>2021-05-30T22:32:00.000Z</updated>
     <id>https://www.tonympdx.com/blog/post/blue-monday</id>
@@ -170,6 +176,7 @@
   </entry>
   <entry>
     <title>Fair and Warmer</title>
+    <summary>Is this cocktail named for a play or not? The Fair and Warmer is a mysterious cocktail from a famous book that may or may not be about a popular play.</summary>
     <link href="https://www.tonympdx.com/blog/post/fair-and-warmer"/>
     <updated>2021-05-09T22:47:00.000Z</updated>
     <id>https://www.tonympdx.com/blog/post/fair-and-warmer</id>
@@ -192,6 +199,7 @@
   </entry>
   <entry>
     <title>Bunny Mother</title>
+    <summary>A cocktail from the Playboy Club, and the magazine that inspired it. It’s also a critique of both Boomer culture and the 1970s in general, but an acknowledgment of the greatest cocktail book of all time, the Playboy Host and Bar Book. Probably.</summary>
     <link href="https://www.tonympdx.com/blog/post/bunny-mother"/>
     <updated>2021-03-28T01:21:00.000Z</updated>
     <id>https://www.tonympdx.com/blog/post/bunny-mother</id>
@@ -214,6 +222,7 @@
   </entry>
   <entry>
     <title>Fish House Punch</title>
+    <summary>Legend says that Fish House Punch put George Washington out of commission for three days. How is that possible? This is a story of taxes, molasses, rebellion, and rum.</summary>
     <link href="https://www.tonympdx.com/blog/post/fish-house-punch"/>
     <updated>2021-03-20T18:15:00.000Z</updated>
     <id>https://www.tonympdx.com/blog/post/fish-house-punch</id>
@@ -235,6 +244,7 @@
   </entry>
   <entry>
     <title>Jack Rose</title>
+    <summary>The Jack Rose is a classic cocktail loved by many, including Hemingway himself. That&#39;s not saying much, is it? The Jack Rose is a good drink, but what about Hemingway?</summary>
     <link href="https://www.tonympdx.com/blog/post/jack-rose"/>
     <updated>2021-02-06T22:13:00.000Z</updated>
     <id>https://www.tonympdx.com/blog/post/jack-rose</id>
@@ -252,6 +262,7 @@
   </entry>
   <entry>
     <title>Fluffy Ruffles</title>
+    <summary>Fabulous and modern in 1907, a story and a cocktail for a comic strip, or a play.</summary>
     <link href="https://www.tonympdx.com/blog/post/fluffy-ruffles"/>
     <updated>2021-01-30T22:18:00.000Z</updated>
     <id>https://www.tonympdx.com/blog/post/fluffy-ruffles</id>
@@ -271,6 +282,7 @@
   </entry>
   <entry>
     <title>404</title>
+    <summary>A digital cocktail from an unlikely source meets the social network.</summary>
     <link href="https://www.tonympdx.com/blog/post/404"/>
     <updated>2021-01-16T22:30:00.000Z</updated>
     <id>https://www.tonympdx.com/blog/post/404</id>
@@ -291,6 +303,7 @@
   </entry>
   <entry>
     <title>Adding Google Custom Search to a headless Ghost blog with a React/Redux frontend</title>
+    <summary>Ghost does not have search functionality, so you have to add it yourself. This is how I added search to Ghost using Google Custom Search and Google APIs.</summary>
     <link href="https://www.tonympdx.com/blog/post/adding-google-custom-search-to-a-headless-ghost-blog-with-a-react-redux-frontend"/>
     <updated>2019-04-16T19:16:00.000Z</updated>
     <id>https://www.tonympdx.com/blog/post/adding-google-custom-search-to-a-headless-ghost-blog-with-a-react-redux-frontend</id>
@@ -492,6 +505,7 @@ const getEndpoint = (endpoint, query=&#39;&#39;, slug=&#39;&#39;) =&amp;gt;  {
   </entry>
   <entry>
     <title>The UX of beverage recipes</title>
+    <summary>Recipes for food and drink are common enough, but what makes them usable? Is there a standard format, should there be, and what is it that makes one recipe useful and another confusing? This is how we set our recipe format and why.</summary>
     <link href="https://www.tonympdx.com/blog/post/the-ux-of-beverage-recipes"/>
     <updated>2019-02-11T22:13:00.000Z</updated>
     <id>https://www.tonympdx.com/blog/post/the-ux-of-beverage-recipes</id>
