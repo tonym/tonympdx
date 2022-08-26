@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <title>Tony M | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link rel="icon" href="/assets/images/favicon.png">
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      title="Tony M blog feed"
+      href="/blog/feed.xml"
+    />
+    <link href="/assets/main.css?d36705aea15d0a822871" rel="stylesheet"><script src="/assets/d36705aea15d0a822871.js?d36705aea15d0a822871" defer="defer"></script>
+    <script src="/assets/scripts/prism.js"></script>
+  </head>
+  <body class="line-numbers">
+    <svg id="fader"></svg>
+    <div class="nav-container">
+  <nav class="navigation">
+    <div class="brand">
+      <a href="/" class="main-nav">
+        <span class="fa fa-home"></span>
+      </a>
+    </div>
+    <div class="links">
+      <a href="/about" class="main-nav">About me</a>
+<a href="/projects" class="main-nav">My work</a>
+<a href="/work-with-me" class="main-nav">Services</a>
+<a href="/assets/static/tm.resume.2022.pdf" class="main-nav">My resume</a>
+<a href="/blog/posts/1" class="main-nav">Blog</a>
+
+    </div>
+    <div class="links-menu">
+      <label for="menu-control" class="menu-control"></label>
+    </div>
+  </nav>
+</div>
+<input type="checkbox" class="menu-control-checkbox" id="menu-control"/>
+<div class="links-panel show-out" id="links-panel">
+  <a href="/about" class="main-nav">About me</a>
+<a href="/projects" class="main-nav">My work</a>
+<a href="/work-with-me" class="main-nav">Services</a>
+<a href="/assets/static/tm.resume.2022.pdf" class="main-nav">My resume</a>
+<a href="/blog/posts/1" class="main-nav">Blog</a>
+
+</div>
+
+    <div class="content">
+      <h1 class="text-center">Building a design system - introduction</h1>
+<div class="project-detail">
+  <p>
+    <img class="banner main-image" src="https://cdn.sanity.io/images/5pnyimif/production/9cb77c12b5984d3bec92b4a172cea9bcb0b285de-1600x1164.webp" alt="Building a design system - introduction image">
+  </p>
+  <div class="dateline">
+    <img src="https://cdn.sanity.io/images/5pnyimif/production/f9e5c3fc87fa0a3d927f162da02bc95ea8a26cf6-640x640.jpg" alt="author Tony M avatar">
+    <div>
+      <p class="author">Tony M</p>
+      <p class="date body2">
+        <time class="postlist-date" datetime="2022-08-07T18:20:00.000Z">
+          07 Aug 2022
+        </time>
+        -
+        2 min read
+      </p>
+    </div>
+  </div>
+  <p>Let's build a design system. Several years ago, I wanted a design system that works everywhere. I wasn't satisfied with component libraries for specific frameworks. They're great but not generic. So I set out to build one. I'll show you how I did it and how you can, too.</p>
+<p>Throughout several posts, I'll show you step by step how you can build a universal design system that works with any framework or no framework at all. There are many ways to accomplish this. This is how I do it.</p>
+<h2>What is it?</h2>
+<p>A design system is a styling solution, based on standards and guidelines, that abstracts designs into reusable patterns and isolates style and UX concerns in a tested, distributed artifact. In other words, a design system ensures consistent style and user experience, so designers don't have to start from scratch, nor do engineers. For example, in a web application, the design system decorates the front of the front end with a consistent look and behavior. The look might be the company brand identity or the application's appearance. The behavior is the user experience.</p>
+<h2>Requirements</h2>
+<p>Our design system must support any framework or no framework and include themes. Furthermore, it should be fully tested and distributed in a tree-shakeable way that supports all import patterns.</p>
+<p>Let's break it into parts. The design system will have a theming engine, a component library, tokens, and a bundler. This series will focus on the theming engine and its use with third-party component libraries or headless components.</p>
+<h2>The stack</h2>
+<ul>
+<li>Typescript</li>
+<li>JSS</li>
+<li>Redux</li>
+<li>Jest</li>
+<li>Storybook</li>
+<li>Yalc</li>
+<li>Lerna</li>
+<li>React</li>
+<li>MUI</li>
+<li>Radix</li>
+<li>Stitches</li>
+<li>Mustache</li>
+<li>Material design</li>
+</ul>
+<h2>Disclaimers</h2>
+<p>As always, this is one way to solve a problem, not the way. There are many ways to accomplish what we're about to build, and some choices are for convenience. Material design is well known and valuable to us because we're building the code side of the system, not designing it. The theming engine is core Javascript, but we'll need React for components and Radix, Stitches, and Mustache to test everything.</p>
+
+</div>
+
+
+    </div>
+    <footer>
+  <div class="name-plate hidden-mobile">
+    <h3 class="tag">Tony M</h3>
+  </div>
+  <div class="name-description">
+    <p class="tag hidden-mobile">Portland, Oregon</p>
+    <h3 class="contact-links tag">
+      <a href="https://github.com/tonym" rel="noopener noreferrer" target="_blank">
+        <span class="fab fa-github"></span>
+      </a>
+    </h3>
+    <h3 class="contact-links tag">
+      <a href="https://www.linkedin.com/in/tonympdx/" rel="noopener noreferrer" target="_blank">
+        <span class="fab fa-linkedin"></span>
+      </a>
+    </h3>
+    <h3 class="contact-links tag">
+      <a href="mailto:tony@fbpllc.com" rel="noopener noreferrer" target="_blank">
+        <span class="fas fa-envelope"></span>
+      </a>
+    </h3>
+    <h3 class="tag hidden-mobile">Portfolio</h3>
+  </div>
+</footer>
+
+  </body>
+</html>

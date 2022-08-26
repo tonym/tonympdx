@@ -48,6 +48,39 @@
 </content>
   </entry>
   <entry>
+    <title>Building a design system - introduction</title>
+    <summary>Have you ever wondered how to build a design system? Follow along and learn how to build to code side of a theme driven design system.</summary>
+    <link href="https://www.tonympdx.com/blog/post/building-a-design-system-introduction"/>
+    <updated>2022-08-07T18:20:00.000Z</updated>
+    <id>https://www.tonympdx.com/blog/post/building-a-design-system-introduction</id>
+    <content xml:lang="en" type="html">&lt;p&gt;Let&#39;s build a design system. Several years ago, I wanted a design system that works everywhere. I wasn&#39;t satisfied with component libraries for specific frameworks. They&#39;re great but not generic. So I set out to build one. I&#39;ll show you how I did it and how you can, too.&lt;/p&gt;
+&lt;p&gt;Throughout several posts, I&#39;ll show you step by step how you can build a universal design system that works with any framework or no framework at all. There are many ways to accomplish this. This is how I do it.&lt;/p&gt;
+&lt;h2&gt;What is it?&lt;/h2&gt;
+&lt;p&gt;A design system is a styling solution, based on standards and guidelines, that abstracts designs into reusable patterns and isolates style and UX concerns in a tested, distributed artifact. In other words, a design system ensures consistent style and user experience, so designers don&#39;t have to start from scratch, nor do engineers. For example, in a web application, the design system decorates the front of the front end with a consistent look and behavior. The look might be the company brand identity or the application&#39;s appearance. The behavior is the user experience.&lt;/p&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;Our design system must support any framework or no framework and include themes. Furthermore, it should be fully tested and distributed in a tree-shakeable way that supports all import patterns.&lt;/p&gt;
+&lt;p&gt;Let&#39;s break it into parts. The design system will have a theming engine, a component library, tokens, and a bundler. This series will focus on the theming engine and its use with third-party component libraries or headless components.&lt;/p&gt;
+&lt;h2&gt;The stack&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Typescript&lt;/li&gt;
+&lt;li&gt;JSS&lt;/li&gt;
+&lt;li&gt;Redux&lt;/li&gt;
+&lt;li&gt;Jest&lt;/li&gt;
+&lt;li&gt;Storybook&lt;/li&gt;
+&lt;li&gt;Yalc&lt;/li&gt;
+&lt;li&gt;Lerna&lt;/li&gt;
+&lt;li&gt;React&lt;/li&gt;
+&lt;li&gt;MUI&lt;/li&gt;
+&lt;li&gt;Radix&lt;/li&gt;
+&lt;li&gt;Stitches&lt;/li&gt;
+&lt;li&gt;Mustache&lt;/li&gt;
+&lt;li&gt;Material design&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Disclaimers&lt;/h2&gt;
+&lt;p&gt;As always, this is one way to solve a problem, not the way. There are many ways to accomplish what we&#39;re about to build, and some choices are for convenience. Material design is well known and valuable to us because we&#39;re building the code side of the system, not designing it. The theming engine is core Javascript, but we&#39;ll need React for components and Radix, Stitches, and Mustache to test everything.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
     <title>Vesper</title>
     <summary>The Vesper, that often debated, completely misunderstood, and totally irrelevant cocktail from a movie everyone knows and the book that came before it.</summary>
     <link href="https://www.tonympdx.com/blog/post/vesper"/>
