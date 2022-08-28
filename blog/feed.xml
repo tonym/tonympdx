@@ -16,7 +16,8 @@
     <link href="https://www.tonympdx.com/blog/post/building-a-design-system-1-setup"/>
     <updated>2022-08-27T19:20:11.956Z</updated>
     <id>https://www.tonympdx.com/blog/post/building-a-design-system-1-setup</id>
-    <content xml:lang="en" type="html">&lt;p&gt;Let&#39;s begin. In this walkthrough, we&#39;ll set up a repository and start adding to it. Our design system repo covers all the groundwork, and we&#39;ll add the first code.&lt;/p&gt;
+    <content xml:lang="en" type="html">&lt;p&gt;Let&#39;s begin. If you like, you can review the &lt;a href=&quot;https://www.tonympdx.com/blog/post/building-a-design-system-introduction/&quot;&gt;introduction&lt;/a&gt; before we proceed.&lt;/p&gt;
+&lt;p&gt;In this walkthrough, we&#39;ll set up a repository and start adding to it. Our design system repo covers all the groundwork, and we&#39;ll add the first code.&lt;/p&gt;
 &lt;p&gt;The code for this post is available at:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/tonym/whirlwind/tree/lesson-1&quot;&gt;https://github.com/tonym/whirlwind/tree/lesson-1&lt;/a&gt;&lt;/li&gt;
