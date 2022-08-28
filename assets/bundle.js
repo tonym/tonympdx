@@ -12183,8 +12183,8 @@ fontawesome.library.add(faBars, faCheckCircle, faPlus, faEnvelope, faExchangeAlt
 
 
 
-/* PrismJS 1.28.0
-https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clike+javascript+jsx+tsx+sass+scss+typescript&plugins=line-numbers */
+/* PrismJS 1.29.0
+https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clike+javascript+bash+json+sass+scss+typescript&plugins=line-numbers+toolbar+copy-to-clipboard */
 var _self = "undefined" != typeof window ? window : "undefined" != typeof WorkerGlobalScope && self instanceof WorkerGlobalScope ? self : {},
     Prism = function (e) {
   var n = /(?:^|\s)lang(?:uage)?-([\w-]+)(?=\s|$)/i,
@@ -12848,105 +12848,190 @@ Prism.languages.javascript = Prism.languages.extend("clike", {
     alias: "property"
   }
 }), Prism.languages.markup && (Prism.languages.markup.tag.addInlined("script", "javascript"), Prism.languages.markup.tag.addAttribute("on(?:abort|blur|change|click|composition(?:end|start|update)|dblclick|error|focus(?:in|out)?|key(?:down|up)|load|mouse(?:down|enter|leave|move|out|over|up)|reset|resize|scroll|select|slotchange|submit|unload|wheel)", "javascript")), Prism.languages.js = Prism.languages.javascript;
-!function (t) {
-  var n = t.util.clone(t.languages.javascript),
-      e = "(?:\\{<S>*\\.{3}(?:[^{}]|<BRACES>)*\\})";
-
-  function a(t, n) {
-    return t = t.replace(/<S>/g, function () {
-      return "(?:\\s|//.*(?!.)|/\\*(?:[^*]|\\*(?!/))\\*/)";
-    }).replace(/<BRACES>/g, function () {
-      return "(?:\\{(?:\\{(?:\\{[^{}]*\\}|[^{}])*\\}|[^{}])*\\})";
-    }).replace(/<SPREAD>/g, function () {
-      return e;
-    }), RegExp(t, n);
-  }
-
-  e = a(e).source, t.languages.jsx = t.languages.extend("markup", n), t.languages.jsx.tag.pattern = a("</?(?:[\\w.:-]+(?:<S>+(?:[\\w.:$-]+(?:=(?:\"(?:\\\\[^]|[^\\\\\"])*\"|'(?:\\\\[^]|[^\\\\'])*'|[^\\s{'\"/>=]+|<BRACES>))?|<SPREAD>))*<S>*/?)?>"), t.languages.jsx.tag.inside.tag.pattern = /^<\/?[^\s>\/]*/, t.languages.jsx.tag.inside["attr-value"].pattern = /=(?!\{)(?:"(?:\\[\s\S]|[^\\"])*"|'(?:\\[\s\S]|[^\\'])*'|[^\s'">]+)/, t.languages.jsx.tag.inside.tag.inside["class-name"] = /^[A-Z]\w*(?:\.[A-Z]\w*)*$/, t.languages.jsx.tag.inside.comment = n.comment, t.languages.insertBefore("inside", "attr-name", {
-    spread: {
-      pattern: a("<SPREAD>"),
-      inside: t.languages.jsx
-    }
-  }, t.languages.jsx.tag), t.languages.insertBefore("inside", "special-attr", {
-    script: {
-      pattern: a("=<BRACES>"),
-      alias: "language-javascript",
-      inside: {
-        "script-punctuation": {
-          pattern: /^=(?=\{)/,
-          alias: "punctuation"
-        },
-        rest: t.languages.jsx
-      }
-    }
-  }, t.languages.jsx.tag);
-
-  var s = function (t) {
-    return t ? "string" == typeof t ? t : "string" == typeof t.content ? t.content : t.content.map(s).join("") : "";
-  },
-      g = function (n) {
-    for (var e = [], a = 0; a < n.length; a++) {
-      var o = n[a],
-          i = !1;
-
-      if ("string" != typeof o && ("tag" === o.type && o.content[0] && "tag" === o.content[0].type ? "</" === o.content[0].content[0].content ? e.length > 0 && e[e.length - 1].tagName === s(o.content[0].content[1]) && e.pop() : "/>" === o.content[o.content.length - 1].content || e.push({
-        tagName: s(o.content[0].content[1]),
-        openedBraces: 0
-      }) : e.length > 0 && "punctuation" === o.type && "{" === o.content ? e[e.length - 1].openedBraces++ : e.length > 0 && e[e.length - 1].openedBraces > 0 && "punctuation" === o.type && "}" === o.content ? e[e.length - 1].openedBraces-- : i = !0), (i || "string" == typeof o) && e.length > 0 && 0 === e[e.length - 1].openedBraces) {
-        var r = s(o);
-        a < n.length - 1 && ("string" == typeof n[a + 1] || "plain-text" === n[a + 1].type) && (r += s(n[a + 1]), n.splice(a + 1, 1)), a > 0 && ("string" == typeof n[a - 1] || "plain-text" === n[a - 1].type) && (r = s(n[a - 1]) + r, n.splice(a - 1, 1), a--), n[a] = new t.Token("plain-text", r, null, r);
-      }
-
-      o.content && "string" != typeof o.content && g(o.content);
-    }
-  };
-
-  t.hooks.add("after-tokenize", function (t) {
-    "jsx" !== t.language && "tsx" !== t.language || g(t.tokens);
-  });
-}(Prism);
 !function (e) {
-  e.languages.typescript = e.languages.extend("javascript", {
-    "class-name": {
-      pattern: /(\b(?:class|extends|implements|instanceof|interface|new|type)\s+)(?!keyof\b)(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?:\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>)?/,
-      lookbehind: !0,
-      greedy: !0,
-      inside: null
+  var t = "\\b(?:BASH|BASHOPTS|BASH_ALIASES|BASH_ARGC|BASH_ARGV|BASH_CMDS|BASH_COMPLETION_COMPAT_DIR|BASH_LINENO|BASH_REMATCH|BASH_SOURCE|BASH_VERSINFO|BASH_VERSION|COLORTERM|COLUMNS|COMP_WORDBREAKS|DBUS_SESSION_BUS_ADDRESS|DEFAULTS_PATH|DESKTOP_SESSION|DIRSTACK|DISPLAY|EUID|GDMSESSION|GDM_LANG|GNOME_KEYRING_CONTROL|GNOME_KEYRING_PID|GPG_AGENT_INFO|GROUPS|HISTCONTROL|HISTFILE|HISTFILESIZE|HISTSIZE|HOME|HOSTNAME|HOSTTYPE|IFS|INSTANCE|JOB|LANG|LANGUAGE|LC_ADDRESS|LC_ALL|LC_IDENTIFICATION|LC_MEASUREMENT|LC_MONETARY|LC_NAME|LC_NUMERIC|LC_PAPER|LC_TELEPHONE|LC_TIME|LESSCLOSE|LESSOPEN|LINES|LOGNAME|LS_COLORS|MACHTYPE|MAILCHECK|MANDATORY_PATH|NO_AT_BRIDGE|OLDPWD|OPTERR|OPTIND|ORBIT_SOCKETDIR|OSTYPE|PAPERSIZE|PATH|PIPESTATUS|PPID|PS1|PS2|PS3|PS4|PWD|RANDOM|REPLY|SECONDS|SELINUX_INIT|SESSION|SESSIONTYPE|SESSION_MANAGER|SHELL|SHELLOPTS|SHLVL|SSH_AUTH_SOCK|TERM|UID|UPSTART_EVENTS|UPSTART_INSTANCE|UPSTART_JOB|UPSTART_SESSION|USER|WINDOWID|XAUTHORITY|XDG_CONFIG_DIRS|XDG_CURRENT_DESKTOP|XDG_DATA_DIRS|XDG_GREETER_DATA_DIR|XDG_MENU_PREFIX|XDG_RUNTIME_DIR|XDG_SEAT|XDG_SEAT_PATH|XDG_SESSION_DESKTOP|XDG_SESSION_ID|XDG_SESSION_PATH|XDG_SESSION_TYPE|XDG_VTNR|XMODIFIERS)\\b",
+      a = {
+    pattern: /(^(["']?)\w+\2)[ \t]+\S.*/,
+    lookbehind: !0,
+    alias: "punctuation",
+    inside: null
+  },
+      n = {
+    bash: a,
+    environment: {
+      pattern: RegExp("\\$" + t),
+      alias: "constant"
     },
-    builtin: /\b(?:Array|Function|Promise|any|boolean|console|never|number|string|symbol|unknown)\b/
-  }), e.languages.typescript.keyword.push(/\b(?:abstract|declare|is|keyof|readonly|require)\b/, /\b(?:asserts|infer|interface|module|namespace|type)\b(?=\s*(?:[{_$a-zA-Z\xA0-\uFFFF]|$))/, /\btype\b(?=\s*(?:[\{*]|$))/), delete e.languages.typescript.parameter, delete e.languages.typescript["literal-property"];
-  var s = e.languages.extend("typescript", {});
-  delete s["class-name"], e.languages.typescript["class-name"].inside = s, e.languages.insertBefore("typescript", "function", {
-    decorator: {
-      pattern: /@[$\w\xA0-\uFFFF]+/,
+    variable: [{
+      pattern: /\$?\(\([\s\S]+?\)\)/,
+      greedy: !0,
       inside: {
-        at: {
-          pattern: /^@/,
-          alias: "operator"
-        },
-        function: /^[\s\S]+/
+        variable: [{
+          pattern: /(^\$\(\([\s\S]+)\)\)/,
+          lookbehind: !0
+        }, /^\$\(\(/],
+        number: /\b0x[\dA-Fa-f]+\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:[Ee]-?\d+)?/,
+        operator: /--|\+\+|\*\*=?|<<=?|>>=?|&&|\|\||[=!+\-*/%<>^&|]=?|[?~:]/,
+        punctuation: /\(\(?|\)\)?|,|;/
       }
-    },
-    "generic-function": {
-      pattern: /#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>(?=\s*\()/,
+    }, {
+      pattern: /\$\((?:\([^)]+\)|[^()])+\)|`[^`]+`/,
       greedy: !0,
       inside: {
-        function: /^#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*/,
-        generic: {
-          pattern: /<[\s\S]+/,
-          alias: "class-name",
-          inside: s
+        variable: /^\$\(|^`|\)$|`$/
+      }
+    }, {
+      pattern: /\$\{[^}]+\}/,
+      greedy: !0,
+      inside: {
+        operator: /:[-=?+]?|[!\/]|##?|%%?|\^\^?|,,?/,
+        punctuation: /[\[\]]/,
+        environment: {
+          pattern: RegExp("(\\{)" + t),
+          lookbehind: !0,
+          alias: "constant"
         }
       }
+    }, /\$(?:\w+|[#?*!@$])/],
+    entity: /\\(?:[abceEfnrtv\\"]|O?[0-7]{1,3}|U[0-9a-fA-F]{8}|u[0-9a-fA-F]{4}|x[0-9a-fA-F]{1,2})/
+  };
+  e.languages.bash = {
+    shebang: {
+      pattern: /^#!\s*\/.*/,
+      alias: "important"
+    },
+    comment: {
+      pattern: /(^|[^"{\\$])#.*/,
+      lookbehind: !0
+    },
+    "function-name": [{
+      pattern: /(\bfunction\s+)[\w-]+(?=(?:\s*\(?:\s*\))?\s*\{)/,
+      lookbehind: !0,
+      alias: "function"
+    }, {
+      pattern: /\b[\w-]+(?=\s*\(\s*\)\s*\{)/,
+      alias: "function"
+    }],
+    "for-or-select": {
+      pattern: /(\b(?:for|select)\s+)\w+(?=\s+in\s)/,
+      alias: "variable",
+      lookbehind: !0
+    },
+    "assign-left": {
+      pattern: /(^|[\s;|&]|[<>]\()\w+(?:\.\w+)*(?=\+?=)/,
+      inside: {
+        environment: {
+          pattern: RegExp("(^|[\\s;|&]|[<>]\\()" + t),
+          lookbehind: !0,
+          alias: "constant"
+        }
+      },
+      alias: "variable",
+      lookbehind: !0
+    },
+    parameter: {
+      pattern: /(^|\s)-{1,2}(?:\w+:[+-]?)?\w+(?:\.\w+)*(?=[=\s]|$)/,
+      alias: "variable",
+      lookbehind: !0
+    },
+    string: [{
+      pattern: /((?:^|[^<])<<-?\s*)(\w+)\s[\s\S]*?(?:\r?\n|\r)\2/,
+      lookbehind: !0,
+      greedy: !0,
+      inside: n
+    }, {
+      pattern: /((?:^|[^<])<<-?\s*)(["'])(\w+)\2\s[\s\S]*?(?:\r?\n|\r)\3/,
+      lookbehind: !0,
+      greedy: !0,
+      inside: {
+        bash: a
+      }
+    }, {
+      pattern: /(^|[^\\](?:\\\\)*)"(?:\\[\s\S]|\$\([^)]+\)|\$(?!\()|`[^`]+`|[^"\\`$])*"/,
+      lookbehind: !0,
+      greedy: !0,
+      inside: n
+    }, {
+      pattern: /(^|[^$\\])'[^']*'/,
+      lookbehind: !0,
+      greedy: !0
+    }, {
+      pattern: /\$'(?:[^'\\]|\\[\s\S])*'/,
+      greedy: !0,
+      inside: {
+        entity: n.entity
+      }
+    }],
+    environment: {
+      pattern: RegExp("\\$?" + t),
+      alias: "constant"
+    },
+    variable: n.variable,
+    function: {
+      pattern: /(^|[\s;|&]|[<>]\()(?:add|apropos|apt|apt-cache|apt-get|aptitude|aspell|automysqlbackup|awk|basename|bash|bc|bconsole|bg|bzip2|cal|cargo|cat|cfdisk|chgrp|chkconfig|chmod|chown|chroot|cksum|clear|cmp|column|comm|composer|cp|cron|crontab|csplit|curl|cut|date|dc|dd|ddrescue|debootstrap|df|diff|diff3|dig|dir|dircolors|dirname|dirs|dmesg|docker|docker-compose|du|egrep|eject|env|ethtool|expand|expect|expr|fdformat|fdisk|fg|fgrep|file|find|fmt|fold|format|free|fsck|ftp|fuser|gawk|git|gparted|grep|groupadd|groupdel|groupmod|groups|grub-mkconfig|gzip|halt|head|hg|history|host|hostname|htop|iconv|id|ifconfig|ifdown|ifup|import|install|ip|java|jobs|join|kill|killall|less|link|ln|locate|logname|logrotate|look|lpc|lpr|lprint|lprintd|lprintq|lprm|ls|lsof|lynx|make|man|mc|mdadm|mkconfig|mkdir|mke2fs|mkfifo|mkfs|mkisofs|mknod|mkswap|mmv|more|most|mount|mtools|mtr|mutt|mv|nano|nc|netstat|nice|nl|node|nohup|notify-send|npm|nslookup|op|open|parted|passwd|paste|pathchk|ping|pkill|pnpm|podman|podman-compose|popd|pr|printcap|printenv|ps|pushd|pv|quota|quotacheck|quotactl|ram|rar|rcp|reboot|remsync|rename|renice|rev|rm|rmdir|rpm|rsync|scp|screen|sdiff|sed|sendmail|seq|service|sftp|sh|shellcheck|shuf|shutdown|sleep|slocate|sort|split|ssh|stat|strace|su|sudo|sum|suspend|swapon|sync|sysctl|tac|tail|tar|tee|time|timeout|top|touch|tr|traceroute|tsort|tty|umount|uname|unexpand|uniq|units|unrar|unshar|unzip|update-grub|uptime|useradd|userdel|usermod|users|uudecode|uuencode|v|vcpkg|vdir|vi|vim|virsh|vmstat|wait|watch|wc|wget|whereis|which|who|whoami|write|xargs|xdg-open|yarn|yes|zenity|zip|zsh|zypper)(?=$|[)\s;|&])/,
+      lookbehind: !0
+    },
+    keyword: {
+      pattern: /(^|[\s;|&]|[<>]\()(?:case|do|done|elif|else|esac|fi|for|function|if|in|select|then|until|while)(?=$|[)\s;|&])/,
+      lookbehind: !0
+    },
+    builtin: {
+      pattern: /(^|[\s;|&]|[<>]\()(?:\.|:|alias|bind|break|builtin|caller|cd|command|continue|declare|echo|enable|eval|exec|exit|export|getopts|hash|help|let|local|logout|mapfile|printf|pwd|read|readarray|readonly|return|set|shift|shopt|source|test|times|trap|type|typeset|ulimit|umask|unalias|unset)(?=$|[)\s;|&])/,
+      lookbehind: !0,
+      alias: "class-name"
+    },
+    boolean: {
+      pattern: /(^|[\s;|&]|[<>]\()(?:false|true)(?=$|[)\s;|&])/,
+      lookbehind: !0
+    },
+    "file-descriptor": {
+      pattern: /\B&\d\b/,
+      alias: "important"
+    },
+    operator: {
+      pattern: /\d?<>|>\||\+=|=[=~]?|!=?|<<[<-]?|[&\d]?>>|\d[<>]&?|[<>][&=]?|&[>&]?|\|[&|]?/,
+      inside: {
+        "file-descriptor": {
+          pattern: /^\d/,
+          alias: "important"
+        }
+      }
+    },
+    punctuation: /\$?\(\(?|\)\)?|\.\.|[{}[\];\\]/,
+    number: {
+      pattern: /(^|\s)(?:[1-9]\d*|0)(?:[.,]\d+)?\b/,
+      lookbehind: !0
     }
-  }), e.languages.ts = e.languages.typescript;
+  }, a.inside = e.languages.bash;
+
+  for (var s = ["comment", "function-name", "for-or-select", "assign-left", "parameter", "string", "environment", "function", "keyword", "builtin", "boolean", "file-descriptor", "operator", "punctuation", "number"], o = n.variable[1].inside, i = 0; i < s.length; i++) o[s[i]] = e.languages.bash[s[i]];
+
+  e.languages.sh = e.languages.bash, e.languages.shell = e.languages.bash;
 }(Prism);
-!function (e) {
-  var a = e.util.clone(e.languages.typescript);
-  e.languages.tsx = e.languages.extend("jsx", a), delete e.languages.tsx.parameter, delete e.languages.tsx["literal-property"];
-  var t = e.languages.tsx.tag;
-  t.pattern = RegExp("(^|[^\\w$]|(?=</))(?:" + t.pattern.source + ")", t.pattern.flags), t.lookbehind = !0;
-}(Prism);
+Prism.languages.json = {
+  property: {
+    pattern: /(^|[^\\])"(?:\\.|[^\\"\r\n])*"(?=\s*:)/,
+    lookbehind: !0,
+    greedy: !0
+  },
+  string: {
+    pattern: /(^|[^\\])"(?:\\.|[^\\"\r\n])*"(?!\s*:)/,
+    lookbehind: !0,
+    greedy: !0
+  },
+  comment: {
+    pattern: /\/\/.*|\/\*[\s\S]*?(?:\*\/|$)/,
+    greedy: !0
+  },
+  number: /-?\b\d+(?:\.\d+)?(?:e[+-]?\d+)?\b/i,
+  punctuation: /[{}[\],]/,
+  operator: /:/,
+  boolean: /\b(?:false|true)\b/,
+  null: {
+    pattern: /\bnull\b/,
+    alias: "keyword"
+  }
+}, Prism.languages.webmanifest = Prism.languages.json;
 !function (e) {
   e.languages.sass = e.languages.extend("css", {
     comment: {
@@ -13059,6 +13144,42 @@ Prism.languages.scss = Prism.languages.extend("css", {
     lookbehind: !0
   }
 }), Prism.languages.scss.atrule.inside.rest = Prism.languages.scss;
+!function (e) {
+  e.languages.typescript = e.languages.extend("javascript", {
+    "class-name": {
+      pattern: /(\b(?:class|extends|implements|instanceof|interface|new|type)\s+)(?!keyof\b)(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?:\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>)?/,
+      lookbehind: !0,
+      greedy: !0,
+      inside: null
+    },
+    builtin: /\b(?:Array|Function|Promise|any|boolean|console|never|number|string|symbol|unknown)\b/
+  }), e.languages.typescript.keyword.push(/\b(?:abstract|declare|is|keyof|readonly|require)\b/, /\b(?:asserts|infer|interface|module|namespace|type)\b(?=\s*(?:[{_$a-zA-Z\xA0-\uFFFF]|$))/, /\btype\b(?=\s*(?:[\{*]|$))/), delete e.languages.typescript.parameter, delete e.languages.typescript["literal-property"];
+  var s = e.languages.extend("typescript", {});
+  delete s["class-name"], e.languages.typescript["class-name"].inside = s, e.languages.insertBefore("typescript", "function", {
+    decorator: {
+      pattern: /@[$\w\xA0-\uFFFF]+/,
+      inside: {
+        at: {
+          pattern: /^@/,
+          alias: "operator"
+        },
+        function: /^[\s\S]+/
+      }
+    },
+    "generic-function": {
+      pattern: /#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>(?=\s*\()/,
+      greedy: !0,
+      inside: {
+        function: /^#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*/,
+        generic: {
+          pattern: /<[\s\S]+/,
+          alias: "class-name",
+          inside: s
+        }
+      }
+    }
+  }), e.languages.ts = e.languages.typescript;
+}(Prism);
 !function () {
   if ("undefined" != typeof Prism && "undefined" != typeof document) {
     var e = "line-numbers",
@@ -13150,6 +13271,147 @@ Prism.languages.scss = Prism.languages.extend("css", {
       });
     }
   }
+}();
+!function () {
+  if ("undefined" != typeof Prism && "undefined" != typeof document) {
+    var e = [],
+        t = {},
+        n = function () {};
+
+    Prism.plugins.toolbar = {};
+
+    var a = Prism.plugins.toolbar.registerButton = function (n, a) {
+      var r;
+      r = "function" == typeof a ? a : function (e) {
+        var t;
+        return "function" == typeof a.onClick ? ((t = document.createElement("button")).type = "button", t.addEventListener("click", function () {
+          a.onClick.call(this, e);
+        })) : "string" == typeof a.url ? (t = document.createElement("a")).href = a.url : t = document.createElement("span"), a.className && t.classList.add(a.className), t.textContent = a.text, t;
+      }, n in t ? console.warn('There is a button with the key "' + n + '" registered already.') : e.push(t[n] = r);
+    },
+        r = Prism.plugins.toolbar.hook = function (a) {
+      var r = a.element.parentNode;
+
+      if (r && /pre/i.test(r.nodeName) && !r.parentNode.classList.contains("code-toolbar")) {
+        var o = document.createElement("div");
+        o.classList.add("code-toolbar"), r.parentNode.insertBefore(o, r), o.appendChild(r);
+        var i = document.createElement("div");
+        i.classList.add("toolbar");
+
+        var l = e,
+            d = function (e) {
+          for (; e;) {
+            var t = e.getAttribute("data-toolbar-order");
+            if (null != t) return (t = t.trim()).length ? t.split(/\s*,\s*/g) : [];
+            e = e.parentElement;
+          }
+        }(a.element);
+
+        d && (l = d.map(function (e) {
+          return t[e] || n;
+        })), l.forEach(function (e) {
+          var t = e(a);
+
+          if (t) {
+            var n = document.createElement("div");
+            n.classList.add("toolbar-item"), n.appendChild(t), i.appendChild(n);
+          }
+        }), o.appendChild(i);
+      }
+    };
+
+    a("label", function (e) {
+      var t = e.element.parentNode;
+
+      if (t && /pre/i.test(t.nodeName) && t.hasAttribute("data-label")) {
+        var n,
+            a,
+            r = t.getAttribute("data-label");
+
+        try {
+          a = document.querySelector("template#" + r);
+        } catch (e) {}
+
+        return a ? n = a.content : (t.hasAttribute("data-url") ? (n = document.createElement("a")).href = t.getAttribute("data-url") : n = document.createElement("span"), n.textContent = r), n;
+      }
+    }), Prism.hooks.add("complete", r);
+  }
+}();
+!function () {
+  function t(t) {
+    var e = document.createElement("textarea");
+    e.value = t.getText(), e.style.top = "0", e.style.left = "0", e.style.position = "fixed", document.body.appendChild(e), e.focus(), e.select();
+
+    try {
+      var o = document.execCommand("copy");
+      setTimeout(function () {
+        o ? t.success() : t.error();
+      }, 1);
+    } catch (e) {
+      setTimeout(function () {
+        t.error(e);
+      }, 1);
+    }
+
+    document.body.removeChild(e);
+  }
+
+  "undefined" != typeof Prism && "undefined" != typeof document && (Prism.plugins.toolbar ? Prism.plugins.toolbar.registerButton("copy-to-clipboard", function (e) {
+    var o = e.element,
+        n = function (t) {
+      var e = {
+        copy: "Copy",
+        "copy-error": "Press Ctrl+C to copy",
+        "copy-success": "Copied!",
+        "copy-timeout": 5e3
+      };
+
+      for (var o in e) {
+        for (var n = "data-prismjs-" + o, c = t; c && !c.hasAttribute(n);) c = c.parentElement;
+
+        c && (e[o] = c.getAttribute(n));
+      }
+
+      return e;
+    }(o),
+        c = document.createElement("button");
+
+    c.className = "copy-to-clipboard-button", c.setAttribute("type", "button");
+    var r = document.createElement("span");
+    return c.appendChild(r), u("copy"), function (e, o) {
+      e.addEventListener("click", function () {
+        !function (e) {
+          navigator.clipboard ? navigator.clipboard.writeText(e.getText()).then(e.success, function () {
+            t(e);
+          }) : t(e);
+        }(o);
+      });
+    }(c, {
+      getText: function () {
+        return o.textContent;
+      },
+      success: function () {
+        u("copy-success"), i();
+      },
+      error: function () {
+        u("copy-error"), setTimeout(function () {
+          !function (t) {
+            window.getSelection().selectAllChildren(t);
+          }(o);
+        }, 1), i();
+      }
+    }), c;
+
+    function i() {
+      setTimeout(function () {
+        u("copy");
+      }, n["copy-timeout"]);
+    }
+
+    function u(t) {
+      r.textContent = n[t], c.setAttribute("data-copy-state", t);
+    }
+  }) : console.warn("Copy to Clipboard plugin loaded before Toolbar plugin."));
 }();
 
 /***/ }),

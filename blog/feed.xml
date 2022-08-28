@@ -4,12 +4,511 @@
   <subtitle>I write about literature and art, cocktails and culture, and design and development</subtitle>
   <link href="https://www.tonympdx.com/blog/feed.xml" rel="self"/>
   <link href="https://www.tonympdx.com/blog"/>
-  <updated>2022-08-24T20:37:35.064Z</updated>
+  <updated>2022-08-27T19:20:11.956Z</updated>
   <id>https://www.tonympdx.com/blog</id>
   <author>
     <name>Tony M</name>
     <email>tony@fbpllc.com</email>
   </author>
+  <entry>
+    <title>Building a design system 1 - setup</title>
+    <summary>The first step in building a design system from scratch is setting up a repo, dependencies, testing, types, and state management.</summary>
+    <link href="https://www.tonympdx.com/blog/post/building-a-design-system-1-setup"/>
+    <updated>2022-08-27T19:20:11.956Z</updated>
+    <id>https://www.tonympdx.com/blog/post/building-a-design-system-1-setup</id>
+    <content xml:lang="en" type="html">&lt;p&gt;Let&#39;s begin. In this walkthrough, we&#39;ll set up a repository and start adding to it. Our design system repo covers all the groundwork, and we&#39;ll add the first code.&lt;/p&gt;
+&lt;p&gt;The code for this post is available at:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/tonym/whirlwind/tree/lesson-1&quot;&gt;https://github.com/tonym/whirlwind/tree/lesson-1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Goals&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Install dependencies&lt;/li&gt;
+&lt;li&gt;Add some Typescript types&lt;/li&gt;
+&lt;li&gt;Set up state management&lt;/li&gt;
+&lt;li&gt;Configure testing&lt;/li&gt;
+&lt;li&gt;Add a function to create a stylesheet&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Skills&lt;/h2&gt;
+&lt;p&gt;You should know how to set up a Git repo, have a basic understanding of Typescript, and be familiar with Jest and Redux.&lt;/p&gt;
+&lt;h2&gt;Difficulty level&lt;/h2&gt;
+&lt;p&gt;Advanced. This is an advanced tutorial and assumes that you are a moderately experienced frontend developer. Beginning developers may find this challenging.&lt;/p&gt;
+&lt;h2&gt;Overview&lt;/h2&gt;
+&lt;p&gt;This is the first step on our way to building the engineering side of a design system. The design side will be discussed later, but for now, we&#39;re going to set up the things we need to create themes, then add tokens.&lt;/p&gt;
+&lt;p&gt;The ultimate goal of our system is the consistent application of UX via components which, as we will see, do not always have to be part of the design system, and the consistent application of style via a theming engine, which is where we&#39;re starting in this exercise.&lt;/p&gt;
+&lt;p&gt;For the designer, this means consistent appearance and functionality, and for the developer, this means style and UX come ready-made, and when the designer changes the design, there is no refactoring. We are creating an automated application of style and user experience.&lt;/p&gt;
+&lt;h2&gt;Repositories&lt;/h2&gt;
+&lt;p&gt;This project requires three repositories, one for the design system because it will be distributed via NPM, another for a monorepo with our test applications, and a third optional repo for Angular. If you&#39;d like to test with Angular, having it in its own repo may not be necessary, considering how you build your monorepo. Our monorepo will use Lerna and possibly Astro, which doesn&#39;t work with Angular, so I isolate NG on an island of its own.&lt;/p&gt;
+&lt;p&gt;For now, only the design system repo is needed. We won&#39;t go into how to create a repo here, but if you are following along, create a new repo, and let&#39;s start adding some dependencies.&lt;/p&gt;
+&lt;h2&gt;Dependencies&lt;/h2&gt;
+&lt;p&gt;Over the course of this project, we&#39;ll add dependencies as we need them. For this exercise, install the following:&lt;/p&gt;
+&lt;h3&gt;JSS&lt;/h3&gt;
+&lt;p&gt;The JSS package transpiles JSS to CSS and injects a stylesheet into the head of an HTML document. We&#39;ll also install the default preset.&lt;/p&gt;
+&lt;p&gt;JSS documentation: &lt;a href=&quot;https://cssinjs.org/&quot;&gt;https://cssinjs.org&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Install using NPM or Yarn:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;npm install jss jss-preset-default
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;or&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;yarn add jss jss-preset-default
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Redux&lt;/h3&gt;
+&lt;p&gt;Redux is for state management. While JSS comes with a stylesheet manager, we have more things than stylesheets in our store. Eventually, the store will have stylesheets, themes, and tokens, but we&#39;ll deal with themes and tokens later. For now, we&#39;ll build the store with placeholders.&lt;/p&gt;
+&lt;p&gt;Redux documentation: &lt;a href=&quot;https://redux.js.org/&quot;&gt;https://redux.js.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Install using NPM or Yarn:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;npm install redux
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;or&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;yarn add redux
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Typescript&lt;/h3&gt;
+&lt;p&gt;Install using NPM or Yarn:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;npm install --save-dev typescript
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;or&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;yarn add --dev typescript
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Jest&lt;/h3&gt;
+&lt;p&gt;For our tests, install jest version 28&lt;/p&gt;
+&lt;p&gt;Install using NPM or Yarn:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;npm install --save-dev jest@^28.1.8
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;or&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;yarn add --dev jest@^28.1.8
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For this project, we&#39;re using the &lt;strong&gt;jsdom&lt;/strong&gt; test environment which is no longer included in the core Jest package.&lt;/p&gt;
+&lt;p&gt;Install using NPM or Yarn:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;npm install --save-dev jest-environment-jsdom
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;or&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;yarn add --dev jest-environment-jsdom
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now add the Jest preset for Typescript.&lt;/p&gt;
+&lt;p&gt;Install using NPM or Yarn:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;npm install --save-dev ts-jest
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;or&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;yarn add --dev ts-jest
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Since we&#39;re using Typescript, we need some types. Types are included in Jest core; however, if we want to use those, they must be imported into every test. If you don&#39;t want to do that, add the types from Definitely Typed.&lt;/p&gt;
+&lt;p&gt;Install using NPM or Yarn:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;npm install --save-dev @types/jest
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;or&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;yarn add --dev @types/jest
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Optionally, if you like JUnit output for your tests, install the Jest JUnit plugin.&lt;/p&gt;
+&lt;p&gt;Install using NPM or Yarn:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;npm install --save-dev jest-junit
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;or&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;yarn add --dev jest-junit
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;CSSType&lt;/h3&gt;
+&lt;p&gt;JSS provides JSS types, but we also need CSS types.&lt;/p&gt;
+&lt;p&gt;Install using NPM or Yarn:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;npm install --save-dev csstype
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;or&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;yarn add --dev csstype
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Configure Typescript&lt;/h2&gt;
+&lt;p&gt;Add these three files to the project root.&lt;/p&gt;
+&lt;p&gt;tsconfig.json&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;{
+  &amp;quot;compilerOptions&amp;quot;: {
+    &amp;quot;baseUrl&amp;quot;: &amp;quot;.&amp;quot;,
+    &amp;quot;target&amp;quot;: &amp;quot;es5&amp;quot;,
+    &amp;quot;module&amp;quot;: &amp;quot;esnext&amp;quot;,
+    &amp;quot;lib&amp;quot;: [&amp;quot;esnext&amp;quot;, &amp;quot;dom&amp;quot;],
+    &amp;quot;declaration&amp;quot;: true,
+    &amp;quot;sourceMap&amp;quot;: false,
+    &amp;quot;outDir&amp;quot;: &amp;quot;./core&amp;quot;,
+    &amp;quot;rootDir&amp;quot;: &amp;quot;./src&amp;quot;,
+    &amp;quot;strict&amp;quot;: true,
+    &amp;quot;noImplicitAny&amp;quot;: false,
+    &amp;quot;strictNullChecks&amp;quot;: true,
+    &amp;quot;strictFunctionTypes&amp;quot;: true,
+    &amp;quot;strictBindCallApply&amp;quot;: true,
+    &amp;quot;strictPropertyInitialization&amp;quot;: false,
+    &amp;quot;noImplicitThis&amp;quot;: true,
+    &amp;quot;noUnusedLocals&amp;quot;: false,
+    &amp;quot;noUnusedParameters&amp;quot;: false,
+    &amp;quot;noImplicitReturns&amp;quot;: true,
+    &amp;quot;noFallthroughCasesInSwitch&amp;quot;: true,
+    &amp;quot;moduleResolution&amp;quot;: &amp;quot;node&amp;quot;,
+    &amp;quot;experimentalDecorators&amp;quot;: true,
+    &amp;quot;resolveJsonModule&amp;quot;: true,
+    &amp;quot;skipLibCheck&amp;quot;: true
+  },
+  &amp;quot;exclude&amp;quot;: [&amp;quot;**/dist&amp;quot;, &amp;quot;**/*.test*&amp;quot;, &amp;quot;**/testing&amp;quot;]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;tsconfig.dev.json&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;{
+  &amp;quot;extends&amp;quot;: &amp;quot;./tsconfig.json&amp;quot;,
+  &amp;quot;include&amp;quot;: [&amp;quot;./src/**/*&amp;quot;]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;tsconfig.test.json&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;{
+  &amp;quot;extends&amp;quot;: &amp;quot;./tsconfig.json&amp;quot;,
+  &amp;quot;compilerOptions&amp;quot;: {
+    &amp;quot;allowJs&amp;quot;: true,
+    &amp;quot;outDir&amp;quot;: &amp;quot;./out-tsc/spec&amp;quot;,
+    &amp;quot;esModuleInterop&amp;quot;: true,
+    &amp;quot;emitDecoratorMetadata&amp;quot;: true,
+    &amp;quot;sourceMap&amp;quot;: true,
+    &amp;quot;types&amp;quot;: [&amp;quot;jest&amp;quot;, &amp;quot;node&amp;quot;]
+  },
+  &amp;quot;files&amp;quot;: [&amp;quot;./src/test.ts&amp;quot;],
+  &amp;quot;include&amp;quot;: [&amp;quot;./src/**/*.test.ts&amp;quot;, &amp;quot;./src/**/*.d.ts&amp;quot;]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Configure Jest&lt;/h2&gt;
+&lt;p&gt;Add jest.config.js to the project root.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;module.exports = {
+  coveragePathIgnorePatterns: [&#39;/node_modules/&#39;, &#39;index.ts&#39;],
+  globals: {
+    &#39;ts-jest&#39;: {
+      tsconfig: &#39;tsconfig.test.json&#39;
+    }
+  },
+  moduleFileExtensions: [&#39;ts&#39;, &#39;js&#39;],
+  preset: &#39;ts-jest&#39;,
+  testEnvironment: &#39;jsdom&#39;,
+  testMatch: [&#39;**/?(*.)+(test).ts?(x)&#39;],
+  transform: { &#39;^.+\\.(js|jsx|ts|tsx)$&#39;: &#39;ts-jest&#39; },
+  reporters: [&#39;default&#39;, &#39;jest-junit&#39;]
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We need a way to run our tests, so add these NPM scripts to your pacakge.json &lt;strong&gt;scripts&lt;/strong&gt; section:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt; &amp;quot;test&amp;quot;: &amp;quot;jest --maxWorkers=50%&amp;quot;,
+ &amp;quot;test:dev&amp;quot;: &amp;quot;jest --clearCache &amp;amp;&amp;amp; jest --coverage --no-cache --maxWorkers=50%&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;strong&gt;test:dev&lt;/strong&gt; script will show test coverage in the terminal when you run it. The &lt;strong&gt;maxWorkers&lt;/strong&gt; argument is a recommended performance setting.&lt;/p&gt;
+&lt;h2&gt;File structure&lt;/h2&gt;
+&lt;p&gt;At this point, your repo file structure should look like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;| node_modules
+| .gitignore
+| jest.config.js
+| LICENSE // if you created one
+| package-lock.json
+| package.json
+| README.md
+| tsconfig.dev.json
+| tsconfig.json
+| tsconfig.test.json
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now create a src folder and add a store folder for our Redux store, a styles folder for our theming engine functions, and a types folder for our typescript types.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;| node_modules
+| src
+|- store
+|- styles
+|- types
+| .gitignore
+| jest.config.js
+| LICENSE
+| package-lock.json
+| package.json
+| README.md
+| tsconfig.dev.json
+| tsconfig.json
+| tsconfig.test.json
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Add types&lt;/h2&gt;
+&lt;p&gt;These are the types we&#39;ll need for this exercise. Create a types.ts file in the types folder. There is some preparation for later, and some placeholder, and we&#39;ll step through it line by line, but this is what the file should look like:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;import { StyleSheet as StyleSheetJSS } from &#39;jss&#39;;
+
+export interface Theme {}
+
+export const ADD_SHEET = &#39;ADD_SHEET&#39;;
+
+export type StyleSheet = StyleSheetJSS;
+
+export type Sheet&amp;lt;K extends keyof any, StyleSheet&amp;gt; = { [P in K]: StyleSheet };
+
+interface AddSheetAction {
+  type: typeof ADD_SHEET;
+  sheet: Sheet&amp;lt;string, StyleSheet&amp;gt;;
+}
+
+export type ActionTypes = AddSheetAction;
+
+export interface State {
+  sheets: Sheet&amp;lt;string, StyleSheet&amp;gt;;
+  theme: Theme;
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;First, import the StyleSheet type from JSS and import it as StyleSheetJSS. Assign it to a &lt;strong&gt;StyleSheet&lt;/strong&gt; type. We do this in case we have to extend the type later, and, more importantly, so we can import it from our types instead of the JSS node module.&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;Theme&lt;/strong&gt; interface is a placeholder. We&#39;ll get to themes in a later walkthrough, but for now, an empty object will let us get started.&lt;/p&gt;
+&lt;p&gt;Everything else is for our store. We have one action type, &lt;strong&gt;ADD_SHEET&lt;/strong&gt;, and the action, &lt;strong&gt;AddSheetAction&lt;/strong&gt;. They are exported as &lt;strong&gt;ActionTypes&lt;/strong&gt;. Although not obvious here, &lt;strong&gt;ActionTypes&lt;/strong&gt; is a union type, and as we add actions, we&#39;ll add them to the &lt;strong&gt;ActionTypes&lt;/strong&gt; type.&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;State&lt;/strong&gt; interface is our store. Again, the &lt;strong&gt;theme&lt;/strong&gt; type is just a placeholder for now.&lt;/p&gt;
+&lt;h2&gt;Configure the store&lt;/h2&gt;
+&lt;p&gt;Our host application may need many stylesheets. No, that&#39;s wrong. A host application WILL need many stylesheets, and we don&#39;t want to duplicate them. Only one stylesheet for any given component should be in the markup. To manage the sheets and prevent duplicates, we&#39;ll use Redux.&lt;/p&gt;
+&lt;h3&gt;Actions&lt;/h3&gt;
+&lt;p&gt;At this point, we need one action, an action to add sheets to the store.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/store/actions.ts
+
+import { ActionTypes, ADD_SHEET, Sheet, StyleSheet } from &#39;../types/index&#39;;
+
+export function addSheet(sheet: Sheet&amp;lt;string, StyleSheet&amp;gt;): ActionTypes {
+  return { type: ADD_SHEET, sheet };
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Do you notice how the types are imported explicitly from the index file? This is because all imports from our codebase should come from a single barrel. The index files that export from the files in a folder is the barrel, and while we could import from the files themselves, it&#39;s preferable to import from the barrel, which is also our public API. Our bundle will then have a single entry point, which is helpful for the requirements of certain host applications, some bundling schemes, and Angular&#39;s AOT compiler if you have to support that.&lt;/p&gt;
+&lt;h3&gt;Reducer&lt;/h3&gt;
+&lt;p&gt;The reducer updates the store and holds the initial state.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/store/reducer.ts
+
+import { ActionTypes, ADD_SHEET, State } from &#39;../types/index&#39;;
+
+export const initialState: State = {
+  sheets: {},
+  theme: {}
+};
+
+export function reducer(
+  state: State = initialState,
+  action: ActionTypes
+): State {
+  switch (action.type) {
+    case ADD_SHEET:
+      const sheets = { ...state.sheets, ...action.sheet };
+      return { ...state, sheets: sheets };
+    default:
+      return state;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Again, we import types from the barrel, then declare the &lt;strong&gt;initialState&lt;/strong&gt;. State will hold many &lt;strong&gt;sheets&lt;/strong&gt; and one &lt;strong&gt;theme&lt;/strong&gt;. &lt;strong&gt;Sheets&lt;/strong&gt; are the stylesheets we&#39;ll soon create, and they get dispatched to the store with a key, and the sheet. When JSS creates a stylesheet, we can provide it with some options, including a &lt;strong&gt;meta&lt;/strong&gt; property which is a unique identifier string. That string is what we will use as our sheet key in the state &lt;strong&gt;sheets&lt;/strong&gt; object. We can check for the existence of that key and reuse the sheet instead of creating a new one. Further, we will be able to know that if the sheet is in the store, it is in the markup, and we don&#39;t have to attach it again. So if we have ten buttons on our host page, only one button stylesheet will be in the page HEAD.&lt;/p&gt;
+&lt;h3&gt;Initialize&lt;/h3&gt;
+&lt;p&gt;Now we need a way to initialize the store and make it available to the theming engine.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/store/store.ts
+
+import { createStore, Store } from &#39;redux&#39;;
+import { reducer } from &#39;./reducer&#39;;
+
+export const store: Store = createStore(reducer);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We pass the reducer to the store constructor. The reducer is imported from the reducer file because it is in the same folder as our working file. If we import from the barrel in the same folder as the file we&#39;re importing from, we&#39;ll have a circular dependency error in both Rollup and the optional Angular compiler when we create our NPM package.&lt;/p&gt;
+&lt;h3&gt;Export&lt;/h3&gt;
+&lt;p&gt;Export everything.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/store/index.ts
+
+export * from &#39;./store&#39;;
+export * from &#39;./actions&#39;;
+export * from &#39;./reducer&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Defaults&lt;/h2&gt;
+&lt;p&gt;Next, we should set up some defaults. We&#39;ll create a file called defaulTheme, which gives us a default theme, which is an empty object for now (we&#39;ll construct the theme later), and our default JSS options. For the JSS options, the defaults from the node package are all we need, but if at some point you need more options, they can be done here.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/styles/defaultTheme/defaultTheme.ts
+
+import { JssOptions } from &#39;jss&#39;;
+import preset from &#39;jss-preset-default&#39;;
+import { initialState } from &#39;../../store/reducer&#39;;
+import { Theme } from &#39;../../types/types&#39;;
+
+const defaultJssPlugins = preset();
+
+export const defaultJssOptions: JssOptions = {
+  ...defaultJssPlugins
+};
+
+export const defaultTheme: Theme = initialState.theme;
+
+export default defaultTheme;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Notice how the theme is derived from &lt;strong&gt;intialState&lt;/strong&gt;. That&#39;s what makes it the default theme. In later exercises, we&#39;ll add the mechanism to construct a custom theme; however, the default, in many cases the default look of an application or the brand identity, is where design starts.&lt;/p&gt;
+&lt;p&gt;It&#39;s a good time to mention the export scheme. Our theming engine, everything in the styles folder, is a collection of functions, not all of which may be needed in a host application. Each of these functions is its own file, and each file has a default export.&lt;/p&gt;
+&lt;p&gt;Default exports enable path imports, and that enables tree-shaking. Our final bundle will include ES modules and CommonJS modules, plus accommodation for name imports and, optionally, a bundle for Angular Ivy, the AOT compiler used in newer versions of Angular.&lt;/p&gt;
+&lt;p&gt;The Angular part only matters if you have to support Ivy, but everything else, which we will examine when we add Rollup and configure bundling, is designed to support different bundling strategies and tree-shaking, as well as CJS require statements.&lt;/p&gt;
+&lt;h2&gt;The first creator&lt;/h2&gt;
+&lt;p&gt;The theming engine relies on two types of functions: &lt;strong&gt;creators&lt;/strong&gt; and &lt;strong&gt;providers&lt;/strong&gt;. Creators create a thing, and providers provide that thing to the host application. We&#39;ll see our first provider in the next exercise, but our first creator happens now.&lt;/p&gt;
+&lt;p&gt;This is a stylesheet creator. All it does is create a stylesheet. In the next exercise, we&#39;ll add a stylesheet provider which will take the created stylesheet, dispatch it to the store, and attach it to the HEAD of the host view. Before we can do that, however, we need a creator.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/styles/createStylesheet/createStylesheet.ts
+
+import jss, { Styles, StyleSheetFactoryOptions } from &#39;jss&#39;;
+import { StyleSheet } from &#39;../../types/index&#39;;
+import { defaultJssOptions } from &#39;../defaultTheme/index&#39;;
+
+export default function createStylesheet(
+  styles: Styles,
+  options: StyleSheetFactoryOptions = {}
+): StyleSheet {
+  jss.setup(defaultJssOptions);
+  return jss.createStyleSheet(styles, options);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;strong&gt;styles&lt;/strong&gt; property is a JSS styles object or CSS written as JSON. The &lt;strong&gt;options&lt;/strong&gt; property is JSS factory options for creating the stylesheet, which may include a &lt;strong&gt;meta&lt;/strong&gt; property (the stylesheet identifier) and an &lt;strong&gt;index&lt;/strong&gt;, which is the order of the stylesheets attached to the head. A sheet with an index of 1 will come before a sheet with an index of 3 in the host markup. The function then returns a JSS stylesheet object.&lt;/p&gt;
+&lt;p&gt;Now that we can create a stylesheet, it&#39;s a good place to end the coding of this exercise and write some tests. So far, all we&#39;ve done is prepare. In the next part, we&#39;ll start using what we&#39;ve created, but let&#39;s not get ahead of ourselves. We don&#39;t want to use anything untested.&lt;/p&gt;
+&lt;h2&gt;Testing the store&lt;/h2&gt;
+&lt;p&gt;Now that we&#39;ve completed the code for this setup exercise, we&#39;ll write some tests beginning with the store.&lt;/p&gt;
+&lt;h3&gt;Actions&lt;/h3&gt;
+&lt;p&gt;Create a test file and add it to the store folder.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/store/actions.test.ts
+
+import { StyleSheetFactoryOptions } from &#39;jss&#39;;
+import { addSheet } from &#39;./actions&#39;;
+import { ADD_SHEET, StyleSheet } from &#39;../types/index&#39;;
+import createStylesheet from &#39;../styles/createStylesheet/index&#39;;
+
+const options: StyleSheetFactoryOptions = {
+  meta: &#39;Styles&#39;
+};
+const stylesheet: StyleSheet = createStylesheet({}, options);
+
+describe(&#39;Actions&#39;, () =&amp;gt; {
+  it(`should create an ${ADD_SHEET} action`, () =&amp;gt; {
+    const key = options.meta || &#39;&#39;;
+    const sheet = { [key]: stylesheet };
+    const action = addSheet(sheet);
+    expect(action).toEqual({ type: ADD_SHEET, sheet });
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Our setup includes an &lt;strong&gt;options&lt;/strong&gt; object. We&#39;ve discussed JSS factory options, but here we actually see it in use.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;const options: StyleSheetFactoryOptions = {
+  meta: &#39;Styles&#39;
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;These options are passed to the stylesheet creator. We don&#39;t need any styles, just a stylesheet to test our action creator so our styles can be an empty object.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;const stylesheet: StyleSheet = createStylesheet({}, options);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There is only one test because there is only one action creator, so we test that it returns a proper action. When we assign a value to the &lt;strong&gt;key&lt;/strong&gt; constant, Typescript knows that it could be undefined or null, so we account for it conditionally.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;const key = options.meta || &#39;&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then create the sheet, call the action creator, and expect it to be correct.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;const sheet = { [key]: stylesheet };
+const action = addSheet(sheet);
+expect(action).toEqual({ type: ADD_SHEET, sheet });
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Reducer&lt;/h3&gt;
+&lt;p&gt;Create a reducer test file and add it to the store folder.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/store/reducer.test.ts
+
+import { StyleSheet, StyleSheetFactoryOptions } from &#39;jss&#39;;
+import { reducer, initialState } from &#39;./reducer&#39;;
+import { ActionTypes, ADD_SHEET } from &#39;../types/index&#39;;
+import createStylesheet from &#39;../styles/createStylesheet/index&#39;;
+
+describe(&#39;Reducer&#39;, () =&amp;gt; {
+  it(`should add a sheet to state from an ${ADD_SHEET} action`, () =&amp;gt; {
+    const options: StyleSheetFactoryOptions = {
+      meta: &#39;Styles&#39;
+    };
+    const stylesheet: StyleSheet = createStylesheet({}, options);
+    const key = options.meta || &#39;&#39;;
+    const sheet = { [key]: stylesheet };
+    const action: ActionTypes = { type: ADD_SHEET, sheet };
+    const newState = reducer(initialState, action);
+    const sheetInStore = newState.sheets[key];
+    expect(sheetInStore).toEqual(stylesheet);
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There is only one test because there is only one action, but the setup is the same, except we don&#39;t call the action creator.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;const options: StyleSheetFactoryOptions = {
+  meta: &#39;Styles&#39;
+};
+const stylesheet: StyleSheet = createStylesheet({}, options);
+const key = options.meta || &#39;&#39;;
+const sheet = { [key]: stylesheet };
+const action: ActionTypes = { type: ADD_SHEET, sheet };
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we can call the reducer with the &lt;strong&gt;addSheet&lt;/strong&gt; action and expect to see the sheet in the store.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;const newState = reducer(initialState, action);
+const sheetInStore = newState.sheets[key];
+expect(sheetInStore).toEqual(stylesheet);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Store&lt;/h3&gt;
+&lt;p&gt;The only thing the store file does is initialize the store, so we only need to check that it does what it claims.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/store/store.test.ts
+
+import { store } from &#39;./store&#39;;
+
+describe(&#39;Store&#39;, () =&amp;gt; {
+  it(&#39;should create&#39;, () =&amp;gt; {
+    expect(store).toBeTruthy();
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Testing the theming engine&lt;/h2&gt;
+&lt;p&gt;So far, the theming engine only has two things in it, a &lt;strong&gt;defaultTheme&lt;/strong&gt; and a stylesheet creator. Let&#39;s finish this step with two more test files.&lt;/p&gt;
+&lt;h3&gt;defaultTheme&lt;/h3&gt;
+&lt;p&gt;Add a default theme test to the defaultTheme folder.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/styles/defaultTheme/defaultTheme.test.ts
+
+import { defaultJssOptions, defaultTheme } from &#39;./defaultTheme&#39;;
+
+describe(&#39;defaultTheme&#39;, () =&amp;gt; {
+  it(&#39;should return default JSS options&#39;, () =&amp;gt; {
+    expect(defaultJssOptions).toBeTruthy();
+  });
+
+  it(&#39;should return a default theme&#39;, () =&amp;gt; {
+    expect(defaultTheme).toBeTruthy();
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The default theme exports two constants. Our tests should check that they exist.&lt;/p&gt;
+&lt;h3&gt;Stylesheet creator&lt;/h3&gt;
+&lt;p&gt;Add a test for the stylesheet creator.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/styles/createStylesheet/createStylesheet.test.ts
+
+import createStylesheet from &#39;./createStylesheet&#39;;
+
+const styles = {
+  body: {
+    margin: &#39;auto&#39;
+  }
+};
+
+const stylesheet = createStylesheet(styles);
+
+const styleRule = stylesheet.getRule(&#39;body&#39;);
+
+describe(&#39;createStylesheet&#39;, () =&amp;gt; {
+  it(&#39;should create&#39;, () =&amp;gt; {
+    expect(stylesheet).toBeTruthy();
+  });
+
+  it(&#39;should create valid CSS from JSS&#39;, () =&amp;gt; {
+    expect(styleRule.toString()).toMatch(&#39;margin: auto;&#39;);
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This test checks that we have a valid JSS stylesheet object as the return value. We don&#39;t have to test the JSS stylesheet object itself because it is tested by the tests in the JSS NPM package. Assuming we can trust them (if you don&#39;t, you can run them and check the coverage), it is enough for us to check that a rule we add is in the object.&lt;/p&gt;
+&lt;p&gt;The setup is creating a styles object, then creating a stylesheet, then selecting our rule from the created stylesheet. The &lt;strong&gt;getRule&lt;/strong&gt; function is a method of the JSS stylesheet object.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;const styles = {
+  body: {
+    margin: &#39;auto&#39;
+  }
+};
+
+const stylesheet = createStylesheet(styles);
+
+const styleRule = stylesheet.getRule(&#39;body&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We then test that the stylesheet has been created.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;it(&#39;should create&#39;, () =&amp;gt; {
+  expect(stylesheet).toBeTruthy();
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then we test that it is what we expect. Remember, we put JSS in, and we get CSS out, so our &lt;strong&gt;body&lt;/strong&gt; rule should be CSS in the stylesheet object.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;it(&#39;should create valid CSS from JSS&#39;, () =&amp;gt; {
+  expect(styleRule.toString()).toMatch(&#39;margin: auto;&#39;);
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Finish&lt;/h2&gt;
+&lt;p&gt;At this point, we can run the tests. We&#39;ll use &lt;strong&gt;test:dev&lt;/strong&gt; to see the coverage report.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;npm run test:dev
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If we did it right, our code is covered. You should see something like this in your terminal.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://cdn.sanity.io/images/5pnyimif/production/bdeb2ca7fcef23aab88007959e1a50af2a9f5d20-1678x838.png?w=600&quot; alt=&quot;undefined&quot;&gt;&lt;/p&gt;
+&lt;p&gt;That&#39;s it! Confusing as it may be at this point, things will clear up once we start using what we&#39;ve done and adding more functionality. That will happen next time, even if all we&#39;ve done so far is setup. Hopefully, the tests give some idea of what we intend and where we&#39;re going. Next time, we&#39;ll start using what we&#39;ve built by adding a provider, attaching the stylesheet to the host markup, and dispatching it to the store.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Design systems and design operations</title>
     <summary>Design systems are as common as their problems of adoption and support. Is there a way to encourage design systems thinking and adoption through organization and workflow?</summary>
@@ -68,6 +567,7 @@
 &lt;li&gt;Jest&lt;/li&gt;
 &lt;li&gt;Storybook&lt;/li&gt;
 &lt;li&gt;Yalc&lt;/li&gt;
+&lt;li&gt;Rollup&lt;/li&gt;
 &lt;li&gt;Lerna&lt;/li&gt;
 &lt;li&gt;React&lt;/li&gt;
 &lt;li&gt;MUI&lt;/li&gt;
@@ -78,6 +578,7 @@
 &lt;/ul&gt;
 &lt;h2&gt;Disclaimers&lt;/h2&gt;
 &lt;p&gt;As always, this is one way to solve a problem, not the way. There are many ways to accomplish what we&#39;re about to build, and some choices are for convenience. Material design is well known and valuable to us because we&#39;re building the code side of the system, not designing it. The theming engine is core Javascript, but we&#39;ll need React for components and Radix, Stitches, and Mustache to test everything.&lt;/p&gt;
+&lt;p&gt;Ready? &lt;a href=&quot;https://www.tonympdx.com/blog/post/building-a-design-system-1-setup/&quot;&gt;Let&#39;s get started with part 1, setup&lt;/a&gt;.&lt;/p&gt;
 </content>
   </entry>
   <entry>
