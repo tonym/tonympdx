@@ -23,6 +23,7 @@
     .main-nav {
       font-size: 0.875rem;
       padding: 8px 16px;
+      text-decoration: none;
       &::after {
         content: '';
         background: #fefefe;
@@ -35,6 +36,9 @@
         transition: all 0.3s;
         width: 0;
         z-index: -300;
+      }
+      &:hover {
+        text-decoration: none;
       }
       &:hover::after {
         height: 100%;

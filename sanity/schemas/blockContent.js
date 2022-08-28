@@ -47,7 +47,12 @@ export default {
               {
                 title: 'URL',
                 name: 'href',
-                type: 'url'
+                type: 'url',
+                validation: (Rule) =>
+                  Rule.uri({
+                    allowRelative: true,
+                    scheme: ['http', 'https', 'mailto', 'tel']
+                  })
               }
             ]
           }
@@ -70,7 +75,7 @@ export default {
             isHighlighted: true
           }
         }
-     ]
+      ]
     },
     {
       type: 'code'
