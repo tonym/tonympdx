@@ -83,6 +83,10 @@
 <p>Throughout several posts, I'll show you step by step how you can build a universal design system that works with any framework or no framework at all. There are many ways to accomplish this. This is how I do it.</p>
 <h2>What is it?</h2>
 <p>A design system is a styling solution, based on standards and guidelines, that abstracts designs into reusable patterns and isolates style and UX concerns in a tested, distributed artifact. In other words, a design system ensures consistent style and user experience, so designers don't have to start from scratch, nor do engineers. For example, in a web application, the design system decorates the front of the front end with a consistent look and behavior. The look might be the company brand identity or the application's appearance. The behavior is the user experience.</p>
+<p><img src="https://cdn.sanity.io/images/5pnyimif/production/217e11109433c3bf261b0c7a3753650f0cf750e1-800x400.png?w=600" alt="undefined"></p>
+<p>The system diagram shows, at a high level, how the system works. The pattern library, in Figma or a similar tool, is a collection of token sets that describe different themes. The default theme will be our default theme.</p>
+<p>The theming engine is what we are building. It takes tokens from Figma. The tokens represent a theme, and we create a usable theme from them. The theme is used in our styles, which are applied to components in a library.</p>
+<p>Further, the theming engine can accept custom styles from the host application and return them as CSS.</p>
 <h2>Requirements</h2>
 <p>Our design system must support any framework or no framework and include themes. Furthermore, it should be fully tested and distributed in a tree-shakeable way that supports all import patterns.</p>
 <p>Let's break it into parts. The design system will have a theming engine, a component library, tokens, and a bundler. This series will focus on the theming engine and its use with third-party component libraries or headless components.</p>
