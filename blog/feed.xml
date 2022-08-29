@@ -245,6 +245,11 @@ export interface State {
 &lt;p&gt;The &lt;strong&gt;Theme&lt;/strong&gt; interface is a placeholder. We&#39;ll get to themes in a later walkthrough, but for now, an empty object will let us get started.&lt;/p&gt;
 &lt;p&gt;Everything else is for our store. We have one action type, &lt;strong&gt;ADD_SHEET&lt;/strong&gt;, and the action, &lt;strong&gt;AddSheetAction&lt;/strong&gt;. They are exported as &lt;strong&gt;ActionTypes&lt;/strong&gt;. Although not obvious here, &lt;strong&gt;ActionTypes&lt;/strong&gt; is a union type, and as we add actions, we&#39;ll add them to the &lt;strong&gt;ActionTypes&lt;/strong&gt; type.&lt;/p&gt;
 &lt;p&gt;The &lt;strong&gt;State&lt;/strong&gt; interface is our store. Again, the &lt;strong&gt;theme&lt;/strong&gt; type is just a placeholder for now.&lt;/p&gt;
+&lt;p&gt;Finally, add an index to the folder.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/types/index.ts
+
+export * from &#39;./types&#39;;
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h2&gt;Configure the store&lt;/h2&gt;
 &lt;p&gt;Our host application may need many stylesheets. No, that&#39;s wrong. A host application WILL need many stylesheets, and we don&#39;t want to duplicate them. Only one stylesheet for any given component should be in the markup. To manage the sheets and prevent duplicates, we&#39;ll use Redux.&lt;/p&gt;
 &lt;h3&gt;Actions&lt;/h3&gt;
@@ -500,6 +505,29 @@ const styleRule = stylesheet.getRule(&#39;body&#39;);
 &lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;it(&#39;should create valid CSS from JSS&#39;, () =&amp;gt; {
   expect(styleRule.toString()).toMatch(&#39;margin: auto;&#39;);
 });
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Create a public API&lt;/h2&gt;
+&lt;p&gt;So far, as we&#39;ve written our code, we&#39;ve exported from the files and folders we&#39;ve created. Let&#39;s create our public API by adding index files to containing folders and the root. This is already done for the store because there are no subfolders, but we haven&#39;t done so for the styles folder.&lt;/p&gt;
+&lt;p&gt;Add contents of the styles folder to the index.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/styles/index.ts
+
+export { default as createStylesheet } from &#39;./createStylesheet/index&#39;;
+export * from &#39;./createStylesheet/index&#39;;
+
+export { default as defaultTheme } from &#39;./defaultTheme/index&#39;;
+export * from &#39;./defaultTheme/index&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next, create a file called public-api.ts and add it to src.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/public-api.ts
+
+export * from &#39;./store/index&#39;;
+export * from &#39;./styles/index&#39;;
+export * from &#39;./types/index&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Lastly, an index that exports from public-api. The public-api file is for Angular. Angular default is an export from a public-api.ts file, but if you are not supporting Angular, there is no need for public-api.ts, and you can use whatever filename you like. Typically it would be index, which is what we add next.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/index.ts
+
+export * from &#39;./public-api&#39;;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2&gt;Finish&lt;/h2&gt;
 &lt;p&gt;At this point, we can run the tests. We&#39;ll use &lt;strong&gt;test:dev&lt;/strong&gt; to see the coverage report.&lt;/p&gt;

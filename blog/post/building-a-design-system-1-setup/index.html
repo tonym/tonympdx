@@ -308,6 +308,11 @@ export interface State {
 <p>The <strong>Theme</strong> interface is a placeholder. We'll get to themes in a later walkthrough, but for now, an empty object will let us get started.</p>
 <p>Everything else is for our store. We have one action type, <strong>ADD_SHEET</strong>, and the action, <strong>AddSheetAction</strong>. They are exported as <strong>ActionTypes</strong>. Although not obvious here, <strong>ActionTypes</strong> is a union type, and as we add actions, we'll add them to the <strong>ActionTypes</strong> type.</p>
 <p>The <strong>State</strong> interface is our store. Again, the <strong>theme</strong> type is just a placeholder for now.</p>
+<p>Finally, add an index to the folder.</p>
+<pre><code class="language-typescript">// file: /src/types/index.ts
+
+export * from './types';
+</code></pre>
 <h2>Configure the store</h2>
 <p>Our host application may need many stylesheets. No, that's wrong. A host application WILL need many stylesheets, and we don't want to duplicate them. Only one stylesheet for any given component should be in the markup. To manage the sheets and prevent duplicates, we'll use Redux.</p>
 <h3>Actions</h3>
@@ -563,6 +568,29 @@ const styleRule = stylesheet.getRule('body');
 <pre><code class="language-typescript">it('should create valid CSS from JSS', () =&gt; {
   expect(styleRule.toString()).toMatch('margin: auto;');
 });
+</code></pre>
+<h2>Create a public API</h2>
+<p>So far, as we've written our code, we've exported from the files and folders we've created. Let's create our public API by adding index files to containing folders and the root. This is already done for the store because there are no subfolders, but we haven't done so for the styles folder.</p>
+<p>Add contents of the styles folder to the index.</p>
+<pre><code class="language-typescript">// file: /src/styles/index.ts
+
+export { default as createStylesheet } from './createStylesheet/index';
+export * from './createStylesheet/index';
+
+export { default as defaultTheme } from './defaultTheme/index';
+export * from './defaultTheme/index';
+</code></pre>
+<p>Next, create a file called public-api.ts and add it to src.</p>
+<pre><code class="language-typescript">// file: /src/public-api.ts
+
+export * from './store/index';
+export * from './styles/index';
+export * from './types/index';
+</code></pre>
+<p>Lastly, an index that exports from public-api. The public-api file is for Angular. Angular default is an export from a public-api.ts file, but if you are not supporting Angular, there is no need for public-api.ts, and you can use whatever filename you like. Typically it would be index, which is what we add next.</p>
+<pre><code class="language-typescript">// file: /src/index.ts
+
+export * from './public-api';
 </code></pre>
 <h2>Finish</h2>
 <p>At this point, we can run the tests. We'll use <strong>test:dev</strong> to see the coverage report.</p>
