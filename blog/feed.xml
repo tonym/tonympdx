@@ -123,7 +123,6 @@
     &amp;quot;lib&amp;quot;: [&amp;quot;esnext&amp;quot;, &amp;quot;dom&amp;quot;],
     &amp;quot;declaration&amp;quot;: true,
     &amp;quot;sourceMap&amp;quot;: false,
-    &amp;quot;outDir&amp;quot;: &amp;quot;./core&amp;quot;,
     &amp;quot;rootDir&amp;quot;: &amp;quot;./src&amp;quot;,
     &amp;quot;strict&amp;quot;: true,
     &amp;quot;noImplicitAny&amp;quot;: false,
