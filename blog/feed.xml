@@ -458,7 +458,7 @@ describe(&#39;provideStylesheet&#39;, () =&amp;gt; {
 &lt;p&gt;In a terminal, run&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;npm run build
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;You should see Rollup do some stuff, then you should have a &lt;strong&gt;dist&lt;/strong&gt; folder in your project. This is as far as we&#39;ll go with Rollup. Packaging is the subject of a project of its own, and, ultimately, only you can determine what is right for your package. We&#39;ll keep our attention on the theming engine and get enough out of Rollup to test it in a controlled environment.&lt;/p&gt;
+&lt;p&gt;You should see Rollup do some stuff, then you should have a &lt;strong&gt;dist&lt;/strong&gt; folder in your project. This is as far as we&#39;ll go with Rollup for now. Packaging is the subject of a project of its own, and we&#39;ll return to it much later. We&#39;ll keep our attention on the theming engine and get enough out of Rollup to test it in a controlled environment.&lt;/p&gt;
 &lt;h2&gt;Finish&lt;/h2&gt;
 &lt;p&gt;In this exercise, we focused almost entirely on the stylesheet provider. Spending time considering the functionality and how we&#39;ll use it, as well as the design decisions, helps us understand what we&#39;ll be building next.&lt;/p&gt;
 &lt;p&gt;We learned about classes and how we can use them to access our class names. In a coming exercise, we&#39;ll build a classes provider and interpolate class names into markup.&lt;/p&gt;
