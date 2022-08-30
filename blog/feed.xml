@@ -131,7 +131,7 @@ export default [
 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This is a configuration only for this exercise. When it comes to Rollup, feel free to adjust to your needs, and include the modules that you need.&lt;/p&gt;
-&lt;p&gt;If we plan on distributing an NPM package, we need a &lt;strong&gt;package.json&lt;/strong&gt; file. The &lt;strong&gt;baseContents&lt;/strong&gt; function tells the &lt;strong&gt;generatePackageJson&lt;/strong&gt; plugin what should be in the &lt;strong&gt;package.json&lt;/strong&gt; file that gets distributed in our package. It&#39;s a function by convention and named according to the plugin. The plugin requires an argument that looks like this:&lt;/p&gt;
+&lt;p&gt;If we plan on distributing an NPM package, we need a &lt;strong&gt;package.json&lt;/strong&gt; file in the distributed package. The &lt;strong&gt;baseContents&lt;/strong&gt; function tells the &lt;strong&gt;generatePackageJson&lt;/strong&gt; plugin what should be in the &lt;strong&gt;package.json&lt;/strong&gt; file that gets distributed in our package. It&#39;s a function by convention and named according to the plugin. The plugin requires an argument that looks like this:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;{ baseContents: (pkg) =&amp;gt; { ... } }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The function allows the plugin to use values from our project &lt;strong&gt;package.json&lt;/strong&gt;. In addition, there is a &lt;strong&gt;main&lt;/strong&gt; property, which is the entry point for CommonJS modules.&lt;/p&gt;

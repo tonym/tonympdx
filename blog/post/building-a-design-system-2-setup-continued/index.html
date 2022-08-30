@@ -194,7 +194,7 @@ export default [
 
 </code></pre>
 <p>This is a configuration only for this exercise. When it comes to Rollup, feel free to adjust to your needs, and include the modules that you need.</p>
-<p>If we plan on distributing an NPM package, we need a <strong>package.json</strong> file. The <strong>baseContents</strong> function tells the <strong>generatePackageJson</strong> plugin what should be in the <strong>package.json</strong> file that gets distributed in our package. It's a function by convention and named according to the plugin. The plugin requires an argument that looks like this:</p>
+<p>If we plan on distributing an NPM package, we need a <strong>package.json</strong> file in the distributed package. The <strong>baseContents</strong> function tells the <strong>generatePackageJson</strong> plugin what should be in the <strong>package.json</strong> file that gets distributed in our package. It's a function by convention and named according to the plugin. The plugin requires an argument that looks like this:</p>
 <pre><code class="language-typescript">{ baseContents: (pkg) =&gt; { ... } }
 </code></pre>
 <p>The function allows the plugin to use values from our project <strong>package.json</strong>. In addition, there is a <strong>main</strong> property, which is the entry point for CommonJS modules.</p>
