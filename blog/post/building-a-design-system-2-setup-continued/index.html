@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
+    />
+    <title>Tony M | Portfolio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/assets/images/favicon.png" />
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      title="Tony M blog feed"
+      href="/blog/feed.xml"
+    />
+    <link href="/assets/main.css?0999a2e287feea71155f" rel="stylesheet"><script src="/assets/0999a2e287feea71155f.js?0999a2e287feea71155f" defer="defer"></script>
+    <script src="/assets/scripts/prism.js"></script>
+  </head>
+  <body class="line-numbers">
+    <svg id="fader"></svg>
+    <div class="nav-container">
+  <nav class="navigation">
+    <div class="brand">
+      <a href="/" class="main-nav">
+        <span class="fa fa-home"></span>
+      </a>
+    </div>
+    <div class="links">
+      <a href="/about" class="main-nav">About me</a>
+<a href="/projects" class="main-nav">My work</a>
+<a href="/work-with-me" class="main-nav">Services</a>
+<a href="/assets/static/tm.resume.2022.pdf" class="main-nav">My resume</a>
+<a href="/blog/posts/1" class="main-nav">Blog</a>
+
+    </div>
+    <div class="links-menu">
+      <label for="menu-control" class="menu-control"></label>
+    </div>
+  </nav>
+</div>
+<input type="checkbox" class="menu-control-checkbox" id="menu-control"/>
+<div class="links-panel show-out" id="links-panel">
+  <a href="/about" class="main-nav">About me</a>
+<a href="/projects" class="main-nav">My work</a>
+<a href="/work-with-me" class="main-nav">Services</a>
+<a href="/assets/static/tm.resume.2022.pdf" class="main-nav">My resume</a>
+<a href="/blog/posts/1" class="main-nav">Blog</a>
+
+</div>
+
+    <div class="content">
+      <h1 class="text-center">Building a design system  2 - setup continued</h1>
+<div class="project-detail">
+  <p>
+    <img class="banner main-image" src="https://cdn.sanity.io/images/5pnyimif/production/51269b7672244baeecad89fbc596dac84bfb8252-800x400.png" alt="Building a design system  2 - setup continued image">
+  </p>
+  <div class="dateline">
+    <img src="https://cdn.sanity.io/images/5pnyimif/production/f9e5c3fc87fa0a3d927f162da02bc95ea8a26cf6-640x640.jpg" alt="author Tony M avatar">
+    <div>
+      <p class="author">Tony M</p>
+      <p class="date body2">
+        <time class="postlist-date" datetime="2022-08-29T20:41:45.723Z">
+          29 Aug 2022
+        </time>
+        -
+        10 min read
+      </p>
+    </div>
+  </div>
+  <p>In the <a href="/blog/post/building-a-design-system-1-setup/">first part of the series</a>, we set up a repository, configured our tooling, and started coding. In this exercise, there are a few more details to cover before we get to creating theme features in the theming engine.</p>
+<p>The code for this post is available at:</p>
+<ul>
+<li><a href="https://github.com/tonym/whirlwind/tree/lesson-2">https://github.com/tonym/whirlwind/tree/lesson-2</a></li>
+</ul>
+<h2>Goals</h2>
+<ul>
+<li>Begin adding helpers</li>
+<li>Add types for styles</li>
+<li>Add a stylesheet provider</li>
+<li>Write tests for new additions</li>
+<li>Add Rollup and configure bundling</li>
+</ul>
+<h2>Difficulty level</h2>
+<p>Advanced. This is an advanced tutorial and assumes that you are a moderately experienced frontend developer. Beginning developers may find this challenging.</p>
+<h2>Overview</h2>
+<p>In the first part of this series, we set up a repository and started adding code. We installed the first few dependencies, created some Typescript types, configured a test framework and a Redux store, then added a stylesheet creator. All of the initial housekeeping and tooling are done, although it's not yet useful.</p>
+<p>Our goal in this exercise is to add a stylesheet provider, a function that will attach a stylesheet to a host application's markup and package it so we can try it out. Before beginning, let's examine a little more about how the system works.</p>
+<p>We're working towards the goal of accepting a JSS object, transpiling it to CSS, and attaching it to some HTML.</p>
+<p><img src="https://cdn.sanity.io/images/5pnyimif/production/2bed962bae18793f57a84dcdd74385189b33eee4-800x400.png?w=600" alt="undefined"></p>
+<p>The diagram shows how JSS comes from the host application, and CSS is returned to it. This is our immediate goal, and after we accomplish that, we can think about the themes that will provide values to the JSS, and then have the JSS come from components in our component library. With each exercise, we'll add more to our block diagram until we have all the features.</p>
+<p>We already have the stylesheet creator from exercise 1, so let's proceed to add the stylesheet provider and package what we've built.</p>
+<h2>Dependencies</h2>
+<p>It should surprise nobody that we have more dependencies awaiting us. Let's start there.</p>
+<h3>Rollup</h3>
+<p>Rollup is our packaging tool. We need it and then some adjacent packages.</p>
+<p>Install using NPM or Yarn:</p>
+<pre><code class="language-sh">npm install --save-dev rollup rollup-plugin-generate-package-json rollup-plugin-terser
+</code></pre>
+<p>or</p>
+<pre><code class="language-sh">yarn add --dev rollup rollup-plugin-generate-package-json rollup-plugin-terser
+</code></pre>
+<p>Now add a few more plugins.</p>
+<p>Install using NPM or Yarn:</p>
+<pre><code class="language-sh">npm install --save-dev @rollup/plugin-commonjs @rollup/plugin-node-resolve @rollup/plugin-typescript
+</code></pre>
+<p>or</p>
+<pre><code class="language-sh">yarn add --dev @rollup/plugin-commonjs @rollup/plugin-node-resolve @rollup/plugin-typescript
+</code></pre>
+<h3>rimraf</h3>
+<p>The rimraf package is a tool that provides the equivalent of <code>rm -rf</code> for Node. We use this in our NPM build script to clean up where needed.</p>
+<p>Install using NPM or Yarn:</p>
+<pre><code class="language-sh">npm install --save-dev rimraf
+</code></pre>
+<p>or</p>
+<pre><code class="language-sh">yarn add --dev rimraf
+</code></pre>
+<h3>tslib</h3>
+<p>Rollup relies on tslib to compile Typescript.</p>
+<p>Install using NPM or Yarn:</p>
+<pre><code class="language-sh">npm install --save-dev tslib
+</code></pre>
+<p>or</p>
+<pre><code class="language-sh">yarn add --dev tslib
+</code></pre>
+<h2>Configure Rollup</h2>
+<p>Add <strong>rollup.config.js</strong> to the project root, and configure it for ES modules and CommonJS modules.</p>
+<pre><code class="language-typescript">// file: /rollup.config.js
+
+import commonjs from '@rollup/plugin-commonjs';
+import generatePackageJson from 'rollup-plugin-generate-package-json';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import { terser } from 'rollup-plugin-terser';
+import typescript from '@rollup/plugin-typescript';
+
+const baseContents = pkg =&gt; ({
+  author: pkg.author,
+  bugs: pkg.bugs,
+  dependencies: {},
+  description: pkg.description,
+  homepage: pkg.homepage,
+  license: pkg.license,
+  main: './node/whirlwind.js',
+  name: pkg.name,
+  repository: pkg.repository,
+  sideEffects: false,
+  version: pkg.version
+});
+
+const external = ['jss', 'jss-preset-default', 'redux'];
+
+const input = 'src/public-api.ts';
+
+export default [
+  {
+    external,
+    input,
+    output: {
+      dir: 'dist',
+      format: 'es'
+    },
+    plugins: [typescript(), nodeResolve(), commonjs(), generatePackageJson({ baseContents })]
+  },
+  {
+    external,
+    input,
+    output: {
+      file: 'dist/node/whirlwind.js',
+      format: 'cjs',
+      name: 'whirlwind',
+      plugins: [
+        terser({
+          compress: {
+            drop_console: true
+          },
+          output: { quote_style: 1 }
+        })
+      ]
+    },
+    plugins: [typescript(), nodeResolve(), commonjs()]
+  }
+];
+
+</code></pre>
+<p>This is a configuration only for this exercise. When it comes to Rollup, feel free to adjust to your needs, and include the modules that you need.</p>
+<p>If we plan on distributing an NPM package, we need a <strong>package.json</strong> file. The <strong>baseContents</strong> function tells the <strong>generatePackageJson</strong> plugin what should be in the <strong>package.json</strong> file that gets distributed in our package. It's a function by convention and named according to the plugin. The plugin requires an argument that looks like this:</p>
+<pre><code class="language-typescript">{ baseContents: (pkg) =&gt; { ... } }
+</code></pre>
+<p>The function allows the plugin to use values from our project <strong>package.json</strong>. In addition, there is a <strong>main</strong> property, which is the entry point for CommonJS modules.</p>
+<p>The default export has two configuration objects, one for ES modules and the other for CommonJS modules.</p>
+<h2>Add types</h2>
+<p>The last time we created types, we created them for the store and stylesheet. This time we need types for styles. Add this to your <strong>types.ts</strong> file:</p>
+<pre><code class="language-typescript">// snippet from file: /src/types/types.ts
+
+import * as CSS from 'csstype';
+
+type JSSNormalCssProperties = CSS.Properties&lt;number | string&gt;;
+type JSSFontface = CSS.AtRule.FontFace &amp; { fallbacks?: CSS.AtRule.FontFace[] };
+
+export interface BaseCSSProperties extends JSSNormalCssProperties {
+  '@font-face'?: JSSFontface | JSSFontface[];
+}
+
+export interface CSSProperties extends BaseCSSProperties {
+  [key: string]: unknown | CSSProperties;
+}
+
+export type Styles = StylesJSS | CSSProperties;
+</code></pre>
+<p>First are types for CSS properties and <strong>@font-face</strong>, then a base interface, then the important one, the <strong>CSSProperties</strong> interface.</p>
+<p>Since we're working with both JSS and CSS, the Styles type is a union of both.</p>
+<p>With a bit of refactoring, the types file now looks like this:</p>
+<pre><code class="language-typescript">// file: /src/types/types.ts
+
+import * as CSS from 'csstype';
+import { Styles as StylesJSS, StyleSheet as StyleSheetJSS } from 'jss';
+
+type JSSNormalCssProperties = CSS.Properties&lt;number | string&gt;;
+type JSSFontface = CSS.AtRule.FontFace &amp; { fallbacks?: CSS.AtRule.FontFace[] };
+
+export interface BaseCSSProperties extends JSSNormalCssProperties {
+  '@font-face'?: JSSFontface | JSSFontface[];
+}
+
+export interface CSSProperties extends BaseCSSProperties {
+  [key: string]: unknown | CSSProperties;
+}
+
+export type Styles = StylesJSS | CSSProperties;
+
+export type StyleSheet = StyleSheetJSS;
+
+export interface Theme {}
+
+export const ADD_SHEET = 'ADD_SHEET';
+
+export type Sheet&lt;K extends keyof any, StyleSheet&gt; = { [P in K]: StyleSheet };
+
+interface AddSheetAction {
+  type: typeof ADD_SHEET;
+  sheet: Sheet&lt;string, StyleSheet&gt;;
+}
+
+export type ActionTypes = AddSheetAction;
+
+export interface State {
+  sheets: Sheet&lt;string, StyleSheet&gt;;
+  theme: Theme;
+}
+</code></pre>
+<h2>Helpers</h2>
+<p>Over the course of this project, we'll be collecting helper functions. There are string helpers, color helpers, utilities, and nice-to-have things that help us stay DRY.</p>
+<p>The first of these is a string helper that converts camelCase to kebab-case. Since we dynamically create class names, this helper makes sure we use consistent cases in the output by making camelCase words lowercase and inserting a dash.</p>
+<pre><code class="language-typescript">// file: /src/helpers/fromCamelToDash/fromCamelToDash.ts
+
+export default function fromCamelToDash(value: string): string {
+  function converter(g) {
+    return '-' + g[0].toLowerCase();
+  }
+  return value.replace(/([A-Z])/g, converter);
+}
+</code></pre>
+<h2>Stylesheet provider</h2>
+<p>The stylesheet provider takes a JSS object as input, passes it to the stylesheet creator, which returns a JSS stylesheet object, then the provider attaches the CSS stylesheet to the markup of the calling application.</p>
+<p>Add this file to the styles folder:</p>
+<pre><code class="language-typescript">// file: /src/styles/provideStylesheet/provideStylesheet.ts
+
+import { Styles, StyleSheet, StyleSheetFactoryOptions } from 'jss';
+import createStylesheet from '../createStylesheet/index';
+import { addSheet, store } from '../../store/index';
+import fromCamelToDash from '../../helpers/fromCamelToDash/index';
+
+const styleSheetFactoryOptions: StyleSheetFactoryOptions = {
+  index: 5,
+  meta: 'Styles'
+};
+
+export default function provideStylesheet(styles: Styles, options: StyleSheetFactoryOptions = {}): StyleSheet {
+  options.generateId = options.meta ? (rule, sheet) =&gt; `${options.meta}-${fromCamelToDash(rule.key)}` : undefined;
+  options = { ...styleSheetFactoryOptions, ...options };
+  const key = options.meta === styleSheetFactoryOptions.meta ? JSON.stringify(styles) : options.meta;
+  const sheet = key ? store.getState().sheets[key] : key;
+  const stylesheet: StyleSheet = sheet ? sheet : createStylesheet(styles, options).attach();
+  if (key) {
+    store.dispatch(addSheet({ [key]: stylesheet }));
+  }
+  return stylesheet;
+}
+</code></pre>
+<p>So what's going on here? Settle in. We're going deep on theory.</p>
+<p>If you look at the imports you'll notice we import the Styles and StyleSheet types from JSS. Remember we extended these in our types? We can't use them here because we are passing arguments to a JSS function, not one of ours, so we use the types the called function uses.</p>
+<p>Next, we set up the default stylesheet factory options. The index is the order in which stylesheets are attached to the markup. Stylesheets are attached in ascending order, index 1, then 2, then 3, etc. Our index scheme looks like this:</p>
+<ul>
+<li>1 - Baseline or reset CSS</li>
+<li>2 - Component library components that do not use other component library components.</li>
+<li>3 - Component library components that are made with other component library components.</li>
+<li>4 - Not used.</li>
+<li>5 - Default.</li>
+</ul>
+<p>All of our internal components will override the defaults. Custom stylesheets requested by a host application might not, so we default to the value that puts stylesheets at the end of the cascade. Leaving 4 unused gives the host application developer some flexibility should they choose to order the custom stylesheets in the cascade.</p>
+<p>The function itself takes two arguments, a JSS styles object and, optionally, stylesheet factory options.</p>
+<p>The first thing the function does is create a custom class name prefix, but only if stylesheet factory options have provided a meta property.</p>
+<pre><code class="language-typescript">options.generateId = options.meta ? (rule, sheet) =&gt; `${options.meta}-${fromCamelToDash(rule.key)}` : undefined;
+</code></pre>
+<p>One of the stylesheet factory options not exposed in our types is generateId. If we provide a function as the value of generateId, it will use that function to generate a class name instead of the internal function.</p>
+<p>The internal function uses a counter. By default, numbers are appended to rule names incrementally by stylesheet. This is how encapsulation works.</p>
+<p>Consider a JSS object that looks like this:</p>
+<pre><code class="language-json">{
+  root: {
+    display: 'inline-block',
+    paddingTop: 12
+  },
+  dark: {
+    backgroundColor: '#333',
+    color: '#fff',
+    '&amp; .hover:hover': {
+      backgroundColor: '#4f4f4f'
+    },
+    '&amp; .selected': {
+      backgroundColor: '#4f4f4f'
+    }
+  },
+  fullWidth: {
+    display: 'block',
+    width: '100%'
+  },
+  light: {
+    backgroundColor: 'transparent',
+    color: '#333'
+  }
+}
+</code></pre>
+<p>It will transpile, using the internal ID generator, to CSS that looks like this:</p>
+<pre><code class="language-css">.root-0-1-11 {
+  display: inline-block;
+  padding-top: 12px;
+}
+.dark-0-1-12 {
+  color: #fff;
+  background-color: #333;
+}
+.dark-0-1-12 .hover:hover {
+  background-color: #4f4f4f;
+}
+.dark-0-1-12 .selected {
+  background-color: #4f4f4f;
+}
+.fullWidth-0-1-13 {
+  width: 100%;
+  display: block;
+}
+.light-0-1-14 {
+  color: #333;
+  background-color: transparent;
+}
+</code></pre>
+<p>We use the default generator with the default meta.</p>
+<p>What happens if we have meta in the stylesheet factory options argument? The ternary in the above assignment checks for it, and if it is there, assigns a generateId function.</p>
+<pre><code class="language-typescript">(rule, sheet) =&gt; `${options.meta}-${fromCamelToDash(rule.key)}
+</code></pre>
+<p>This replaces the internal generator, which, when called, gets two arguments. We don't have to use them in our function, but the properties must be there.</p>
+<p>See how the fromCamelToDash helper is used to force kebab case? The transpiler will replace spaces with dashes, but we want it all dashes, and since JSS key values are almost surely camelCase, we convert it to kebab.</p>
+<p>Suppose we do provide a meta value in the stylesheet factory options argument.</p>
+<pre><code class="language-json">{
+  meta: 'eh-menu'
+}
+</code></pre>
+<p>Our generator function is used, and the resulting CSS looks like this:</p>
+<pre><code class="language-css">.eh-menu-root {
+  display: inline-block;
+  padding-top: 12px;
+}
+.eh-menu-dark {
+  color: #fff;
+  background-color: #333;
+}
+.eh-menu-dark .hover:hover {
+  background-color: #4f4f4f;
+}
+.eh-menu-dark .selected {
+  background-color: #4f4f4f;
+}
+.eh-menu-full-width {
+  width: 100%;
+  display: block;
+}
+.eh-menu-light {
+  color: #333;
+  background-color: transparent;
+}
+</code></pre>
+<p>All of our components will have CSS that looks like that because we provide a meta value in the stylesheet factory options.</p>
+<p>This is favorable because should use the same class names for styling. This makes them extendable and overrideable via CSS or SCSS in addition to JSS.</p>
+<p>This is unfavorable for custom stylesheets because we want them encapsulated. Unless they, too, provide a meta value.</p>
+<p>Moving along with our stylesheet provider, we next spread the stylesheet factory argument over the default stylesheet factory options.</p>
+<pre><code class="language-typescript">options = { ...styleSheetFactoryOptions, ...options };
+</code></pre>
+<p>Why do this? There should always be a meta value for troubleshooting. It will label the stylesheet in the markup. The default meta will look like this (for brevity, the CSS is omitted):</p>
+<pre><code class="language-html">&lt;style data-jss=&quot;&quot; data-meta=&quot;Styles&quot;&gt;
+  ...
+&lt;/style&gt;
+</code></pre>
+<p>The custom meta we used earlier will look like this:</p>
+<pre><code class="language-html">&lt;style data-jss=&quot;&quot; data-meta=&quot;eh-menu&quot;&gt;
+  ...
+&lt;/style&gt;
+</code></pre>
+<h3>Taking a break</h3>
+<p>Let's take a break for a moment. Before we see how the stylesheet provider uses the store to make sure only one stylesheet of a kind is attached to the HTML, let's think about those classes we created.</p>
+<p>How do we work with them? In an upcoming exercise, we'll use them in a component, but how? Do we need to know the class names, and how do we know if they have unpredictable numbers appended to their names?</p>
+<p>The answer is that we don't work with them directly. We make sure internal components have consistent and predictable names as a courtesy to the developer, who may need to target them via CSS, but with JSS, they aren't used directly.</p>
+<p>Instead, the JSS stylesheet object has two things in it. The stylesheet that gets attached to the host markup and a <strong>classes</strong> object. The <strong>classes</strong> object uses our JSS keys as keys and the generated class names as values.</p>
+<p>If we want to use them, which we will when we build the classes provider in a future exercise, we destructure them from the JSS stylesheet object and have something like this, shown using our eh-menu meta from before.</p>
+<pre><code class="language-json">{
+  root: 'eh-menu-root',
+  dark: 'eh-menu-dark',
+  fullWidth: 'eh-menu-full-width',
+  light: 'eh-menu-light'
+}
+</code></pre>
+<p>Hopefully, that provides some context for why we're manipulating the class names and some understanding of where we're heading with our development. For now we're not concerned with classes, just the sheet, so let's get back to work.</p>
+<h3>Back to work</h3>
+<p>Let's sort out a key for state.</p>
+<pre><code class="language-typescript">const key = options.meta === styleSheetFactoryOptions.meta ? JSON.stringify(styles) : options.meta;
+</code></pre>
+<p>The last thing we did before taking a break was spread the options argument over the default stylesheet factory options. If no meta was provided in the argument, the meta will be the default. Since the default never changes, it is not a unique key in the way that eh-menu would be. That means the styles with the default key might not be the same as another styles with the default key. In the case of a custom key, it is. So, to get a unique key, stringify the styles.</p>
+<p>If we do have a custom meta, use it.</p>
+<p>Now select the sheet from the store. If it's in the store, we'll get a stylesheet object, if not, it will be undefined.</p>
+<pre><code class="language-typescript">const sheet = key ? store.getState().sheets[key] : key;
+</code></pre>
+<p>If we just select from the store, Typescript knows it could possibly be undefined and will throw an error. The ternary makes TS happy.</p>
+<p>The constant, <strong>sheet</strong>, will be either a stylesheet object, or undefined.</p>
+<pre><code class="language-typescript">const stylesheet: StyleSheet = sheet ? sheet : createStylesheet(styles, options).attach();
+</code></pre>
+<p>If it's a stylesheet object, there is no need to call the stylesheet creator. If it is undefined, then we call the creator, and attach it to the markup. The stylesheet object has an <strong>attach</strong> method, which you see called after the creator returns a stylesheet object.</p>
+<p>Remember, if there is a sheet in the store, then that sheet is attached to the markup. We only call <strong>attach</strong> on a new stylesheet object.</p>
+<p>Then we dispatch it to the store in a type safe way.</p>
+<pre><code class="language-typescript">if (key) {
+  store.dispatch(addSheet({ [key]: stylesheet }));
+}
+</code></pre>
+<p>After which, we return the stylesheet object.</p>
+<p>Don't forget to add it to the barrel.</p>
+<pre><code class="language-typescript">// file: /src/styles/provideStylesheet/index.ts
+
+export { default } from './provideStylesheet';
+export * from './provideStylesheet';
+</code></pre>
+<p>Followed by adding the exports to the parent folder index.</p>
+<pre><code class="language-typescript">// snippet from file: /src/styles/index.ts
+
+export { default as provideStylesheet } from './provideStylesheet/index';
+export * from './provideStylesheet/index';
+</code></pre>
+<h2>Tests</h2>
+<p>Now we can write some tests. First, a test for the helper we added.</p>
+<pre><code class="language-typescript">// file: /src/helpers/fromCamelToDash.test.ts
+
+import fromCamelToDash from './fromCamelToDash';
+
+describe('fromCamelToDash', () =&gt; {
+  it('should covert camel case to dash case', () =&gt; {
+    const initialString = 'callMeIshmael';
+    const expectedString = 'call-me-ishmael';
+    const returnedString = fromCamelToDash(initialString);
+    expect(returnedString).toBe(expectedString);
+  });
+});
+</code></pre>
+<p>Then a test for the stylesheet provider.</p>
+<pre><code class="language-typescript">// file: /src/styles/provideStylesheet/provideStylesheet.test.ts
+
+import { Styles, StyleSheet, StyleSheetFactoryOptions } from 'jss';
+import provideStylesheet from './provideStylesheet';
+import createStyles from '../createStyles/index';
+
+const styles: Styles = createStyles({
+  root: {
+    display: 'block'
+  }
+});
+
+const options: StyleSheetFactoryOptions = {
+  meta: 'test-sheet'
+};
+
+describe('provideStylesheet', () =&gt; {
+  it('should return a stylesheet', () =&gt; {
+    const styleSheet: StyleSheet = provideStylesheet(styles);
+    expect(styleSheet).toBeTruthy();
+  });
+
+  it('should return a stylesheet with custom options', () =&gt; {
+    const styleSheet: StyleSheet = provideStylesheet(styles, options);
+    expect(styleSheet).toBeTruthy();
+  });
+
+  it('should attach the stylesheet', () =&gt; {
+    provideStylesheet(styles, options);
+    const styleSheet = document.querySelector(`style[data-meta=${options.meta}]`);
+    expect(styleSheet).toBeTruthy();
+  });
+});
+</code></pre>
+<h2>Build</h2>
+<p>Now we can test Rollup.</p>
+<p>Add a build script to your <strong>package.json</strong>.</p>
+<pre><code class="language-json">&quot;build&quot;: &quot;rimraf dist &amp;&amp; rollup -c &amp;&amp; tsc&quot;
+</code></pre>
+<p>In a terminal, run</p>
+<pre><code class="language-sh">npm run build
+</code></pre>
+<p>You should see Rollup do some stuff, then you should have a <strong>dist</strong> folder in your project. This is as far as we'll go with Rollup. Packaging is the subject of a project of its own, and, ultimately, only you can determine what is right for your package. We'll keep our attention on the theming engine and get enough out of Rollup to test it in a controlled environment.</p>
+<h2>Finish</h2>
+<p>In this exercise, we focused almost entirely on the stylesheet provider. Spending time considering the functionality and how we'll use it, as well as the design decisions, helps us understand what we'll be building next.</p>
+<p>We learned about classes and how we can use them to access our class names. In a coming exercise, we'll build a classes provider and interpolate class names into markup.</p>
+<p>Next time, however, it's time to think about themes.</p>
+
+</div>
+
+
+    </div>
+    <footer>
+  <div class="name-plate hidden-mobile">
+    <h3 class="tag">Tony M</h3>
+  </div>
+  <div class="name-description">
+    <p class="tag hidden-mobile">Portland, Oregon</p>
+    <h3 class="contact-links tag">
+      <a href="https://github.com/tonym" rel="noopener noreferrer" target="_blank">
+        <span class="fab fa-github"></span>
+      </a>
+    </h3>
+    <h3 class="contact-links tag">
+      <a href="https://www.linkedin.com/in/tonympdx/" rel="noopener noreferrer" target="_blank">
+        <span class="fab fa-linkedin"></span>
+      </a>
+    </h3>
+    <h3 class="contact-links tag">
+      <a href="mailto:tony@fbpllc.com" rel="noopener noreferrer" target="_blank">
+        <span class="fas fa-envelope"></span>
+      </a>
+    </h3>
+    <h3 class="tag hidden-mobile">Portfolio</h3>
+  </div>
+</footer>
+
+  </body>
+</html>
