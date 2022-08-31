@@ -299,7 +299,7 @@ export default function provideStylesheet(styles: Styles, options: StyleSheetFac
 }
 </code></pre>
 <p>So what's going on here? Settle in. We're going deep on theory.</p>
-<p>If you look at the imports you'll notice we import the Styles and StyleSheet types from JSS. Remember we extended these in our types? We can't use them here because we are passing arguments to a JSS function, not one of ours, so we use the types the called function uses.</p>
+<p>If you look at the imports, you'll notice we import the Styles and StyleSheet types from JSS. Remember we extended these in our types? We can't use them here because we are passing arguments to a JSS function, not one of ours, so we use the types the called function uses.</p>
 <p>Next, we set up the default stylesheet factory options. The index is the order in which stylesheets are attached to the markup. Stylesheets are attached in ascending order, index 1, then 2, then 3, etc. Our index scheme looks like this:</p>
 <ul>
 <li>1 - Baseline or reset CSS</li>
@@ -401,8 +401,8 @@ export default function provideStylesheet(styles: Styles, options: StyleSheetFac
 }
 </code></pre>
 <p>All of our components will have CSS that looks like that because we provide a meta value in the stylesheet factory options.</p>
-<p>This is favorable because should use the same class names for styling. This makes them extendable and overrideable via CSS or SCSS in addition to JSS.</p>
-<p>This is unfavorable for custom stylesheets because we want them encapsulated. Unless they, too, provide a meta value.</p>
+<p>This is favorable because all components should use the same class names for styling. This makes them extendable and overrideable via CSS or SCSS in addition to JSS. It also makes sure only one stylesheet is needed for all of the same components in a view. In other words, you might have ten buttons on a page but only one button stylesheet for all of them.</p>
+<p>On the other hand, this is unfavorable for custom stylesheets because we want them encapsulated. Unless they, too, provide a meta value.</p>
 <p>Moving along with our stylesheet provider, we next spread the stylesheet factory argument over the default stylesheet factory options.</p>
 <pre><code class="language-typescript">options = { ...styleSheetFactoryOptions, ...options };
 </code></pre>

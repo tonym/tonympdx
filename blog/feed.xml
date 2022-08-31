@@ -236,7 +236,7 @@ export default function provideStylesheet(styles: Styles, options: StyleSheetFac
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;So what&#39;s going on here? Settle in. We&#39;re going deep on theory.&lt;/p&gt;
-&lt;p&gt;If you look at the imports you&#39;ll notice we import the Styles and StyleSheet types from JSS. Remember we extended these in our types? We can&#39;t use them here because we are passing arguments to a JSS function, not one of ours, so we use the types the called function uses.&lt;/p&gt;
+&lt;p&gt;If you look at the imports, you&#39;ll notice we import the Styles and StyleSheet types from JSS. Remember we extended these in our types? We can&#39;t use them here because we are passing arguments to a JSS function, not one of ours, so we use the types the called function uses.&lt;/p&gt;
 &lt;p&gt;Next, we set up the default stylesheet factory options. The index is the order in which stylesheets are attached to the markup. Stylesheets are attached in ascending order, index 1, then 2, then 3, etc. Our index scheme looks like this:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;1 - Baseline or reset CSS&lt;/li&gt;
@@ -338,8 +338,8 @@ export default function provideStylesheet(styles: Styles, options: StyleSheetFac
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;All of our components will have CSS that looks like that because we provide a meta value in the stylesheet factory options.&lt;/p&gt;
-&lt;p&gt;This is favorable because should use the same class names for styling. This makes them extendable and overrideable via CSS or SCSS in addition to JSS.&lt;/p&gt;
-&lt;p&gt;This is unfavorable for custom stylesheets because we want them encapsulated. Unless they, too, provide a meta value.&lt;/p&gt;
+&lt;p&gt;This is favorable because all components should use the same class names for styling. This makes them extendable and overrideable via CSS or SCSS in addition to JSS. It also makes sure only one stylesheet is needed for all of the same components in a view. In other words, you might have ten buttons on a page but only one button stylesheet for all of them.&lt;/p&gt;
+&lt;p&gt;On the other hand, this is unfavorable for custom stylesheets because we want them encapsulated. Unless they, too, provide a meta value.&lt;/p&gt;
 &lt;p&gt;Moving along with our stylesheet provider, we next spread the stylesheet factory argument over the default stylesheet factory options.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;options = { ...styleSheetFactoryOptions, ...options };
 &lt;/code&gt;&lt;/pre&gt;
