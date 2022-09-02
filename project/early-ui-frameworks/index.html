@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
+    />
+    <title>Tony M | Portfolio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/assets/images/favicon.png" />
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      title="Tony M blog feed"
+      href="/blog/feed.xml"
+    />
+    <link href="/assets/main.css?0999a2e287feea71155f" rel="stylesheet"><script src="/assets/0999a2e287feea71155f.js?0999a2e287feea71155f" defer="defer"></script>
+    <script src="/assets/scripts/prism.js"></script>
+  </head>
+  <body class="line-numbers">
+    <svg id="fader"></svg>
+    <div class="nav-container">
+  <nav class="navigation">
+    <div class="brand">
+      <a href="/" class="main-nav">
+        <span class="fa fa-home"></span>
+      </a>
+    </div>
+    <div class="links">
+      <a href="/about" class="main-nav">About me</a>
+<a href="/projects" class="main-nav">My work</a>
+<a href="/work-with-me" class="main-nav">Services</a>
+<a href="/blog/posts/1" class="main-nav">Blog</a>
+
+    </div>
+    <div class="links-menu">
+      <label for="menu-control" class="menu-control"></label>
+    </div>
+  </nav>
+</div>
+<input type="checkbox" class="menu-control-checkbox" id="menu-control"/>
+<div class="links-panel show-out" id="links-panel">
+  <a href="/about" class="main-nav">About me</a>
+<a href="/projects" class="main-nav">My work</a>
+<a href="/work-with-me" class="main-nav">Services</a>
+<a href="/blog/posts/1" class="main-nav">Blog</a>
+
+</div>
+
+    <div class="content">
+      <h1 class="text-center">Early UI frameworks</h1>
+<div class="project-detail">
+  <p>
+    <img class="main-image" src="https://cdn.sanity.io/images/5pnyimif/production/1a558af2fe2729cb560b96f1acb049c978b60093-508x337.jpg" alt="Early UI frameworks image">
+  </p>
+  <p>In 2012 I built a client-side framework for an administrative standards compliance application. Web-based applications were becoming ever more complex and encountering problems at scale when using traditional development patterns. Template-driven PHP could become a maintenance problem, the UX was difficult to change, and style and state management were less than ideal.</p>
+<p>The current architecture of the app consisted of a RESful API that returned HTML. Request a summary page, and you get the markup for a summary page. Changing it required changing the API. The style needed knowing what the HTML was before you got it, then writing endless CSS, or Less, or whatever. To improve, several things first happened.</p>
+<p>The API was refactored to return JSON data. No more HTML in an HTTP response. With that, we could now consider state management, global and consistent style, and improved UX. Client-side frameworks were becoming a viable pattern, but they weren't there yet. AngularJS existed, but it wasn't suitable for the project. The specific needs and desire for simplicity led to choosing Backbone and underscore (in the form of lodash) as the basis for the UI.</p>
+<p>React hadn't been invented yet, so we had to figure it out ourselves. Backbone is a great platform, but it isn't a usable framework by itself. It was, however, a tool for building frameworks. While Marionette did exist, it posed the same problems as AngularJS, i.e., 2-way data flow, heavy-handed data binding, dependency injection, and an event system that could quickly get out of hand.</p>
+<p>The goal became a better way of handling data flow and a callback pattern similar to jQuery instead of event listeners. This is personal preference. At the time, I favored callbacks, promises were not a thing, and events required an event broker to keep them understandable and maintainable.</p>
+<p>The entire framework came together surprisingly quickly and worked well at scale. An unintended benefit was testing. Separating markup and data on the back end simplified testing on the front end. However, it was proprietary code, and when React came along, it looked so much like what was happening with the Backbone-based system that I deprecated it and turned to React.</p>
+
+</div>
+
+
+    </div>
+    <footer>
+  <div class="name-plate hidden-mobile">
+    <h3 class="tag">Tony M</h3>
+  </div>
+  <div class="name-description">
+    <p class="tag hidden-mobile">Portland, Oregon</p>
+    <h3 class="contact-links tag">
+      <a href="https://github.com/tonym" rel="noopener noreferrer" target="_blank">
+        <span class="fab fa-github"></span>
+      </a>
+    </h3>
+    <h3 class="contact-links tag">
+      <a href="https://www.linkedin.com/in/tonympdx/" rel="noopener noreferrer" target="_blank">
+        <span class="fab fa-linkedin"></span>
+      </a>
+    </h3>
+    <h3 class="contact-links tag">
+      <a href="mailto:tony@fbpllc.com" rel="noopener noreferrer" target="_blank">
+        <span class="fas fa-envelope"></span>
+      </a>
+    </h3>
+    <h3 class="tag hidden-mobile">Portfolio</h3>
+  </div>
+</footer>
+
+  </body>
+</html>
