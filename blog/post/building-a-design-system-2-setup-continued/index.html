@@ -73,7 +73,7 @@
           29 Aug 2022
         </time>
         -
-        10 min read
+        11 min read
       </p>
     </div>
   </div>
@@ -461,6 +461,28 @@ export * from './provideStylesheet';
 export { default as provideStylesheet } from './provideStylesheet/index';
 export * from './provideStylesheet/index';
 </code></pre>
+<h2>Styles creator</h2>
+<p>One last detail before writing tests. We need a function to return our JSS object. The styles creator does nothing but return what we provide it. Since we can't and won't make assumptions about the TS config in a host application, returning the JSS object from a function will prevent Typescript type widening.</p>
+<pre><code class="language-typescript">// file: /src/styles/createStyles/createStyles.ts
+
+import { Styles } from 'jss';
+
+export default function createStyles(styles: Styles): Styles {
+  return styles;
+}
+</code></pre>
+<p>Export it from an index.</p>
+<pre><code class="language-typescript">// file: /src/styles/createStyles/index.ts
+
+export { default } from './createStyles';
+export * from './createStyles';
+</code></pre>
+<p>Add it to the parent folder index.</p>
+<pre><code class="language-typescript">// snippet from file: /src/styles/index.ts
+
+export { default as createStyles } from './createStyles/index';
+export * from './createStyles/index';
+</code></pre>
 <h2>Tests</h2>
 <p>Now we can write some tests. First, a test for the helper we added.</p>
 <pre><code class="language-typescript">// file: /src/helpers/fromCamelToDash.test.ts
@@ -473,6 +495,19 @@ describe('fromCamelToDash', () =&gt; {
     const expectedString = 'call-me-ishmael';
     const returnedString = fromCamelToDash(initialString);
     expect(returnedString).toBe(expectedString);
+  });
+});
+</code></pre>
+<p>Now a test for the styles creator.</p>
+<pre><code class="language-typescript">// file: /src/styles/createStyles/createStyles.test.ts
+
+import { Styles } from '../../types/index';
+import createStyles from './createStyles';
+
+describe('createStyles', () =&gt; {
+  it('should return what it was provided', () =&gt; {
+    const styles: Styles = createStyles({ body: { margin: 'auto' } });
+    expect(styles).toEqual({ body: { margin: 'auto' } });
   });
 });
 </code></pre>

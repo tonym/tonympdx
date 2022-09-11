@@ -423,6 +423,28 @@ export * from &#39;./provideStylesheet&#39;;
 export { default as provideStylesheet } from &#39;./provideStylesheet/index&#39;;
 export * from &#39;./provideStylesheet/index&#39;;
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Styles creator&lt;/h2&gt;
+&lt;p&gt;One last detail before writing tests. We need a function to return our JSS object. The styles creator does nothing but return what we provide it. Since we can&#39;t and won&#39;t make assumptions about the TS config in a host application, returning the JSS object from a function will prevent Typescript type widening.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/styles/createStyles/createStyles.ts
+
+import { Styles } from &#39;jss&#39;;
+
+export default function createStyles(styles: Styles): Styles {
+  return styles;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Export it from an index.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/styles/createStyles/index.ts
+
+export { default } from &#39;./createStyles&#39;;
+export * from &#39;./createStyles&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Add it to the parent folder index.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// snippet from file: /src/styles/index.ts
+
+export { default as createStyles } from &#39;./createStyles/index&#39;;
+export * from &#39;./createStyles/index&#39;;
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h2&gt;Tests&lt;/h2&gt;
 &lt;p&gt;Now we can write some tests. First, a test for the helper we added.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/helpers/fromCamelToDash.test.ts
@@ -435,6 +457,19 @@ describe(&#39;fromCamelToDash&#39;, () =&amp;gt; {
     const expectedString = &#39;call-me-ishmael&#39;;
     const returnedString = fromCamelToDash(initialString);
     expect(returnedString).toBe(expectedString);
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now a test for the styles creator.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/styles/createStyles/createStyles.test.ts
+
+import { Styles } from &#39;../../types/index&#39;;
+import createStyles from &#39;./createStyles&#39;;
+
+describe(&#39;createStyles&#39;, () =&amp;gt; {
+  it(&#39;should return what it was provided&#39;, () =&amp;gt; {
+    const styles: Styles = createStyles({ body: { margin: &#39;auto&#39; } });
+    expect(styles).toEqual({ body: { margin: &#39;auto&#39; } });
   });
 });
 &lt;/code&gt;&lt;/pre&gt;
