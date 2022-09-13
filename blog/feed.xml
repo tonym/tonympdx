@@ -4,12 +4,576 @@
   <subtitle>I write about literature and art, cocktails and culture, and design and development</subtitle>
   <link href="https://www.tonympdx.com/blog/feed.xml" rel="self"/>
   <link href="https://www.tonympdx.com/blog"/>
-  <updated>2022-09-04T01:03:43.333Z</updated>
+  <updated>2022-09-11T18:09:28.222Z</updated>
   <id>https://www.tonympdx.com/blog</id>
   <author>
     <name>Tony M</name>
     <email>tony@fbpllc.com</email>
   </author>
+  <entry>
+    <title>Building a design system 3 - Themes</title>
+    <summary>What are themes, and how do we create them? In this exercise, we examine themes and build a creator and provider.</summary>
+    <link href="https://www.tonympdx.com/blog/post/building-a-design-system-3-themes"/>
+    <updated>2022-09-11T18:09:28.222Z</updated>
+    <id>https://www.tonympdx.com/blog/post/building-a-design-system-3-themes</id>
+    <content xml:lang="en" type="html">&lt;p&gt;So far, we&#39;ve focused on creating styles from JSS, and the &lt;a href=&quot;https://www.tonympdx.com/blog/post/building-a-design-system-2-setup-continued/&quot;&gt;last exercise&lt;/a&gt; finished the project setup. In this exercise, we approach themes.&lt;/p&gt;
+&lt;p&gt;The code for this project is available at:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/tonym/whirlwind/tree/lesson-3&quot;&gt;https://github.com/tonym/whirlwind/tree/lesson-3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Goals&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Understand themes&lt;/li&gt;
+&lt;li&gt;Add a theme creator and a theme provider&lt;/li&gt;
+&lt;li&gt;Update the store actions and reducer&lt;/li&gt;
+&lt;li&gt;Add theme types&lt;/li&gt;
+&lt;li&gt;Update tests&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Difficulty level&lt;/h2&gt;
+&lt;p&gt;Advanced. This is an advanced tutorial and assumes that you are a moderately experienced frontend developer. Beginning developers may find this challenging.&lt;/p&gt;
+&lt;h2&gt;Overview&lt;/h2&gt;
+&lt;p&gt;Until now, the project has focused on stylesheets, how to create them and manage them, as well as setup, creating a repository, and adding dependencies. In this exercise, themes enter the picture.&lt;/p&gt;
+&lt;h3&gt;What is a theme?&lt;/h3&gt;
+&lt;p&gt;Developers know that hard-coding string values is a bad idea. Instead, we assign the value to a constant and use that wherever it&#39;s needed. Imagine, for example, a marketing site with the company phone number prominently displayed throughout. Instead of writing the phone number in every place that it&#39;s needed, I assign it to a variable, then use it in my markup. In React JSX, it might look something like this simple example.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;function PhoneContact(props) {
+  return &amp;lt;p&amp;gt;Call us at {props.phone}&amp;lt;/p&amp;gt;;
+}
+
+const phoneNumber = &#39;(123) 456-7890&#39;;
+
+const element = &amp;lt;PhoneContact phone={{phoneNumber}} /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Taken a step further, I can put all of the constants in a file and import them where needed.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;// file: constants.js
+
+export const phoneNumber = &#39;(123) 456-7890&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;// file components/PhoneContact.jsx
+
+function PhoneContact(props) {
+  return &amp;lt;p&amp;gt;Call us at {props.phone}&amp;lt;/p&amp;gt;;
+}
+
+export default PhoneContact;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;// file: myContactPage
+
+import PhoneContact from &#39;./components/PhoneContact&#39;;
+import { phoneNumber } from &#39;./constants&#39;;
+
+const element = &amp;lt;PhoneContact phone={{phoneNumber}} /&amp;gt;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is not new, we&#39;ve been doing this forever. We all learn, at some point, the pain of dealing with hard-coded values and reach for any number of patterns for shared string values.&lt;/p&gt;
+&lt;p&gt;In this project, we&#39;ve already done this with action names in our types file.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// snippet from file: /src/types/types/ts
+
+export const ADD_SHEET = &#39;ADD_SHEET&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We could put those constants in a constants.ts file, or a helper, or wherever you like. Sometimes we might assign them to object properties, and sometimes they might be numbers.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;// file: constants.js
+
+const constants = {
+  address: &#39;123 main st&#39;,
+  city: &#39;Anywhere&#39;,
+  company: &#39;Widgets Inc.&#39;,
+  phoneNumber: &#39;(123) 456-7890&#39;,
+  zip: 12345
+}
+
+export default constants;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then use them in our element.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;// file: myContactPage
+
+import PhoneContact from &#39;./components/PhoneContact&#39;;
+import constants from &#39;./constants&#39;;
+
+const element = &amp;lt;PhoneContact phone={{constants.phoneNumber}} /&amp;gt;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So what does this have to do with themes? We&#39;ve not discovered anything new, and we understand how constants can be used for strings, so we don&#39;t have to hard-code them anywhere. However, those strings don&#39;t always have to be presentational.&lt;/p&gt;
+&lt;p&gt;If we look at any CSS, there are strings galore. Strings for color, strings for media queries, drop shadows, position, display, and there are even numbers. Font weight, line height, and Z index all use numbers.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-css&quot;&gt;.cta {
+  background: #d4d4d4;
+  color: #f2f2f2;
+  font-weight: 7;
+  z-index: 100;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Since we&#39;re using JSS, it would look like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;const styles = {
+  cta: {
+    background: &#39;#d4d4d4&#39;,
+    color: &#39;#f2f2f2&#39;,
+    fontWeight: 7,
+    zIndex: 100
+  }
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;See the strings and numbers? Instead of hard-coding them, we can put them in constants. When we put those style values in constants, they are called tokens. A theme, then, is a collection of tokens. Therefore, the theme is the set of constants that hold reusable style values.&lt;/p&gt;
+&lt;p&gt;The tokens are in the theme, the styles are everywhere we need them.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;// file: theme.js
+
+const theme = {
+  fontWeight: 7,
+  fgColor: &#39;#f2f2f2&#39;,
+  bgColor: &#39;#d4d4d4&#39;,
+  zIndex: 100
+};
+
+export default theme;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;// file: styles.js
+
+import theme from &#39;./theme&#39;;
+
+const styles = {
+  cta: {
+    background: theme.bgColor,
+    color: theme.fgColor,
+    fontWeight: theme.fontWeight,
+    zIndex: theme.zIndex
+  }
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Typically, the theme is a more general representation of style values. We might group our colors by their role in the design instead of their role in the JSS.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;// file theme.js
+
+const theme = {
+  colors: {
+    background: {
+      primary: &#39;#f2f2f2&#39;,
+      secondary: &#39;#4d4d4d&#39;
+    }
+    primary: &#39;#ff0000&#39;,
+    secondary: &#39;#0000ff&#39;,
+    text: {
+      dark: &#39;#4d4d4d&#39;,
+      light: &#39;#f2f2f2&#39;
+    }
+  },
+  fontWeights: {
+    bold: 7,
+    light: 3,
+    regular: 5
+  },
+  zIndex: 100
+};
+
+export default theme;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;// file: styles.js
+
+import theme from &#39;./theme&#39;;
+
+const styles = {
+  cta: {
+    background: theme.colors.background.secondary,
+    color: theme.colors.text.light,
+    fontWeight: theme.fontWeights.bold,
+    zIndex: theme.zIndex
+  }
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The styles will transpile to the CSS we want.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-css&quot;&gt;.cta {
+  background: #d4d4d4;
+  color: #f2f2f2;
+  font-weight: 7;
+  z-index: 100;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In this exercise, we introduce themes to our project.&lt;/p&gt;
+&lt;h2&gt;Dependencies&lt;/h2&gt;
+&lt;p&gt;Javascript lacks the functionality to easily deep merge two or more objects. We could write a helper, or use a library. Deep merge is complicated, so a library it is. For this exercise, we&#39;re using deepmerge, however, use whatever library or function you like.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;npm install deepmerge
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Add types&lt;/h2&gt;
+&lt;p&gt;The typing strategy for themes is to keep them fairly narrow and fairly generic. Color, for example, is an interface for all colors, and the palette is an interface with colors in it. We&#39;ll keep it simple for now and include some things we&#39;ll use to style a button in a future exercise. This includes color and shape.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// snippet from file: /src/styles/types/types.ts
+
+export interface PaletteColor {
+  alternate: string;
+  color: string;
+  hover: string;
+}
+
+export interface Palette {
+  primary: PaletteColor;
+  secondary: PaletteColor;
+}
+
+export interface PaletteOptions {
+  primary?: Partial&amp;lt;PaletteColor&amp;gt;;
+  secondary?: Partial&amp;lt;PaletteColor&amp;gt;;
+}
+
+export interface Shape {
+  borderRadius: string | number;
+}
+
+export interface Theme {
+  palette: Palette;
+  shape: Shape;
+}
+
+export interface ThemeOptions {
+  palette?: PaletteOptions;
+  shape?: Shape;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Notice the interfaces PaletteOptions and ThemeOptions. These are the interfaces a developer can use to override theme values, which is why they are partials. A developer might do this, for example, if the designer has a special holiday theme they want to use for a certain time or if you have a customer that wants to use their brand identity on a private label implementation of the host application.&lt;/p&gt;
+&lt;p&gt;Next, add some types for a new Redux action to keep the theme in state.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// snipped from file: /src/styles/types/types.ts
+
+export const SET_THEME = &#39;SET_THEME&#39;;
+
+interface SetThemeAction {
+  type: typeof SET_THEME;
+  theme: Theme;
+}
+
+export type ActionTypes = AddSheetAction | SetThemeAction;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Update the store&lt;/h2&gt;
+&lt;p&gt;Our project supports one theme at a time, and we track that theme in the Redux store. Even though we only support one theme, multi-theme support might be used by the host application. React context, for example, may conditionally provide themes for light or dark mode. There might also be a context for private label themes, personal themes, or any use case that requires more than one theme. Knowing what theme is the desired theme is why we keep the current theme in the store. We&#39;ll also need an initial, default theme, so the host application doesn&#39;t have to provide a theme at all.&lt;/p&gt;
+&lt;h3&gt;Action&lt;/h3&gt;
+&lt;p&gt;Create an action to add a theme to the store by adding the action creator to our actions file, which should now look like this.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/store/actions.ts
+
+import { ActionTypes, ADD_SHEET, SET_THEME, Sheet, StyleSheet, Theme } from &#39;../types/index&#39;;
+
+export function addSheet(sheet: Sheet&amp;lt;string, StyleSheet&amp;gt;): ActionTypes {
+  return { type: ADD_SHEET, sheet };
+}
+
+export function setTheme(theme: Theme): ActionTypes {
+  return { type: SET_THEME, theme };
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Reducer&lt;/h3&gt;
+&lt;p&gt;Update the reducer with a new case in the reducer function, and add a theme to the initial state. The theme in the initial state is the default theme.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/store/reducer.ts
+
+import { ActionTypes, ADD_SHEET, SET_THEME, State } from &#39;../types/index&#39;;
+
+export const initialState: State = {
+  sheets: {},
+  theme: {
+    palette: {
+      primary: {
+        alternate: &#39;#397B91&#39;,
+        color: &#39;#1b3b46&#39;,
+        hover: &#39;#1C2852&#39;
+      },
+      secondary: {
+        alternate: &#39;#F7E3CD&#39;,
+        color: &#39;#AB9D8E&#39;,
+        hover: &#39;#B98F62&#39;
+      }
+    },
+    shape: {
+      borderRadius: &#39;16px&#39;
+    }
+  }
+};
+
+export function reducer(state: State = initialState, action: ActionTypes): State {
+  switch (action.type) {
+    case ADD_SHEET:
+      const sheets = { ...state.sheets, ...action.sheet };
+      return { ...state, sheets: sheets };
+    case SET_THEME:
+      return { ...state, theme: action.theme };
+    default:
+      return state;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Theme creator&lt;/h2&gt;
+&lt;p&gt;The theme creator has one job: take a developer-provided theme, themeOptions, if any, and use it to update the internal default theme.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/styles/createTheme/createTheme.ts
+
+import defaultTheme from &#39;../defaultTheme/index&#39;;
+import { Theme, ThemeOptions } from &#39;../../types/index&#39;;
+
+const deepmerge = require(&#39;deepmerge&#39;);
+
+export default function createTheme(userTheme: ThemeOptions = {}): Theme {
+  const palette = deepmerge(defaultTheme.palette, userTheme.palette);
+  const shape = userTheme.shape ? { ...userTheme.shape } : { ...defaultTheme.shape };
+
+  return { palette, shape };
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Looking closely, you&#39;ll see two constants, palette, and shape, in the createTheme function. While we could deepmerge the themeOptions directly into the default theme, it&#39;s advantageous to create each root property on its own. In time, the theme will grow, there will be much more in it than palette and shape, and each of those root properties will have a creator of its own. We&#39;re working in that direction because each of those creators will connect design tokens from an application, such as Figma, to our theme.&lt;/p&gt;
+&lt;p&gt;The default theme comes from the defaultTheme function we built in &lt;a href=&quot;https://www.tonympdx.com/blog/post/building-a-design-system-1-setup/&quot;&gt;exercise 1&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Remember to add an index...&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/styles/createTheme/index.ts
+
+export { default } from &#39;./createTheme&#39;;
+export * from &#39;./createTheme&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;...and add it to the barrel.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// snippet from file: /src/styles/index.ts
+
+export { default as createTheme } from &#39;./createTheme/index&#39;;
+export * from &#39;./createTheme/index&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Theme provider&lt;/h2&gt;
+&lt;p&gt;The provider is a function the host application developer will call when a theme other than the default is required. The default theme is already in state, so there is no need to call a provider for what already exists. However, there are many cases where a custom theme is useful.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/styles/provideTheme/provideTheme.ts
+
+import createTheme from &#39;../createTheme/index&#39;;
+import { Theme, ThemeOptions } from &#39;../../types/index&#39;;
+import { store, setTheme } from &#39;../../store/index&#39;;
+
+const deepmerge = require(&#39;deepmerge&#39;);
+
+export default function provideTheme(themeOptions: ThemeOptions | ThemeOptions[] = {}) {
+  const composedThemeOptions: ThemeOptions = Array.isArray(themeOptions) ? deepmerge.all(themeOptions) : themeOptions;
+  const theme: Theme = createTheme(composedThemeOptions);
+  store.dispatch(setTheme(theme));
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Taking a closer look, we first import the theme creator, then some types, then the stuff we need from the store, the correct action, and the store object so we can dispatch the action.&lt;/p&gt;
+&lt;p&gt;The function has one prop, themeOptions, and can accept an argument of a single themeOptions object, or an array of themeOptions objects. If an array is provided, they are used in array order.&lt;/p&gt;
+&lt;p&gt;The constant, composedThemeOptions is either the themeOptions argument, or the themeOptions array argument deepmerged into a single object.&lt;/p&gt;
+&lt;p&gt;The composedThemeOptions is passed to the theme creator, and the result is dispatched to the store.&lt;/p&gt;
+&lt;p&gt;Once again, we add an index...&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/styles/provideTheme/index.ts
+
+export { default } from &#39;./provideTheme&#39;;
+export * from &#39;./provideTheme&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;...and add it to the barrel.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// snippet from file: /src/styles/index.ts
+
+export { default as provideTheme } from &#39;./provideTheme/index&#39;;
+export * from &#39;./provideTheme/index&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Using the theme&lt;/h2&gt;
+&lt;p&gt;Finally, we need a way to access the theme, so let&#39;s create a function to return the theme from the store.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/styles/useTheme/useTheme.ts
+
+import { Theme } from &#39;../../types/index&#39;;
+import { store } from &#39;../../store/index&#39;;
+
+export default function useTheme(): Theme {
+  return store.getState().theme;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There&#39;s not much happening here except returning the theme from state.&lt;/p&gt;
+&lt;p&gt;Once again, add an index...&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/styles/useTheme/index.ts
+
+export { default } from &#39;./useTheme&#39;;
+export * from &#39;./useTheme&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;...and add it to the barrel.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// snippet from file: /src/styles/index.ts
+
+export { default as useTheme } from &#39;./useTheme/index&#39;;
+export * from &#39;./useTheme/index&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Testing&lt;/h2&gt;
+&lt;p&gt;Before we march into the next exercise and begin creating and using themes, let&#39;s test what we did so far.&lt;/p&gt;
+&lt;h3&gt;The store&lt;/h3&gt;
+&lt;p&gt;Add a test for the action we created.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// snippet from file: /src/store/actions.test.ts
+
+it(`should create a ${SET_THEME} action`, () =&amp;gt; {
+  const action = setTheme(theme);
+  expect(action).toEqual({ type: SET_THEME, theme: theme });
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The full actions test should now look like this.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/store/actions.test.ts
+
+import { StyleSheetFactoryOptions } from &#39;jss&#39;;
+import { addSheet, setTheme } from &#39;./actions&#39;;
+import { initialState } from &#39;./reducer&#39;;
+import { ADD_SHEET, SET_THEME, StyleSheet } from &#39;../types/index&#39;;
+import createStylesheet from &#39;../styles/createStylesheet/index&#39;;
+
+const { theme } = initialState;
+const options: StyleSheetFactoryOptions = {
+  meta: &#39;Styles&#39;
+};
+const stylesheet: StyleSheet = createStylesheet({}, options);
+
+describe(&#39;Actions&#39;, () =&amp;gt; {
+  it(`should create an ${ADD_SHEET} action`, () =&amp;gt; {
+    const key = options.meta || &#39;&#39;;
+    const sheet = { [key]: stylesheet };
+    const action = addSheet(sheet);
+    expect(action).toEqual({ type: ADD_SHEET, sheet });
+  });
+
+  it(`should create a ${SET_THEME} action`, () =&amp;gt; {
+    const action = setTheme(theme);
+    expect(action).toEqual({ type: SET_THEME, theme: theme });
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next, add a test for changes to the reducer.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// snippet from file: /src/store/reducer.test.ts
+
+it(`it should add a theme to state from a ${SET_THEME} action`, () =&amp;gt; {
+  const { theme } = initialState;
+  theme.palette = { ...theme.palette };
+  const action: ActionTypes = {
+    type: SET_THEME,
+    theme: theme
+  };
+  const newState = reducer(initialState, action);
+  expect(newState).toEqual({ ...initialState, theme: theme });
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The reducer test should now look like this.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/store/reducer.test.ts
+
+import { StyleSheet, StyleSheetFactoryOptions } from &#39;jss&#39;;
+import { reducer, initialState } from &#39;./reducer&#39;;
+import { ActionTypes, ADD_SHEET, SET_THEME } from &#39;../types/index&#39;;
+import createStylesheet from &#39;../styles/createStylesheet/index&#39;;
+
+describe(&#39;Reducer&#39;, () =&amp;gt; {
+  it(`should add a sheet to state from an ${ADD_SHEET} action`, () =&amp;gt; {
+    const options: StyleSheetFactoryOptions = {
+      meta: &#39;Styles&#39;
+    };
+    const stylesheet: StyleSheet = createStylesheet({}, options);
+    const key = options.meta || &#39;&#39;;
+    const sheet = { [key]: stylesheet };
+    const action: ActionTypes = { type: ADD_SHEET, sheet };
+    const newState = reducer(initialState, action);
+    const sheetInStore = newState.sheets[key];
+    expect(sheetInStore).toEqual(stylesheet);
+  });
+
+  it(`it should add a theme to state from a ${SET_THEME} action`, () =&amp;gt; {
+    const { theme } = initialState;
+    theme.palette = { ...theme.palette };
+    const action: ActionTypes = {
+      type: SET_THEME,
+      theme: theme
+    };
+    const newState = reducer(initialState, action);
+    expect(newState).toEqual({ ...initialState, theme: theme });
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Theme creator&lt;/h3&gt;
+&lt;p&gt;Add a test for the theme creator. Notice how there is a test for each root property.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/styles/createTheme/createTheme.test.ts
+
+import createTheme from &#39;./createTheme&#39;;
+import { ThemeOptions } from &#39;../../types/index&#39;;
+
+describe(&#39;createTheme&#39;, () =&amp;gt; {
+  it(&#39;should return the default theme if no options provided&#39;, () =&amp;gt; {
+    const theme = createTheme();
+    const expectedTheme = createTheme({});
+    expect(theme).toEqual(expectedTheme);
+  });
+
+  it(&#39;should return a theme with updated palette&#39;, () =&amp;gt; {
+    const themeOptions: ThemeOptions = {
+      palette: {
+        primary: {
+          color: &#39;#9b9b9b&#39;
+        }
+      }
+    };
+    const theme = createTheme(themeOptions);
+    const localTheme = createTheme();
+    localTheme.palette.primary.color = &#39;#9b9b9b&#39;;
+    expect(theme).toEqual(localTheme);
+  });
+
+  it(&#39;should return a theme with an updated shape&#39;, () =&amp;gt; {
+    const themeOptions: ThemeOptions = {
+      shape: {
+        borderRadius: 6
+      }
+    };
+    const theme = createTheme(themeOptions);
+    expect(theme.shape).toEqual(themeOptions.shape);
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Theme provider&lt;/h3&gt;
+&lt;p&gt;Add a test for the theme provider.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/styles/provideTheme/provideTheme.test.ts
+
+import provideTheme from &#39;./provideTheme&#39;;
+import useTheme from &#39;../useTheme/index&#39;;
+import { ThemeOptions } from &#39;../../types/index&#39;;
+import createTheme from &#39;../createTheme/index&#39;;
+
+describe(&#39;provideTheme&#39;, () =&amp;gt; {
+  it(&#39;should provide a theme&#39;, () =&amp;gt; {
+    provideTheme();
+    const providedTheme = useTheme();
+    const expectedTheme = createTheme();
+    expect(providedTheme).toEqual(expectedTheme);
+  });
+
+  it(&#39;should provide a theme from theme options&#39;, () =&amp;gt; {
+    const themeOptions: ThemeOptions = {
+      shape: {
+        borderRadius: 6
+      }
+    };
+    provideTheme(themeOptions);
+    const providedTheme = useTheme();
+    const expectedTheme = createTheme(themeOptions);
+    expect(providedTheme).toEqual(expectedTheme);
+  });
+
+  it(&#39;should provide a theme from an array of theme options&#39;, () =&amp;gt; {
+    const themeOptions: ThemeOptions[] = [];
+    themeOptions.push({
+      shape: {
+        borderRadius: 12
+      }
+    });
+    themeOptions.push({
+      shape: {
+        borderRadius: 6
+      }
+    });
+    const mergedThemeOptions: ThemeOptions = {
+      shape: {
+        borderRadius: 6
+      }
+    };
+    provideTheme(themeOptions);
+    const providedTheme = useTheme();
+    const expectedTheme = createTheme(mergedThemeOptions);
+    expect(providedTheme).toEqual(expectedTheme);
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In this test, we test both a single themeOptions object and an array. In case you are wondering about the numbers for borderRadius, JSS, when using the default preset, will convert numbers to pixel strings. We use numbers, but the number 6 becomes &amp;quot;6px&amp;quot; when transpiled.&lt;/p&gt;
+&lt;h3&gt;useTheme&lt;/h3&gt;
+&lt;p&gt;Finally, a test for the useTheme function.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;// file: /src/styles/useTheme/useTheme.test.ts
+
+import useTheme from &#39;./useTheme&#39;;
+import { initialState } from &#39;../../store/index&#39;;
+
+describe(&#39;useTheme&#39;, () =&amp;gt; {
+  it(&#39;should return a theme&#39;, () =&amp;gt; {
+    const theme = useTheme();
+    expect(theme).toEqual(initialState.theme);
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Finish&lt;/h2&gt;
+&lt;p&gt;We&#39;re making progress in building out the theming engine of our design system project. In the first few exercises, we built functionality to deal with JSS and stylesheets. In this exercise, we set up themes. In the next exercise, we&#39;ll start putting it all together by adding one more piece, a classes provider which lets us access the CSS classes once they&#39;ve been themed and transpiled, after which we can begin using what we&#39;ve created in a host application.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Neurodiversity in the workplace</title>
     <summary>People with mental conditions and illnesses are being accepted in the modern workplace. But are they? Really? And what does it mean for the future? Read some personal reflections on working in tech as a person with mental illness.</summary>
@@ -521,6 +1085,7 @@ describe(&#39;provideStylesheet&#39;, () =&amp;gt; {
 &lt;p&gt;In this exercise, we focused almost entirely on the stylesheet provider. Spending time considering the functionality and how we&#39;ll use it, as well as the design decisions, helps us understand what we&#39;ll be building next.&lt;/p&gt;
 &lt;p&gt;We learned about classes and how we can use them to access our class names. In a coming exercise, we&#39;ll build a classes provider and interpolate class names into markup.&lt;/p&gt;
 &lt;p&gt;Next time, however, it&#39;s time to think about themes.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.tonympdx.com/blog/post/building-a-design-system-3-themes/&quot;&gt;Continue with part 3.&lt;/a&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry>
