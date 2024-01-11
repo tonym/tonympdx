@@ -9,17 +9,29 @@ permalink: blog/posts/{{ pagination.pageNumber + 1 }}/index.html
 
 <h1 class="text-center">Blog</h1>
 <div class="posts">
-{% for post in posts %}
-  <a class="post" href="{{post.url}}">
-    <img class="main-image" src="{{post.mainImage.asset.url}}" alt="{{post.title}} image">
+  {% for post in posts %}
+  <a class="post" href="{{ post.url }}">
+    <img
+      class="main-image"
+      src="{{ post.mainImage.asset.url }}"
+      alt="{{ post.title }} image"
+    />
     <div class="summary">
       <div class="title">
         <h3>
-          {{post.title}}
+          {{ post.title }}
         </h3>
       </div>
+      <div class="chips">
+        {% for category in post.categories %} {% if category.slug ===
+        'technology'%}
+        <div class="chip blue">{{ category.title }}</div>
+        {%endif%} {% if category.slug === 'editorial'%}
+        <div class="chip red">{{ category.title }}</div>
+        {%endif%} {% endfor %}
+      </div>
       <div class="byline body2">
-        By {{post.authorName}} on
+        By {{ post.authorName }} on
         <time class="postlist-date" datetime="{{ post.publishedAt }}">
           {{ post.publishedAt | readableDate }}
         </time>
@@ -27,10 +39,10 @@ permalink: blog/posts/{{ pagination.pageNumber + 1 }}/index.html
         {{ post.body | readingTime }} read
       </div>
       <div class="summary-container">
-        {{post.summary | markdownify | safe }}
+        {{ post.summary | markdownify | safe }}
       </div>
     </div>
   </a>
-{% endfor %}
+  {% endfor %}
 </div>
 {% include 'pagination.njk' %}
