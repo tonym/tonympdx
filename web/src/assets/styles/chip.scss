@@ -10,7 +10,15 @@
   &.blue {
     background-color: #233678;
   }
+  &.default {
+    background-color: #c0c7c9;
+    color: #04212d;
+  }
   &.red {
     background-color: #782F41;
   }
+}
+
+.chips {
+  padding: 16px 16px 0 16px;
 }

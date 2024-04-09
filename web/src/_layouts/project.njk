@@ -5,7 +5,7 @@ templateClass: tmpl-project
 <h1 class="text-center">{{ project.title }}</h1>
 <div class="project-detail">
   <p>
-    <img src="{{project.mainImage.asset.url}}" alt="{{project.title}} image">
+    <img class="main-image" src="{{project.mainImage.asset.url}}" alt="{{project.title}} image">
   </p>
   {{ project.body | markdownify | safe }}
 </div>

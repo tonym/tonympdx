@@ -32,6 +32,44 @@ export default {
       },
     },
     {
+      name: 'gallery',
+      title: 'Gallery',
+      type: 'array',
+      of: [
+        {
+          title: 'Image',
+          type: 'image',
+          fields: [
+            {
+              name: 'copyright',
+              title: 'Copyright',
+              type: 'string',
+              options: { isHighlighted: true }
+            },
+            {
+              name: 'imageTitle',
+              title: 'Title',
+              type: 'string',
+              options: { isHighlighted: true }
+            },
+            {
+              name: 'imageSubTitle',
+              title: 'Subtitle',
+              type: 'string',
+              options: { isHighlighted: true }
+            },
+            {
+              name: 'caption',
+              title: 'Caption',
+              type: 'blockContent',
+              options: { isHighlighted: true }
+            }
+          ],
+          options: { hotspot: true }
+        }
+      ]
+    },
+    {
       name: 'categories',
       title: 'Categories',
       type: 'array',

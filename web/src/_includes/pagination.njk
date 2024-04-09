@@ -1,0 +1,12 @@
+<div class="pagination">
+  {% if pagination.href.previous %}
+    <a class="button outlined" href="{{pagination.href.previous}}">Previous</a>
+  {% else %}
+    <div class="button outlined disabled">Previous</div>
+  {% endif %}
+  {% if pagination.href.next %}
+    <a class="button outlined" href="{{pagination.href.next}}">Next</a>
+  {% else %}
+    <div class="button outlined disabled">Next</div>
+  {% endif %}
+</div>

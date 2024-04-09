@@ -1,21 +1,18 @@
-const { DateTime } = require("luxon");
+const { DateTime } = require('luxon');
+const readingTime = require('eleventy-plugin-reading-time');
+const pluginRss = require("@11ty/eleventy-plugin-rss");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('CNAME');
   eleventyConfig.addPassthroughCopy('src/assets/images');
   eleventyConfig.addPassthroughCopy('src/assets/static');
 
-  eleventyConfig.addFilter("readableDate", dateObj => {
-    return new Date(dateObj).toDateString()
+  eleventyConfig.addFilter('readableDate', (dateObj) => {
+    return DateTime.fromISO(dateObj).toFormat('dd LLL yyyy');
   });
 
-  // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
-  eleventyConfig.addFilter('htmlDateString', (dateObj) => {
-    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
-  });
-
-  let markdownIt = require("markdown-it");
-  let markdownItAnchor = require("markdown-it-anchor");
+  let markdownIt = require('markdown-it');
+  let markdownItAnchor = require('markdown-it-anchor');
   let options = {
     html: true,
     breaks: true,
@@ -23,18 +20,27 @@ module.exports = function (eleventyConfig) {
   };
   let opts = {
     permalink: true,
-    permalinkClass: "direct-link",
-    permalinkSymbol: "#"
+    permalinkClass: 'direct-link',
+    permalinkSymbol: '#'
   };
 
-  eleventyConfig.setLibrary("md", markdownIt(options)
-    .use(markdownItAnchor, opts)
+  eleventyConfig.setLibrary(
+    'md',
+    markdownIt(options).use(markdownItAnchor, opts)
   );
 
-  eleventyConfig.addFilter("markdownify", function(value) {
-    const md = new markdownIt(options)
-    return md.render(value)
-  })
+  eleventyConfig.addFilter('markdownify', function (value) {
+    const md = new markdownIt(options);
+    return md.render(value);
+  });
+
+  eleventyConfig.addPlugin(readingTime);
+
+  eleventyConfig.addPlugin(pluginRss, {
+    posthtmlRenderOptions: {
+      closingSingleTag: "default" // opt-out of <img/>-style XHTML single tags
+    }
+  });
 
   return {
     dir: {
