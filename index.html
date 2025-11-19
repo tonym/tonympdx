@@ -31,12 +31,13 @@
   <button onclick="window.location.href = authUrl">Login with TikTok</button>
 
   <script>
+    let stateArray = new Uint8Array(30);
+    const state = window.crypto.getRandomValues(stateArray);
     const clientKey = "sbawg6hnqd0jejg55z";
     const redirectUri = encodeURIComponent("https://www.tonympdx.com/tiktok/index.html");
-    const state = "1234";
     const scope = "user.info.basic";
 
-    const authUrl = `https://www.tiktok.com/auth/authorize?client_key=${clientKey}&response_type=code&state=${state}&scope=${scope}&redirect_uri=${redirectUri}`;
+    const authUrl = `https://www.tiktok.com/v2/auth/authorize?client_key=${clientKey}&response_type=code&state=${state}&scope=${scope}&redirect_uri=${redirectUri}`;
   </script>
 </body>
 
