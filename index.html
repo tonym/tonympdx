@@ -32,12 +32,16 @@
 
   <script>
     const clientKey = "sbawg6hnqd0jejg55z";
-    const redirectUri = encodeURIComponent("https://tonympdx.com/tiktok/oauth/callback.html");
+    const redirectUri = encodeURIComponent("https://tonympdx.com/tiktok/");
+    const state = "1234";
+    const scope = "user.info.basic";
 
-    const authUrl =
-      `https://www.tiktok.com/auth/authorize?client_key=${clientKey}` +
-      `&response_type=code&scope=user.info.basic` +
-      `&redirect_uri=${redirectUri}`;
+    const authUrl = `
+      https://www.tiktok.com/auth/authorize?client_key=${clientKey}
+      &response_type=code
+      &scope=${scope}
+      &redirect_uri=${redirectUri}&state=${state}
+    `;
   </script>
 </body>
 
