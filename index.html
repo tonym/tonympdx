@@ -33,12 +33,11 @@
   <script>
     const clientKey = "sbawg6hnqd0jejg55z";
     const redirectUri = encodeURIComponent("https://tonympdx.com/tiktok/oauth/callback.html");
-    const state = "1234";
 
     const authUrl =
       `https://www.tiktok.com/auth/authorize?client_key=${clientKey}` +
       `&response_type=code&scope=user.info.basic` +
-      `&redirect_uri=${redirectUri}&state=${state}`;
+      `&redirect_uri=${redirectUri}`;
   </script>
 </body>
 
